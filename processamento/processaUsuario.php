@@ -32,6 +32,7 @@
             $conexao->query($string);
             $dados = $conexao->fetch_row();
             if ($dados[0]!=null){
+                $_SESSION['usrName']=$_POST['login'];
                 header('location:/tcc_v1/html/DashboardAdmin.php');
             }
             else{

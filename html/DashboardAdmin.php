@@ -1,3 +1,9 @@
+<?php
+    session_start();
+    if (isset($_SERVER['HTTP_REFERER']) == FALSE){
+        header('location:/tcc_v1/html/AutenticacaoUsuario.php');
+    }
+?>
 <!DOCTYPE html>
 <html>
 <title>Dashboard</title>
@@ -21,10 +27,10 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 <nav class="w3-sidebar w3-collapse w3-white w3-animate-left" style="z-index:3;width:300px;" id="mySidebar"><br>
   <div class="w3-container w3-row">
     <div class="w3-col s4">
-      <img src="/w3images/avatar2.png" class="w3-circle w3-margin-right" style="width:46px">
+      <img src="../midia/Usuario.png" class="w3-circle w3-margin-right" style="width:46px">
     </div>
     <div class="w3-col s8 w3-bar">
-      <span>Welcome, <strong>Mike</strong></span><br>
+      <span>Welcome, <strong><?php print $_SESSION['usrName']?></strong></span><br>
       <a href="#" class="w3-bar-item w3-button"><i class="fa fa-envelope"></i></a>
       <a href="#" class="w3-bar-item w3-button"><i class="fa fa-user"></i></a>
       <a href="#" class="w3-bar-item w3-button"><i class="fa fa-cog"></i></a>
