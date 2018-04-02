@@ -53,12 +53,14 @@
                 <button class="btn btn-default" type="submit">Entrar</button>
             </div>
     </form>
+        <p class="fonte_erro">
         <?php
             if (isset($_SESSION['erroLogin'])){
-                print $_SESSION['erroLogin'];
+                print "ATENÇÃO: ".$_SESSION['erroLogin'];
                 unset($_SESSION['erroLogin']);
             }
         ?>
+        </p>
 
         <h4 class="margin form-group">Não tem conta?<a href=#cadastro style="color: #0056b3"> Clique aqui </a></h4>
     </div>
@@ -96,14 +98,14 @@
               <button class="btn btn-default pull-right" type="submit">Enviar</button>
             </div>
             </div>
-            </form>
+              </form><p class="fonte_erro" style="color:black">
               <?php
                 //CASO O USUARIO TENTE CADASTRAR UM LOGIN JÁ EXISTENTE, UMA MSG DE ERRO APARECERA
                 if (isset($_SESSION['erroNomeLogin'])){
-                    print $_SESSION['erroNomeLogin'];
+                    print "ERRO:".$_SESSION['erroNomeLogin'];
                     unset($_SESSION['erroNomeLogin']);
                 }
-                ?>
+                ?></p>
           </div>
         </div>
       </div>

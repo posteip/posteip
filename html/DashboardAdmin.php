@@ -1,4 +1,5 @@
 <?php
+    include_once '../processamento/preencherDashboard.php';
     session_start();
     if (isset($_SERVER['HTTP_REFERER']) == FALSE){
         header('location:/tcc_v1/html/AutenticacaoUsuario.php');
