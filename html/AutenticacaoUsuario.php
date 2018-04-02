@@ -53,7 +53,7 @@
                 <button class="btn btn-default" type="submit">Entrar</button>
             </div>
     </form>
-        <?php//CASO O USUARIO DIGITE UM LOGIN OU SENHA INCORRETO, UMA MSG DE ERRO APARECERÁ NA TELA
+        <?php
             if (isset($_SESSION['erroLogin'])){
                 print $_SESSION['erroLogin'];
                 unset($_SESSION['erroLogin']);
@@ -97,7 +97,8 @@
             </div>
             </div>
             </form>
-              <?php//CASO O USUARIO TENTE CADASTRAR UM LOGIN JÁ EXISTENTE, UMA MSG DE ERRO APARECERA
+              <?php
+                //CASO O USUARIO TENTE CADASTRAR UM LOGIN JÁ EXISTENTE, UMA MSG DE ERRO APARECERA
                 if (isset($_SESSION['erroNomeLogin'])){
                     print $_SESSION['erroNomeLogin'];
                     unset($_SESSION['erroNomeLogin']);
