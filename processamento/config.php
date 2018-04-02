@@ -1,6 +1,6 @@
 <?php
 	$host = "localhost";
-	$user = "user";
-	$password = "senha";
+	$user = "user_tcc";
+	$password = "senha123";
 	$database = "tcc";
 ?>
