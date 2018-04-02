@@ -9,6 +9,7 @@
     if (isset($_SERVER['HTTP_REFERER']) == FALSE){
         header('location:/tcc_v1/html/AutenticacaoUsuario.php');
     }else{
+        //REALIZA O CADASTRO
         if (!empty($_POST['nome']) && !empty($_POST['sobrenome']) && !empty($_POST['email']) && !empty($_POST['usrname']) && !empty($_POST['senha'])){
             echo "entrei aqui";
             $string = "INSERT INTO usuario (nome, sobrenome, email, login, senha) VALUES"
@@ -25,6 +26,7 @@
                 header('location:/tcc_v1/html/DashboardAdmin.php');
             }
         }
+        //TRATA O LOGIN DO USUARIO
         elseif (!empty($_POST['login']) && !empty ($_POST['senha'])){
             $login = htmlspecialchars($_POST['login']);
             $senha = htmlspecialchars($_POST['senha']);
