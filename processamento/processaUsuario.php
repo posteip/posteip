@@ -23,6 +23,7 @@
             }
             else{
                 $conexao->query($string);
+                $_SESSION['usrName']=$_POST['login'];
                 header('location:/tcc_v1/html/DashboardAdmin.php');
             }
         }
