@@ -28,14 +28,13 @@
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="#login">Login</a></li>
-            <li><a href="#cadastro">Cadastre-se</a></li>
+            <li><a href="#login">Login</a></li> 
           </ul>
         </div>
       </div>
     </nav>
 
-    <div id="login" class="container-fluid bg-1 text-center">
+    <div id="login" class="container-fluid bg-grey text-center">
       <h3 class="margin"><b>Login</b></h3>
       <img src="../midia/Usuario.png" class="img-responsive img-circle margin" style="display:inline" alt="Bird" width="250" height="250"><br>
     <br>
@@ -62,57 +61,11 @@
         ?>
         </p>
 
-        <h4 class="margin form-group">Não tem conta?<a href=#cadastro style="color: #0056b3"> Clique aqui </a></h4>
     </div>
-    </div>
-
-
-    <!-- Container (Contact Section) -->
-    <div id="cadastro" class="container-fluid bg-grey">
-      <h2 class="text-center">CADASTRO</h2>
-      <div class="row">
-          <div class="col-sm-5 text-center" style="float: left; width: 30%">
-            <img src="../midia/Usuario.png" class="img-responsive img-circle margin" style="display:inline" alt="Bird" width="200" height="200">
-          <h4>Escolha uma foto</h4>
-        </div>
-          <div class="col-sm-7 slideanim" style="float: left; width: 70%">
-          <div class="row">
-              <form action="/tcc_v1/processamento/processaUsuario.php" method="post">
-            <div class="col-sm-6 form-group">
-              <input class="form-control" id="name" name="nome" placeholder="Nome" type="text" required>
-            </div>
-            <div class="col-sm-6 form-group">
-              <input class="form-control" id="name" name="sobrenome" placeholder="Sobrenome" type="text" required>
-            </div>
-            <div class="col-sm-12 form-group">
-              <input class="form-control" id="email" name="email" placeholder="Email" type="email" required>
-            </div>
-          <div class="col-sm-6 form-group">
-              <input class="form-control" id="Username" name="usrname" placeholder="Usuario" type="text" required>
-            </div>
-            <div class="col-sm-6 form-group">
-                <input class="form-control" id="UsrPass" name="senha" placeholder="Senha" type="password" required>
-            </div><br>
-          <div class="row">
-            <div class="col-sm-12 form-group">
-              <button class="btn btn-default pull-right" type="submit">Enviar</button>
-            </div>
-            </div>
-              </form><p class="fonte_erro" style="color:black">
-              <?php
-                //CASO O USUARIO TENTE CADASTRAR UM LOGIN JÁ EXISTENTE, UMA MSG DE ERRO APARECERA
-                if (isset($_SESSION['erroNomeLogin'])){
-                    print "ERRO:".$_SESSION['erroNomeLogin'];
-                    unset($_SESSION['erroNomeLogin']);
-                }
-                ?></p>
-          </div>
-        </div>
-      </div>
     </div>
     
     <div class = "rodapé">
-        <h5>Projeto Incentivado pelo IFMS</h5>
+        <p>Projeto Incentivado pelo IFMS</p>
     </div>
 </body>
 </html>

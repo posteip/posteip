@@ -19,7 +19,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 <body class="w3-light-grey">
 
 <!-- Top container -->
-<div class="w3-bar w3-top w3-black w3-large" style="z-index:4">
+<div class="w3-bar w3-top w3-black w3-large" style="z-index:4; background-color: ">
   <button class="w3-bar-item w3-button w3-hide-large w3-hover-none w3-hover-text-light-grey" onclick="w3_open();"><i class="fa fa-bars"></i>  Menu</button>
   <span class="w3-bar-item w3-right">POSTeIP</span>
 </div>
@@ -31,10 +31,10 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
       <img src="../midia/Usuario.png" class="w3-circle w3-margin-right" style="width:46px">
     </div>
     <div class="w3-col s8 w3-bar">
-      <span>Bem vindo, <strong><?php print $_SESSION['usrName']?></strong></span><br>
+      <span>Bem vindo, <strong><?php print $userName?></strong></span><br>
       <a href="#" class="w3-bar-item w3-button"><i class="fa fa-envelope"></i></a>
       <a href="#" class="w3-bar-item w3-button"><i class="fa fa-user"></i></a>
-      <a href="#" class="w3-bar-item w3-button"><i class="fa fa-cog"></i></a>
+      <a href="CadastroUsuario.php" class="w3-bar-item w3-button"><i class="fa fa-user-plus"></i></a>
     </div>
   </div>
   <hr>
@@ -312,3 +312,4 @@ function w3_close() {
 
 </body>
 </html>
+
