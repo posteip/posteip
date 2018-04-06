@@ -1,4 +1,7 @@
 <?php
+    if (isset($_SERVER['HTTP_REFERER']) == FALSE){
+        header('location:/tcc_v1/html/AutenticacaoUsuario.php');
+    }
     session_start();
     include_once '../processamento/preencherDashboard.php';
     $conexao = new Connection();
@@ -6,38 +9,8 @@
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-  <title>Cadastro de Usuarios</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
-  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <link href="../css/MeuCSS.css" rel="stylesheet" type="text/css">
- <style>
-table {
-    font-family: arial, sans-serif;
-    border-collapse: collapse;
-    width: 100%;
-    color: black;
-}
-
-td, th {
-    border: 1px solid #dddddd;	
-    text-align: left;
-    padding: 8px;
-}
-
-tr:nth-child(even) {
-    background-color: #dddddd;
-}
-</style>    
-</head>
+<?php include '../helpers/header.php'; ?>
+<title>Cadastro de Usuarios</title>
 <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
 
     <nav class="navbar navbar-default navbar-fixed-top">
@@ -89,7 +62,7 @@ tr:nth-child(even) {
               <button class="btn btn-default pull-right" type="submit">Enviar</button>
             </div>
             </div>
-              </form><p class="fonte_erro" style="color:black">
+              </form><p class="fonte_erro" style="color:red">
               <?php
                 //CASO O USUARIO TENTE CADASTRAR UM LOGIN JÁ EXISTENTE, UMA MSG DE ERRO APARECERA
                 if (isset($_SESSION['erroNomeLogin'])){
@@ -125,6 +98,35 @@ tr:nth-child(even) {
         </div>-->
       </div>
     </div>
+      
+      <div id="excluir" class="container-fluid bg-grey">
+          <h2 class="text-center">Excluir</h2><br>
+          <div class="row">
+            <div class="col-sm-8">
+                <form method="POST" action="../processamento/processaUsuario.php">
+                <div class="form-group col-sm-6">
+                    <input class="form-control" name="exclua" placeholder="Login">
+                    <p>Digite o login do usuario a ser excluido</p>
+                </div>
+                <div class="form-group col-sm-6">
+                    <button class="btn btn-default" type="submit">Excluir</button>
+                </div>  
+                </form>
+                <div class="col-sm-12 form-group">
+                    <p class="fonte_erro" style="color: red"><?php
+                        if (isset($_SESSION['msgDeleteUser'])){
+                            print $_SESSION['msgDeleteUser'];
+                            unset($_SESSION['msgDeleteUser']);
+                        }
+                    ?></p>
+            </div>
+            </div>
+            <div class="col-sm-4 text-center" >
+                <i class="fa fa-user-times logo" style="color: gray; font-size: 120px"></i>
+            </div>
+      </div>
+          </div>
+      </div>  
     
     <div class = "rodapé">
         <p>Desenvolvido por: Mudo, Pedro HCMDS e Lombinha</p>

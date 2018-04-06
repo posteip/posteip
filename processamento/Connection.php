@@ -27,10 +27,10 @@
             $result = mysqli_query($this->link, $query);
             
             if (is_bool($result)){
-                if($result == TRUE){
-                    echo "Dados inseridos com sucesso";
+                if($result){
+                    return true;
                 }else{
-                    echo "Erro durante a inserção";
+                    return false;
                     echo mysqli_error($this->link);
                 }
             }   
