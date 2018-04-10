@@ -46,8 +46,7 @@
             $excluir = htmlspecialchars($_POST['exclua']);
             $string = "DELETE FROM usuario WHERE login ='".$excluir."'";
             $isExcluido = $conexao->query($string);
-            mysqli_affected_rows($link);
-            if(mysqli_affected_rows($link)==1){
+            if(mysqli_affected_rows($conexao->link)==1){
                 $_SESSION['msgDeleteUser']="Usuário Excluido com Sucesso";
             }else{
                 $_SESSION['msgDeleteUser'] = "ERRO: Ocorreu um erro durante a exclusão, certifique-se de ter digitado corretamente o login";

@@ -65,7 +65,7 @@
     </div>
     
     <div class = "rodapé">
-        <p>Projeto Incentivado pelo IFMS</p>
+        <h5>POSTe IP - Projeto Incentivado pelo IFMS</h5>
     </div>
 </body>
 </html>

@@ -1,4 +1,4 @@
-<?php if ($_SERVER['REQUEST_URI'] == "/tcc_v1/html/CadastroUsuario.php") ?>
+<?php if ($_SERVER['REQUEST_URI'] == "/tcc_v1/html/CadastroUsuario.php")?>
 <head>
   <meta charset="utf-8"><?php ?>
   <meta name="viewport" content="width=device-width, initial-scale=1">
