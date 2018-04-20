@@ -19,7 +19,7 @@
             if ($this->link == FALSE){
                 echo "Conexão falhou. ".mysqli_connect_errno()." ".mysqli_connect_error(); 
             }else{
-                echo "Conexão feita com sucesso";
+                //echo "Conexão feita com sucesso";
             }
         }
 

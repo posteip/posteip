@@ -1,6 +1,6 @@
-<?php if ($_SERVER['REQUEST_URI'] == "/tcc_v1/html/CadastroUsuario.php")?>
-<head>
-  <meta charset="utf-8"><?php ?>
+<?php if ($_SERVER['REQUEST_URI'] == "/tcc_v1/html/CadastroUsuario.php")
+echo '<head>
+  <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -11,6 +11,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <link href="../css/MeuCSS.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
   <style>
   table {
     font-family: arial, sans-serif;
@@ -20,7 +21,7 @@
 }
 
 td, th {
-    border: 1px solid #dddddd;	
+    border: 0px solid #dddddd;	
     text-align: left;
     padding: 8px;
 }
@@ -28,5 +29,7 @@ td, th {
 tr:nth-child(even) {
     background-color: #dddddd;
 }
+html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 </style>
-</head>
+</head>'
+?>
