@@ -1,5 +1,7 @@
-<?php if ($_SERVER['REQUEST_URI'] == "/tcc_v1/html/CadastroUsuario.php")
-echo '<head>
+<?php
+
+if ($_SERVER['REQUEST_URI'] == "/tcc_v1/html/CadastroUsuario.php")
+    echo '<head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -32,4 +34,6 @@ tr:nth-child(even) {
 html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 </style>
 </head>'
+
+    
 ?>
