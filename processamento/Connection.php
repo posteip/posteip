@@ -24,25 +24,25 @@ class Connection {
         }
     }
 
-    function query($query) {
+    function query($query){
         $result = mysqli_query($this->link, $query);
 
-        if (is_bool($result)) {
-            if ($result) {
-                return true;
-            } else {
-                return false;
+        if (is_bool($result)){
+            if($result == TRUE){
+                echo "Dados inseridos com sucesso";
+            }else{
+                echo "Erro durante a inserção";
                 echo mysqli_error($this->link);
             }
-        } elseif (is_object($result)) {
+        }   
+        elseif(is_object($result)){
             $this->result = $result;
         }
     }
-
     function fetch_row() {
-        $row = mysqli_fetch_row($this->result);
-
-        return $row;
+            $row = mysqli_fetch_row($this->result);
+            
+            return $row;
     }
 
     function free_result() {

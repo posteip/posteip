@@ -1,6 +1,5 @@
 <?php
-
-session_start();
+//session_start();
 include_once "config.php";
 include_once "Connection.php";
 include_once "preencherDashboard.php";
@@ -19,7 +18,7 @@ if (isset($_SERVER['HTTP_REFERER']) == FALSE) {
         $conexao->query($verifica);
         $dados = $conexao->fetch_row();
         if ($dados[0] != null) {
-            $_SESSION['erroNomeLogin'] = "true";
+            $_SESSION['erroNomeLogin'] = "ERRO: Login já cadastrado";
             header('location:/tcc_v1/html/CadastroUsuario.php');
         } else {
             $conexao->query($string);
@@ -41,7 +40,7 @@ if (isset($_SERVER['HTTP_REFERER']) == FALSE) {
             header('location:/tcc_v1/html/AutenticacaoUsuario.php');
         }
     }//EXCLUIR
-    else if (!empty($_GET['id'])) {
+    else if (!empty($_GET['id']) && is_numeric($_GET['id'])) {
         $id = $_GET['id'];
         if ($id != $userId) {
             $string = "DELETE FROM usuario WHERE id =" . $id;
@@ -54,7 +53,13 @@ if (isset($_SERVER['HTTP_REFERER']) == FALSE) {
         }
 
         header('location:/tcc_v1/html/CadastroUsuario.php');
+    }//LOGOUT
+    else if (!empty ($_GET['sair']) && $_GET['sair']=="sim"){
+        session_destroy();
+        header('location:/tcc_v1/html/Home.html');
+        exit();
     }
 }
 $conexao->close();
 ?>
+

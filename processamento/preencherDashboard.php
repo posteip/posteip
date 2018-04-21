@@ -11,5 +11,4 @@ $string = "SELECT login FROM usuario WHERE id =" . $userId;
 $conexao->query($string);
 $dados = $conexao->fetch_row();
 $userName = $dados[0];
-$conexao->close();
 ?>

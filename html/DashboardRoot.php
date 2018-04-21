@@ -41,7 +41,7 @@ if (isset($_SERVER['HTTP_REFERER']) == FALSE) {
                             <h3>52</h3>
                         </div>
                         <div class="w3-clear"></div>
-                        <h4>Messages</h4>
+                        <h4>Controladores</h4>
                     </div>
                 </div>
                 <div class="w3-quarter">
@@ -51,7 +51,7 @@ if (isset($_SERVER['HTTP_REFERER']) == FALSE) {
                             <h3>99</h3>
                         </div>
                         <div class="w3-clear"></div>
-                        <h4>Views</h4>
+                        <h4>Plataformas</h4>
                     </div>
                 </div>
                 <div class="w3-quarter">
@@ -61,7 +61,7 @@ if (isset($_SERVER['HTTP_REFERER']) == FALSE) {
                             <h3>23</h3>
                         </div>
                         <div class="w3-clear"></div>
-                        <h4>Shares</h4>
+                        <h4>Postes</h4>
                     </div>
                 </div>
                 <div class="w3-quarter">
@@ -71,7 +71,7 @@ if (isset($_SERVER['HTTP_REFERER']) == FALSE) {
                             <h3>50</h3>
                         </div>
                         <div class="w3-clear"></div>
-                        <h4>Users</h4>
+                        <h4>Sensores/Atuadores</h4>
                     </div>
                 </div>
             </div>
