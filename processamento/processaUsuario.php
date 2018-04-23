@@ -9,11 +9,10 @@ $conexao->connect($host, $user, $password, $database);
 if (isset($_SERVER['HTTP_REFERER']) == FALSE) {
     header('location:/tcc_v1/html/AutenticacaoUsuario.php');
 } else {
-
     //REALIZA O CADASTRO
-    if (!empty($_POST['nome']) && !empty($_POST['sobrenome']) && !empty($_POST['email']) && !empty($_POST['usrname']) && !empty($_POST['senha'])) {
-        $string = "INSERT INTO usuario (nome, sobrenome, email, login, senha) VALUES"
-                . " ('" . $_POST['nome'] . "','" . $_POST['sobrenome'] . "', '" . $_POST['email'] . "','" . $_POST['usrname'] . "','" . $_POST['senha'] . "')";
+    if ($_POST['isAdm']>=0   && !empty($_POST['nome']) && !empty($_POST['sobrenome']) && !empty($_POST['email']) && !empty($_POST['usrname']) && !empty($_POST['senha'])) {
+        $string = "INSERT INTO usuario (nome, sobrenome, isadm, email, login, senha) VALUES"
+                . " ('" . $_POST['nome'] . "','" . $_POST['sobrenome']  ."',".$_POST['isAdm'].",'" . $_POST['email'] . "','" . $_POST['usrname'] . "','" . $_POST['senha'] . "')";
         $verifica = "SELECT id FROM usuario WHERE login = '" . $_POST['usrname'] . "'";
         $conexao->query($verifica);
         $dados = $conexao->fetch_row();
@@ -29,11 +28,12 @@ if (isset($_SERVER['HTTP_REFERER']) == FALSE) {
     elseif (!empty($_POST['login']) && !empty($_POST['senha'])) {
         $login = htmlspecialchars($_POST['login']);
         $senha = htmlspecialchars($_POST['senha']);
-        $string = "SELECT id FROM usuario WHERE login = '" . $login . "' and senha = '" . $senha . "' LIMIT 1";
+        $string = "SELECT id, isadm FROM usuario WHERE login = '" . $login . "' and senha = '" . $senha . "' LIMIT 1";
         $conexao->query($string);
         $dados = $conexao->fetch_row();
         if ($dados[0] != null) {
             $_SESSION['userId'] = $dados[0];
+            $_SESSION['userType'] = $dados[1];
             header('location:/tcc_v1/html/DashboardRoot.php');
         } else {
             $_SESSION['erroLogin'] = "Usuario ou senha incorretos";
@@ -58,6 +58,8 @@ if (isset($_SERVER['HTTP_REFERER']) == FALSE) {
         session_destroy();
         header('location:/tcc_v1/html/Home.html');
         exit();
+    }else{
+        echo "nao rolou";
     }
 }
 $conexao->close();

@@ -64,8 +64,6 @@ session_start();
             </div>
         </div>
 
-        <div class = "rodapé">
-            <h5>POSTe IP - Projeto Incentivado pelo IFMS</h5>
-        </div>
+        <?php include '../helpers/footer.php';?>
     </body>
 </html>

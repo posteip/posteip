@@ -3,6 +3,8 @@ include_once '../processamento/preencherDashboard.php';
 if (isset($_SERVER['HTTP_REFERER']) == FALSE) {
     header('location:/tcc_v1/html/AutenticacaoUsuario.php');
 }
+$longitude = -54.6478;
+$latitude = "-20.4435";
 ?>
 <!DOCTYPE html>
 <html>
@@ -13,14 +15,13 @@ if (isset($_SERVER['HTTP_REFERER']) == FALSE) {
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <style>
-        html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
+        html,body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
     </style>
     <body class="w3-light-grey">
-
         <!-- Top container -->
         <div class="w3-bar w3-top w3-black w3-large" style="z-index:4;">
             <button class="w3-bar-item w3-button w3-hide-large w3-hover-none w3-hover-text-light-grey" onclick="w3_open();"><i class="fa fa-bars"></i>  Menu</button>
-            <span class="w3-bar-item w3-right">POSTeIP</span>
+            <a href="Home.html"><span class="w3-bar-item w3-right">POSTeIP</span></a>
         </div>
 
         <?php include '../helpers/MenuNavegacao.php'; ?>
@@ -36,7 +37,7 @@ if (isset($_SERVER['HTTP_REFERER']) == FALSE) {
             <div class="w3-row-padding w3-margin-bottom">
                 <div class="w3-quarter">
                     <div class="w3-container w3-red w3-padding-16">
-                        <div class="w3-left"><i class="fa fa-comment w3-xxxlarge"></i></div>
+                        <div class="w3-left"><img src="../midia/rasp-icon.png" style="width: 50px; height: 50px"></div>
                         <div class="w3-right">
                             <h3>52</h3>
                         </div>
@@ -45,8 +46,8 @@ if (isset($_SERVER['HTTP_REFERER']) == FALSE) {
                     </div>
                 </div>
                 <div class="w3-quarter">
-                    <div class="w3-container w3-blue w3-padding-16">
-                        <div class="w3-left"><i class="fa fa-eye w3-xxxlarge"></i></div>
+                    <div class="w3-container w3-teal w3-padding-16">
+                        <div class="w3-left"><img src="../midia/arduino-icon.png" style="width: 50px; height: 50px"></div>
                         <div class="w3-right">
                             <h3>99</h3>
                         </div>
@@ -55,8 +56,8 @@ if (isset($_SERVER['HTTP_REFERER']) == FALSE) {
                     </div>
                 </div>
                 <div class="w3-quarter">
-                    <div class="w3-container w3-teal w3-padding-16">
-                        <div class="w3-left"><i class="fa fa-share-alt w3-xxxlarge"></i></div>
+                    <div class="w3-container w3-blue w3-padding-16">
+                        <div class="w3-left"><img src="../midia/poste-icon2.png" style="width: 50px; height: 50px"></div>
                         <div class="w3-right">
                             <h3>23</h3>
                         </div>
@@ -65,8 +66,8 @@ if (isset($_SERVER['HTTP_REFERER']) == FALSE) {
                     </div>
                 </div>
                 <div class="w3-quarter">
-                    <div class="w3-container w3-orange w3-text-white w3-padding-16">
-                        <div class="w3-left"><i class="fa fa-users w3-xxxlarge"></i></div>
+                    <div class="w3-container w3-grey w3-text-white w3-padding-16">
+                        <div class="w3-left"><img src="../midia/sensor-icon.png" style="width: 50px; height: 50px"></div>
                         <div class="w3-right">
                             <h3>50</h3>
                         </div>
@@ -77,11 +78,21 @@ if (isset($_SERVER['HTTP_REFERER']) == FALSE) {
             </div>
 
             <div class="w3-panel">
-                <div class="w3-row-padding" style="margin:0 -16px">
-                    <div class="w3-third">
-                        <h5>Regions</h5>
-                        <img src="/w3images/region.jpg" style="width:100%" alt="Google Regional Map">
-                    </div>
+                <div class="w3-row-padding" style="margin:0 -16px"><br><br>
+                    <div id="map" style="width:100%;height:500px;"></div>
+                    <script>
+                    function myMap() {
+                        var latitude = "<?php echo $latitude;?>";
+                        var myCenter = new google.maps.LatLng(latitude,-54.6478);
+                        var mapCanvas = document.getElementById("map");
+                        var mapOptions = {center: myCenter, zoom: 5};
+                        var map = new google.maps.Map(mapCanvas, mapOptions);
+                        var marker = new google.maps.Marker({position:myCenter});
+                        marker.setMap(map);
+                    }
+                    </script>
+                    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB-5FWIitattjt2KqfZcBIJ6tyhmKd3euQ&callback=myMap"></script>
+                    
                     <div class="w3-twothird">
                         <h5>Feeds</h5>
                         <table class="w3-table w3-striped w3-white">
@@ -242,17 +253,12 @@ if (isset($_SERVER['HTTP_REFERER']) == FALSE) {
             </div>
 
             <!-- Footer -->
-            <footer class="w3-container w3-padding-16 w3-light-grey">
-                <h4>FOOTER</h4>
-                <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
-            </footer>
+            <div style="text-align: center">
+                <?php include '../helpers/footer.php';?>
+            </div>
 
             <!-- End page content -->
         </div>
-
-
-      
-
     </body>
 </html>
 

@@ -1,5 +1,5 @@
 <?php
-if (isset($_SERVER['HTTP_REFERER']) == FALSE) {
+if (isset($_SERVER['HTTP_REFERER']) == FALSE && $_SESSION['userType'] == 0){
     header('location:/tcc_v1/html/AutenticacaoUsuario.php');
 }
 //include_once '../processamento/preencherTabelas.php';
@@ -7,7 +7,7 @@ if (isset($_SERVER['HTTP_REFERER']) == FALSE) {
 <!DOCTYPE html>
 <html lang="pt-br">
     <?php include '../helpers/header.php'; ?>
-    <title>Cadastro de Controladores</title>
+    <title>Controladores</title>
     <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
         
         <nav class="w3-bar navbar navbar-default navbar-fixed-top" style="z-index:4;">
@@ -30,10 +30,10 @@ if (isset($_SERVER['HTTP_REFERER']) == FALSE) {
         <div class="w3-main" style="margin-left:300px;">
             <!-- Container (Cadastro) -->
             <div id="cadastro" class="container-fluid bg-grey">
-                <h2 class="text-center">CADASTRO</h2>
+                <h2 class="text-center">CADASTRO DE CONTROLADORES</h2>
                 <div class="row">
                     <div class="col-sm-5 text-center" style="float: left; width: 30%">
-                        <i class="fa fa-user-plus logo img-responsive" style="color: gray"></i>
+                        <img src="../midia/rasp-icon.png"  style="width: 240px; height: 240px" class="img-responsive center-block">
                     </div>
                     <div class="col-sm-7 slideanim" style="float: left; width: 70%">
                         <div class="row">
@@ -70,9 +70,7 @@ if (isset($_SERVER['HTTP_REFERER']) == FALSE) {
                     </div>
                 </div>
             </div>
-            <div class = "rodapé">
-                <p>POSTe IP - Projeto Incentivado pelo IFMS</p>
-            </div>
+            <?php include '../helpers/footer.php';?>
         </div>
     </body>
 </html>

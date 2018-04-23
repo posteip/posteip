@@ -7,6 +7,7 @@ $conexao->connect($host, $user, $password, $database);
 
 //Busca o nome do usuário
 $userId = $_SESSION['userId'];
+$tipoUsuario = $_SESSION['userType'];
 $string = "SELECT login FROM usuario WHERE id =" . $userId;
 $conexao->query($string);
 $dados = $conexao->fetch_row();
