@@ -2,7 +2,7 @@
 //session_start();
 include_once "config.php";
 include_once "Connection.php";
-include_once "preencherDashboard.php";
+//include_once "preencherDashboard.php";
 $conexao = new Connection();
 $conexao->connect($host, $user, $password, $database);
 
@@ -59,7 +59,7 @@ if (isset($_SERVER['HTTP_REFERER']) == FALSE) {
         header('location:/tcc_v1/html/Home.html');
         exit();
     }else{
-        echo "nao rolou";
+        echo "Não entrou em nada, mano";
     }
 }
 $conexao->close();

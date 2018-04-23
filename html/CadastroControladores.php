@@ -44,10 +44,10 @@ if (isset($_SERVER['HTTP_REFERER']) == FALSE && $_SESSION['userType'] == 0){
                                 </div>
                                 <div class="col-sm-12 form-group">
                                     <p style="color: black">Localização:</p>
-                                    <input class="form-control" id="lat" name="latitude" placeholder="Latitude" type="number" required>
+                                    <input class="form-control" id="lat" name="latitude" placeholder="Latitude" type="text" required>
                                 </div>
                                 <div class="col-sm-12 form-group">
-                                    <input class="form-control" id="long" name="longitude" placeholder="Longitude" type="number" required>
+                                    <input class="form-control" id="long" name="longitude" placeholder="Longitude" type="text" required>
                                 </div>
                                 <div class="col-sm-12 form-group">
                                     <p style="color: black">Descrição:</p>
@@ -61,9 +61,9 @@ if (isset($_SERVER['HTTP_REFERER']) == FALSE && $_SESSION['userType'] == 0){
                             </form><p class="fonte_erro" style="color:red">
                                 <?php
                                 //CASO O USUARIO TENTE CADASTRAR UM LOGIN JÁ EXISTENTE, UMA MSG DE ERRO APARECERA
-                                if (isset($_SESSION['erroNomeLogin'])) {
-                                    echo $_SESSION['erroNomeLogin'];
-                                    unset($_SESSION['erroNomeLogin']);
+                                if (isset($_SESSION['erroNomeControlador'])) {
+                                    echo $_SESSION['erroNomeControlador'];
+                                    unset($_SESSION['erroNomeControlador']);
                                 }
                                 ?></p>
                         </div>

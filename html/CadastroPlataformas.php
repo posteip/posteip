@@ -55,7 +55,7 @@ include_once '../processamento/preencherDrops.php';
                                 </div><br>
                                 <div class="col-sm-6 form-group">
                                     <p style="color: black">Controlador Vinculado:</p>
-                                    <select name="controlador" class="form-group" required>
+                                    <select name="controlador" class="form-control" required>
                                         <?php
                                         dropControlador();
                                         ?>
