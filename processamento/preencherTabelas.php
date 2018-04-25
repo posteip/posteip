@@ -1,14 +1,14 @@
 <?php
 include_once "Connection.php";
-include_once "config.php";
-$conexao = new Connection();
-$conexao->connect($host, $user, $password, $database);
+include_once "config.php";  
+$conexaoT = new Connection();
+$conexaoT->connect($host, $user, $password, $database);
 
 function buscaUsuarios() {
-    global $conexao, $dados;
+    global $conexaoT;
     $string = "SELECT * FROM usuario";
-    $conexao->query($string);
-    $dados = $conexao->fetch_row();
+    $conexaoT->query($string);
+    $dados = $conexaoT->fetch_row();
     while ($dados != null) {
         if ($dados[3] == 1){
             $isAdm = "Sim";
@@ -24,8 +24,8 @@ function buscaUsuarios() {
         "<td>$dados[5]</td>" .
         "<td><a href='/tcc_v1/processamento/processaUsuario.php?id=$dados[0]' class='btn btn-default'><i class='fa fa-trash'></i> Excluir</a></td>" .
         "</tr>";
-        $dados = $conexao->fetch_row();
+        $dados = $conexaoT->fetch_row();
     }
+    $conexaoT->close();
 }
-$conexao->close();
 ?>

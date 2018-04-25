@@ -2,7 +2,6 @@
 if (isset($_SERVER['HTTP_REFERER']) == FALSE) {
     header('location:/tcc_v1/html/AutenticacaoUsuario.php');
 }
-//include_once '../processamento/processaUsuario.php';
 include_once '../processamento/preencherTabelas.php';
 ?>
 <!DOCTYPE html>

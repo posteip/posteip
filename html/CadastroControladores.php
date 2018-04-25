@@ -58,12 +58,12 @@ if (isset($_SERVER['HTTP_REFERER']) == FALSE && $_SESSION['userType'] == 0){
                                         <button class="btn btn-default pull-right" type="submit">Enviar</button>
                                     </div>
                                 </div>
-                            </form><p class="fonte_erro" style="color:red">
+                            </form><p class="fonte_erro">
                                 <?php
                                 //CASO O USUARIO TENTE CADASTRAR UM LOGIN JÁ EXISTENTE, UMA MSG DE ERRO APARECERA
-                                if (isset($_SESSION['erroNomeControlador'])) {
-                                    echo $_SESSION['erroNomeControlador'];
-                                    unset($_SESSION['erroNomeControlador']);
+                                if (isset($_SESSION['msgCadastroControlador'])) {
+                                    echo $_SESSION['msgCadastroControlador'];
+                                    unset($_SESSION['msgCadastroControlador']);
                                 }
                                 ?></p>
                         </div>

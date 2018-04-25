@@ -1,18 +1,18 @@
 <?php
 include_once "Connection.php";
 include_once "config.php";
-$conexao = new Connection();
-$conexao->connect($host, $user, $password, $database);
+$conexaoD = new Connection();
+$conexaoD->connect($host, $user, $password, $database);
 
 function dropControlador() {
-    global $conexao, $dados;
+    global $conexaoD;
     $string = "SELECT id, nome FROM controlador";
-    $conexao->query($string);
-    $dados = $conexao->fetch_row();
+    $conexaoD->query($string);
+    $dados = $conexaoD->fetch_row();
     while ($dados != null) {
         echo "<option value=$dados[0]>$dados[1]";
-        $dados = $conexao->fetch_row();
+        $dados = $conexaoD->fetch_row();
     }
 }
-$conexao->close();
+//$conexao->close();
 ?>

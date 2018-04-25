@@ -13,12 +13,13 @@ if (isset($_SERVER['HTTP_REFERER']) == FALSE) {
             <div class="container">
                 <div class="navbar-header">
                     <button class=" navbar-brand w3-bar-item w3-button w3-hide-large w3-hover-none w3-text-white" onclick="w3_open();"><i class="fa fa-bars"></i>  Menu</button>    
-                    <a class="navbar-brand">Postes</a>
+                    <a class="navbar-brand">Sensores</a>
                 </div>
                 <div class="collapse navbar-collapse" id="myNavbar">
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="CadastroPostes.php#cadastro">Cadastro</a></li>
+                        <li><a href="CadastroSensores.php#cadastro">Cadastro</a></li>
                         <li><a href="#">Gerenciar</a></li>
+                        <li><a href="#">Tipo dado</a></li>
                     </ul>
                 </div>
             </div>
@@ -29,28 +30,25 @@ if (isset($_SERVER['HTTP_REFERER']) == FALSE) {
         <div class="w3-main" style="margin-left:300px;">
             <!-- Container (Cadastro) -->
             <div id="cadastro" class="container-fluid bg-grey">
-                <h2 class="text-center">CADASTRO DE POSTES</h2>
+                <h2 class="text-center">CADASTRO DE SENSORES</h2>
                 <div class="row">
                     <div class="col-sm-5 text-center" style="float: left; width: 30%">
-                        <img src="../midia/poste-icon2.png"  style="width: 240px; height: 240px" class="img-responsive center-block" title="Poste">
+                        <img src="../midia/sensor-icon.png"  style="width: 240px; height: 240px" class="img-responsive center-block" title="Poste">
                     </div>
                     <div class="col-sm-7 slideanim" style="float: left; width: 70%">
                         <div class="row">
-                            <form action="/tcc_v1/processamento/processaPoste.php" method="post">
+                            <form action="/tcc_v1/processamento/processaPostes.php" method="post">
                                 <div class="col-sm-12 form-group">
-                                    <p style="color: black">Descrição:</p>
-                                    <input class="form-control" id="nome" name="descricao" placeholder="Descrição" type="text" value="" required>
+                                    <p style="color: black">Nome:</p>
+                                    <input class="form-control" id="nome" name="nome" placeholder="Nome" type="text" value="" required>
                                 </div>
                                 <div class="col-sm-12 form-group">
-                                    <p style="color: black">Localização:</p>
-                                    <input class="form-control" id="lat" name="latitude" placeholder="Latitude" type="text" required>
-                                </div>
-                                <div class="col-sm-12 form-group">
-                                    <input class="form-control" id="long" name="longitude" placeholder="Longitude" type="text" required>
+                                    <p style="color: black">Diretório:</p>
+                                    <input class="form-control" id="dir" name="dir" placeholder="Diretório" type="text" height="200px" required>
                                 </div>
                                 <div class="col-sm-6 form-group">
                                     <p style="color: black">Data da Instalação:</p>
-                                    <input class="form-control" id="data" name="data" type="date" required>
+                                    <input class="form-control" id="desc" name="data_install" type="date" required>
                                 </div><br>
                                 <div class="row">
                                     <div class="col-sm-12 form-group">
@@ -60,9 +58,9 @@ if (isset($_SERVER['HTTP_REFERER']) == FALSE) {
                             </form><p class="fonte_erro" style="color:red">
                                 <?php
                                 //CASO O USUARIO TENTE CADASTRAR UM LOGIN JÁ EXISTENTE, UMA MSG DE ERRO APARECERA
-                                if (isset($_SESSION['msgCadastroPoste'])) {
-                                    echo $_SESSION['msgCadastroPoste'];
-                                    unset($_SESSION['msgCadastroPoste']);
+                                if (isset($_SESSION['msgCadastroSensor'])) {
+                                    echo $_SESSION['msgCadastroSensor'];
+                                    unset($_SESSION['msgCadastroSensor']);
                                 }
                                 ?></p>
                         </div>

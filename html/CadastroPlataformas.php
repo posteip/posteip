@@ -44,14 +44,14 @@ include_once '../processamento/preencherDrops.php';
                                 </div>
                                 <div class="col-sm-12 form-group">
                                     <p style="color: black">Localização:</p>
-                                    <input class="form-control" id="lat" name="latitude" placeholder="Latitude" type="number" required>
+                                    <input class="form-control" id="lat" name="latitude" placeholder="Latitude" type="text" required>
                                 </div>
                                 <div class="col-sm-12 form-group">
-                                    <input class="form-control" id="long" name="longitude" placeholder="Longitude" type="number" required>
+                                    <input class="form-control" id="long" name="longitude" placeholder="Longitude" type="text" required>
                                 </div>
                                 <div class="col-sm-6 form-group">
                                     <p style="color: black">Data da Instalação:</p>
-                                    <input class="form-control" id="desc" name="data_install" type="date" required>
+                                    <input class="form-control" id="desc" name="data" type="date" required>
                                 </div><br>
                                 <div class="col-sm-6 form-group">
                                     <p style="color: black">Controlador Vinculado:</p>
@@ -66,12 +66,11 @@ include_once '../processamento/preencherDrops.php';
                                         <button class="btn btn-default pull-right" type="submit">Enviar</button>
                                     </div>
                                 </div>
-                            </form><p class="fonte_erro" style="color:red">
+                            </form><p class="fonte_erro">
                                 <?php
-                                //CASO O USUARIO TENTE CADASTRAR UM LOGIN JÁ EXISTENTE, UMA MSG DE ERRO APARECERA
-                                if (isset($_SESSION['erroNomeLogin'])) {
-                                    echo $_SESSION['erroNomeLogin'];
-                                    unset($_SESSION['erroNomeLogin']);
+                                if (isset($_SESSION['msgCadastroPlataforma'])) {
+                                    echo $_SESSION['msgCadastroPlataforma'];
+                                    unset($_SESSION['msgCadastroPlataforma']);
                                 }
                                 ?></p>
                         </div>

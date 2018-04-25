@@ -17,33 +17,19 @@ if (isset($_SERVER['HTTP_REFERER']) == FALSE) {
         $conexao->query($verifica);
         $dados = $conexao->fetch_row();
         if ($dados[0] != null) {
-            $_SESSION['erroNomeControlador'] = "ERRO: O nome digitado já está cadastrado";
+            $_SESSION['msgCadastroControlador'] = "ERRO: O nome digitado já está cadastrado";
             header('location:/tcc_v1/html/CadastroControladores.php');
         } else {
+            $_SESSION['msgCadastroControlador'] = "Controlador Cadastrado com sucesso";
             $conexao->query($string);
             header('location:/tcc_v1/html/CadastroControladores.php');
         }
     }
     //EXCLUIR
     else if (!empty($_GET['id']) && is_numeric($_GET['id'])) {
-        $id = $_GET['id'];
-        if ($id != $userId) {
-            $string = "DELETE FROM usuario WHERE id =" . $id;
-            $isExcluido = $conexao->query($string);
-            if (mysqli_affected_rows($conexao->link) == 1) {
-                $_SESSION['msgDeleteUser'] = "Usuário Excluido com Sucesso";
-            }
-        } else {
-            $_SESSION['msgDeleteUser'] = "ERRO: Você não pode excluir sua própria conta de usuário";
-        }
-
-        header('location:/tcc_v1/html/CadastroUsuario.php');
+        
     }//LOGOUT
-    else if (!empty ($_GET['sair']) && $_GET['sair']=="sim"){
-        session_destroy();
-        header('location:/tcc_v1/html/Home.html');
-        exit();
-    }else{
+    else{
         echo "Não entrou em nada, mano";
     }
 }

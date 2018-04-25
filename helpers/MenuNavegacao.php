@@ -13,7 +13,7 @@ if (($_SERVER['REQUEST_URI'] == "/tcc_v1/html/DashboardRoot.php")) {
     </div>
     <div class="w3-col s8 w3-bar">
       <span>Bem vindo, <strong>' . $userName . '</strong></span><br>
-      <a href="/tcc_v1/processamento/processaUsuario.php?sair=sim" class="w3-bar-item w3-button"><i class="fa fa-sign-out" title="SAIR"></i></a>
+      <a href="/tcc_v1/processamento/processaUsuario.php?sair=sim" class="w3-bar-item w3-button"><i class="fa fa-sign-out-alt" title="SAIR"></i></a>
       <a href="#" class="w3-bar-item w3-button"><i class="fa fa-user"></i></a>';
 if (($_SERVER['REQUEST_URI'] == "/tcc_v1/html/CadastroUsuario.php")) {
     echo'<a href="CadastroUsuario.php" class="w3-bar-item w3-button w3-blue"><i class="fa fa-user-plus" title="Usuários"></i></a>';
@@ -40,10 +40,10 @@ if (($_SERVER['REQUEST_URI'] == "/tcc_v1/html/DashboardRoot.php")) {
     echo '<a href="DashboardRoot.php" class="w3-bar-item w3-button w3-padding"><i class="fa fa-map fa-fw"></i>  Visão Geral</a>';
 }
 echo'<a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-bolt fa-fw"></i>  Consumo Energético</a>
-    <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-lightbulb-o fa-fw"></i>  Lâmpadas Acessas/Apagadas</a>
-    <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-line-chart fa-fw"></i>  Variação de Intensidade</a>
+    <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-lightbulb fa-fw"></i>  Lâmpadas Acessas/Apagadas</a>
+    <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-chart-bar fa-fw"></i>  Variação de Intensidade</a>
   </div>';
-   
+   //MOSTRA AS FERRAMENTAS EXCLUSIVAS DO ADMINISTRADOR 
 if ($tipoUsuario == 1){
    echo'
   <div class="w3-container">
@@ -72,9 +72,9 @@ if ($tipoUsuario == 1){
     }
     //SENSORES
     if ($_SERVER['REQUEST_URI'] == "/tcc_v1/html/CadastroSensores.php"){
-        echo '<a href="#" class="w3-bar-item w3-button w3-padding w3-blue"><img src="../midia/sensor-icon.png" class="fa-fw">  Sensores</a>';
+        echo '<a href="CadastroSensores.php" class="w3-bar-item w3-button w3-padding w3-blue"><img src="../midia/sensor-icon.png" class="fa-fw">  Sensores</a>';
     }else{
-        echo '<a href="#" class="w3-bar-item w3-button w3-padding"><img src="../midia/sensor-icon.png" class="fa-fw">  Sensores</a>';
+        echo '<a href="CadastroSensores.php" class="w3-bar-item w3-button w3-padding"><img src="../midia/sensor-icon.png" class="fa-fw">  Sensores</a>';
     }
     echo '<br><br>
     </div>';

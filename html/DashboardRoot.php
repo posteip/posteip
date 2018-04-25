@@ -11,9 +11,9 @@ $latitude = "-20.4435";
     <title>Dashboard</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../css/w3.css">
+    <link rel="stylesheet" href="../css/fonts/Raleway.css">
+    <link rel="stylesheet" href="../css/font-awesome/css/fontawesome-all.min.css">
     <style>
         html,body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
     </style>
@@ -39,7 +39,7 @@ $latitude = "-20.4435";
                     <div class="w3-container w3-red w3-padding-16">
                         <div class="w3-left"><img src="../midia/rasp-icon.png" style="width: 50px; height: 50px"></div>
                         <div class="w3-right">
-                            <h3>52</h3>
+                            <h3><?php echo $qntdItem[0]?></h3>
                         </div>
                         <div class="w3-clear"></div>
                         <h4>Controladores</h4>
@@ -49,7 +49,7 @@ $latitude = "-20.4435";
                     <div class="w3-container w3-teal w3-padding-16">
                         <div class="w3-left"><img src="../midia/arduino-icon.png" style="width: 50px; height: 50px"></div>
                         <div class="w3-right">
-                            <h3>99</h3>
+                            <h3><?php echo $qntdItem[1];?></h3>
                         </div>
                         <div class="w3-clear"></div>
                         <h4>Plataformas</h4>
@@ -59,7 +59,7 @@ $latitude = "-20.4435";
                     <div class="w3-container w3-blue w3-padding-16">
                         <div class="w3-left"><img src="../midia/poste-icon2.png" style="width: 50px; height: 50px"></div>
                         <div class="w3-right">
-                            <h3>23</h3>
+                            <h3><?php echo $qntdItem[2];?></h3>
                         </div>
                         <div class="w3-clear"></div>
                         <h4>Postes</h4>

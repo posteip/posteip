@@ -1,5 +1,5 @@
 <?php
-//session_start();
+session_start();
 include_once "config.php";
 include_once "Connection.php";
 //include_once "preencherDashboard.php";
@@ -10,9 +10,9 @@ if (isset($_SERVER['HTTP_REFERER']) == FALSE) {
     header('location:/tcc_v1/html/AutenticacaoUsuario.php');
 } else {
     //REALIZA O CADASTRO
-    if ($_POST['isAdm']>=0   && !empty($_POST['nome']) && !empty($_POST['sobrenome']) && !empty($_POST['email']) && !empty($_POST['usrname']) && !empty($_POST['senha'])) {
+    if ($_POST['isAdm']>=0  && !empty($_POST['nome']) && !empty($_POST['sobrenome']) && !empty($_POST['email']) && !empty($_POST['usrname']) && !empty($_POST['senha'])) {
         $string = "INSERT INTO usuario (nome, sobrenome, isadm, email, login, senha) VALUES"
-                . " ('" . $_POST['nome'] . "','" . $_POST['sobrenome']  ."',".$_POST['isAdm'].",'" . $_POST['email'] . "','" . $_POST['usrname'] . "','" . $_POST['senha'] . "')";
+        . " ('" . $_POST['nome'] . "','" . $_POST['sobrenome']  ."',".$_POST['isAdm'].",'" . $_POST['email'] . "','" . $_POST['usrname'] . "','" . $_POST['senha'] . "')";
         $verifica = "SELECT id FROM usuario WHERE login = '" . $_POST['usrname'] . "'";
         $conexao->query($verifica);
         $dados = $conexao->fetch_row();
@@ -56,12 +56,13 @@ if (isset($_SERVER['HTTP_REFERER']) == FALSE) {
     }//LOGOUT
     else if (!empty ($_GET['sair']) && $_GET['sair']=="sim"){
         session_destroy();
-        header('location:/tcc_v1/html/Home.html');
+        header('location:/tcc_v1/html/Home.php');
         exit();
     }else{
         echo "Não entrou em nada, mano";
     }
 }
 $conexao->close();
+unset($conexao);
 ?>
 

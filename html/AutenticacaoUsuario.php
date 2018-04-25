@@ -4,15 +4,8 @@ session_start();
 <!DOCTYPE html>
 <html lang="pt-br">
     <head>
-        <title>PosteIP</title>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-        <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
-        <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-        <link href="../css/MeuCSS.css" rel="stylesheet" type="text/css">
+        <title>Login</title>
+        <?php include '../helpers/header.php';?>
     </head>
     <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
 
@@ -24,7 +17,7 @@ session_start();
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>                        
                     </button>
-                    <a class="navbar-brand" href="Home.html">PosteIP</a>
+                    <a class="navbar-brand" href="Home.php">PosteIP</a>
                 </div>
                 <div class="collapse navbar-collapse" id="myNavbar">
                     <ul class="nav navbar-nav navbar-right">
