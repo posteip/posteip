@@ -2,7 +2,7 @@
 include '../processamento/preencherDashboard.php';
 
 echo '<!-- Sidebar/menu -->';
-if (($_SERVER['REQUEST_URI'] == "/tcc_v1/html/DashboardRoot.php")) {
+if (($_SERVER['REQUEST_URI'] == "/tcc_v1/view/DashboardRoot.php")) {
     echo '<nav class="w3-sidebar w3-collapse w3-white w3-animate-left" style="z-index:3;width:300px;" id="mySidebar"><br>';
 }else{
     echo '<nav class="w3-sidebar w3-collapse w3-white w3-animate-left" style="z-index:3;width:300px;padding-top:30px" id="mySidebar"><br>';
@@ -15,10 +15,12 @@ if (($_SERVER['REQUEST_URI'] == "/tcc_v1/html/DashboardRoot.php")) {
       <span>Bem vindo, <strong>' . $userName . '</strong></span><br>
       <a href="/tcc_v1/processamento/processaUsuario.php?sair=sim" class="w3-bar-item w3-button"><i class="fa fa-sign-out-alt" title="SAIR"></i></a>
       <a href="#" class="w3-bar-item w3-button"><i class="fa fa-user"></i></a>';
-if (($_SERVER['REQUEST_URI'] == "/tcc_v1/html/CadastroUsuario.php")) {
-    echo'<a href="CadastroUsuario.php" class="w3-bar-item w3-button w3-blue"><i class="fa fa-user-plus" title="Usuários"></i></a>';
-} else {
-    echo '<a href="CadastroUsuario.php" class="w3-bar-item w3-button"><i class="fa fa-user-plus" title="Usuários"></i></a>';
+if ($tipoUsuario == 1){
+    if (($_SERVER['REQUEST_URI'] == "/tcc_v1/view/CadastroUsuario.php")) {
+        echo'<a href="CadastroUsuario.php" class="w3-bar-item w3-button w3-blue"><i class="fa fa-user-plus" title="Usuários"></i></a>';
+    } else {
+        echo '<a href="CadastroUsuario.php" class="w3-bar-item w3-button"><i class="fa fa-user-plus" title="Usuários"></i></a>';
+    }
 }
 echo'</div>
   </div>
@@ -34,7 +36,7 @@ echo'</div>
   </div>
   <div class="w3-bar-block">';
 //DASHBOARD
-if (($_SERVER['REQUEST_URI'] == "/tcc_v1/html/DashboardRoot.php")) {
+if (($_SERVER['REQUEST_URI'] == "/tcc_v1/view/DashboardRoot.php")) {
     echo '<a href="DashboardRoot.php" class="w3-bar-item w3-button w3-padding w3-blue"><i class="fa fa-map fa-fw"></i>  Visão Geral</a>';
 } else {
     echo '<a href="DashboardRoot.php" class="w3-bar-item w3-button w3-padding"><i class="fa fa-map fa-fw"></i>  Visão Geral</a>';
@@ -51,30 +53,30 @@ if ($tipoUsuario == 1){
   </div>
   <div class="w3-bar-block">';
     //CADASTRO CONTROLADORES
-    if(($_SERVER['REQUEST_URI'] == "/tcc_v1/html/CadastroControladores.php")) {
+    if(($_SERVER['REQUEST_URI'] == "/tcc_v1/view/CadastroControladores.php")) {
         echo '<a href="CadastroControladores.php" class="w3-bar-item w3-button w3-padding w3-blue"><img src="../midia/rasp-icon.png" class="fa-fw">  Controladores Centrais</a>';
     }else{
         echo '<a href="CadastroControladores.php" class="w3-bar-item w3-button w3-padding"><img src="../midia/rasp-icon.png" class="fa-fw">  Controladores Centrais</a>';
     }
     //CADASTRO DE PLATAFORMAS
-    if(($_SERVER['REQUEST_URI'] == "/tcc_v1/html/CadastroPlataformas.php")){
+    if(($_SERVER['REQUEST_URI'] == "/tcc_v1/view/CadastroPlataformas.php")){
         echo '<a href="CadastroPlataformas.php" class="w3-bar-item w3-button w3-padding w3-blue"><img src="../midia/arduino-icon.png" class="fa-fw">  Plataformas</a>';
     }
     else{
         echo '<a href="CadastroPlataformas.php" class="w3-bar-item w3-button w3-padding"><img src="../midia/arduino-icon.png" class="fa-fw">  Plataformas</a>';
     }
     //POSTES
-    if(($_SERVER['REQUEST_URI'] == "/tcc_v1/html/CadastroPostes.php")){
+    if(($_SERVER['REQUEST_URI'] == "/tcc_v1/view/CadastroPostes.php")){
         echo '<a href="CadastroPostes.php" class="w3-bar-item w3-button w3-padding w3-blue"><img src="../midia/poste-icon2.png" class="fa-fw">  Postes</a>';
     }
      else {
          echo '<a href="CadastroPostes.php" class="w3-bar-item w3-button w3-padding"><img src="../midia/poste-icon2.png" class="fa-fw">  Postes</a>';
     }
     //SENSORES
-    if ($_SERVER['REQUEST_URI'] == "/tcc_v1/html/CadastroSensores.php"){
-        echo '<a href="CadastroSensores.php" class="w3-bar-item w3-button w3-padding w3-blue"><img src="../midia/sensor-icon.png" class="fa-fw">  Sensores</a>';
+    if ($_SERVER['REQUEST_URI'] == "/tcc_v1/view/CadastroComponentes.php"){
+        echo '<a href="CadastroComponentes.php" class="w3-bar-item w3-button w3-padding w3-blue"><img src="../midia/sensor-icon.png" class="fa-fw">  Sensores</a>';
     }else{
-        echo '<a href="CadastroSensores.php" class="w3-bar-item w3-button w3-padding"><img src="../midia/sensor-icon.png" class="fa-fw">  Sensores</a>';
+        echo '<a href="CadastroComponentes.php" class="w3-bar-item w3-button w3-padding"><img src="../midia/sensor-icon.png" class="fa-fw">  Sensores</a>';
     }
     echo '<br><br>
     </div>';

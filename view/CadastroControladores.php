@@ -1,6 +1,6 @@
 <?php
 if (isset($_SERVER['HTTP_REFERER']) == FALSE && $_SESSION['userType'] == 0){
-    header('location:/tcc_v1/html/AutenticacaoUsuario.php');
+    header('location:/tcc_v1/view/AutenticacaoUsuario.php');
 }
 //include_once '../processamento/preencherTabelas.php';
 ?>

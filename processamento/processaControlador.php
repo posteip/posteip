@@ -7,7 +7,7 @@ $conexao = new Connection();
 $conexao->connect($host, $user, $password, $database);
 
 if (isset($_SERVER['HTTP_REFERER']) == FALSE) {
-    header('location:/tcc_v1/html/AutenticacaoUsuario.php');
+    header('location:/tcc_v1/view/AutenticacaoUsuario.php');
 } else {
     //REALIZA O CADASTRO
     if (!empty($_POST['nome']) && !empty($_POST['latitude']) && !empty($_POST['longitude']) && !empty($_POST['descricao']) ){
@@ -18,11 +18,11 @@ if (isset($_SERVER['HTTP_REFERER']) == FALSE) {
         $dados = $conexao->fetch_row();
         if ($dados[0] != null) {
             $_SESSION['msgCadastroControlador'] = "ERRO: O nome digitado já está cadastrado";
-            header('location:/tcc_v1/html/CadastroControladores.php');
+            header('location:/tcc_v1/view/CadastroControladores.php');
         } else {
             $_SESSION['msgCadastroControlador'] = "Controlador Cadastrado com sucesso";
             $conexao->query($string);
-            header('location:/tcc_v1/html/CadastroControladores.php');
+            header('location:/tcc_v1/view/CadastroControladores.php');
         }
     }
     //EXCLUIR

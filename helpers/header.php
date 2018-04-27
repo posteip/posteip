@@ -2,30 +2,30 @@
 
 $requisicao = $_SERVER['REQUEST_URI'];
 
-if ($requisicao == "/tcc_v1/html/Home.php" || $requisicao == "/tcc_v1/html/AutenticacaoUsuario.php") {
+if ($requisicao == "/tcc_v1/view/Home.php" || $requisicao == "/tcc_v1/view/AutenticacaoUsuario.php") {
     echo '<meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" type="text/css" href="../css/bootstrap/bootstrap.min.css">
-        <link href="../css/fonts/Montserrat.css" rel="stylesheet" type="text/css">
-        <link href="../css/fonts/Lato.css" rel="stylesheet" type="text/css">
-        <script src="../css/jquery.min.js"></script>
-        <script src="../css/bootstrap/bootstrap.min.js"></script>
-        <link href="../css/MeuCSS.css" rel="stylesheet" type="text/css">';
+        <link rel="stylesheet" type="text/css" href="../estilo/bootstrap/bootstrap.min.css">
+        <link href="../estilo/fonts/Montserrat.css" rel="stylesheet" type="text/css">
+        <link href="../estilo/fonts/Lato.css" rel="stylesheet" type="text/css">
+        <script src="../estilo/jquery.min.js"></script>
+        <script src="../estilo/bootstrap/bootstrap.min.js"></script>
+        <link href="../estilo/MeuCSS.css" rel="stylesheet" type="text/css">';
 } else {
     echo '<head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="../css/bootstrap/bootstrap.min.css">
-  <link rel="stylesheet" href="../css/font-awesome/css/fontawesome-all.min.css">
+  <link rel="stylesheet" href="../estilo/bootstrap/bootstrap.min.css">
+  <link rel="stylesheet" href="../estilo/font-awesome/css/fontawesome-all.min.css">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link rel="stylesheet" href="../css/w3.css">
-  <link href="../css/fonts/Montserrat.css" rel="stylesheet" type="text/css">
-  <link href="../css/fonts/Lato.css" rel="stylesheet" type="text/css">
-  <script src="../css/jquery.min.js"></script>
-  <script src="../css/bootstrap/bootstrap.min.js"></script>
-  <link href="../css/MeuCSS.css" rel="stylesheet" type="text/css">
-  <link rel="stylesheet" href="../css/fonts/Raleway.css">';
-    if ($requisicao == "/tcc_v1/html/CadastroUsuario.php") {
+  <link rel="stylesheet" href="../estilo/w3.css">
+  <link href="../estilo/fonts/Montserrat.css" rel="stylesheet" type="text/css">
+  <link href="../estilo/fonts/Lato.css" rel="stylesheet" type="text/css">
+  <script src="../estilo/jquery.min.js"></script>
+  <script src="../estilo/bootstrap/bootstrap.min.js"></script>
+  <link href="../estilo/MeuCSS.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="../estilo/fonts/Raleway.css">';
+    if ($requisicao == "/tcc_v1/view/CadastroUsuario.php") {
         echo'<style>
   table {
     font-family: arial, sans-serif;

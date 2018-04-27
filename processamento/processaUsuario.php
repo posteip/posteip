@@ -7,37 +7,43 @@ $conexao = new Connection();
 $conexao->connect($host, $user, $password, $database);
 
 if (isset($_SERVER['HTTP_REFERER']) == FALSE) {
-    header('location:/tcc_v1/html/AutenticacaoUsuario.php');
+    header('location:/tcc_v1/view/AutenticacaoUsuario.php');
 } else {
     //REALIZA O CADASTRO
-    if ($_POST['isAdm']>=0  && !empty($_POST['nome']) && !empty($_POST['sobrenome']) && !empty($_POST['email']) && !empty($_POST['usrname']) && !empty($_POST['senha'])) {
-        $string = "INSERT INTO usuario (nome, sobrenome, isadm, email, login, senha) VALUES"
-        . " ('" . $_POST['nome'] . "','" . $_POST['sobrenome']  ."',".$_POST['isAdm'].",'" . $_POST['email'] . "','" . $_POST['usrname'] . "','" . $_POST['senha'] . "')";
+    if ($_POST['isAdm']>=0  && !empty($_POST['nome']) && !empty($_POST['sobrenome']) && !empty($_POST['email']) && !empty($_POST['usrname']) && !empty($_POST['senha'])) {        
         $verifica = "SELECT id FROM usuario WHERE login = '" . $_POST['usrname'] . "'";
         $conexao->query($verifica);
         $dados = $conexao->fetch_row();
         if ($dados[0] != null) {
             $_SESSION['erroNomeLogin'] = "ERRO: Login já cadastrado";
-            header('location:/tcc_v1/html/CadastroUsuario.php');
+            header('location:/tcc_v1/view/CadastroUsuario.php');
         } else {
-            $conexao->query($string);
-            header('location:/tcc_v1/html/CadastroUsuario.php');
+            $senha = md5($_POST['senha']);
+            $string = "INSERT INTO usuario (nome, sobrenome, isadm, email, login, senha) VALUES (?, ?, ?, ?, ?, ?)";
+            $stmt = mysqli_prepare($conexao->link, $string);
+
+            if($stmt == TRUE){
+                mysqli_stmt_bind_param($stmt, "ssisss", $_POST['nome'], $_POST['sobrenome'], $_POST['isAdm'], $_POST['email'], $_POST['usrname'], $senha);
+                mysqli_stmt_execute($stmt);
+            }
+            header('location:/tcc_v1/view/CadastroUsuario.php');
         }
     }
     //TRATA O LOGIN DO USUARIO
     elseif (!empty($_POST['login']) && !empty($_POST['senha'])) {
         $login = htmlspecialchars($_POST['login']);
-        $senha = htmlspecialchars($_POST['senha']);
+        $s = htmlspecialchars($_POST['senha']);
+        $senha = md5($s);
         $string = "SELECT id, isadm FROM usuario WHERE login = '" . $login . "' and senha = '" . $senha . "' LIMIT 1";
         $conexao->query($string);
         $dados = $conexao->fetch_row();
         if ($dados[0] != null) {
             $_SESSION['userId'] = $dados[0];
             $_SESSION['userType'] = $dados[1];
-            header('location:/tcc_v1/html/DashboardRoot.php');
+            header('location:/tcc_v1/view/DashboardRoot.php');
         } else {
             $_SESSION['erroLogin'] = "Usuario ou senha incorretos";
-            header('location:/tcc_v1/html/AutenticacaoUsuario.php');
+            header('location:/tcc_v1/view/AutenticacaoUsuario.php');
         }
     }//EXCLUIR
     else if (!empty($_GET['id']) && is_numeric($_GET['id'])) {
@@ -52,11 +58,11 @@ if (isset($_SERVER['HTTP_REFERER']) == FALSE) {
             $_SESSION['msgDeleteUser'] = "ERRO: Você não pode excluir sua própria conta de usuário";
         }
 
-        header('location:/tcc_v1/html/CadastroUsuario.php');
+        header('location:/tcc_v1/view/CadastroUsuario.php');
     }//LOGOUT
     else if (!empty ($_GET['sair']) && $_GET['sair']=="sim"){
         session_destroy();
-        header('location:/tcc_v1/html/Home.php');
+        header('location:/tcc_v1/view/Home.php');
         exit();
     }else{
         echo "Não entrou em nada, mano";

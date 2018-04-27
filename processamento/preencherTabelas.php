@@ -27,5 +27,6 @@ function buscaUsuarios() {
         $dados = $conexaoT->fetch_row();
     }
     $conexaoT->close();
+    unset($conexaoT);
 }
 ?>

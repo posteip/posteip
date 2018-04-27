@@ -1,19 +1,19 @@
 <?php
 include_once '../processamento/preencherDashboard.php';
-if (isset($_SERVER['HTTP_REFERER']) == FALSE) {
-    header('location:/tcc_v1/html/AutenticacaoUsuario.php');
+if (isset($_SERVER['HTTP_REFERER']) == FALSE || isset($_SESSION['userId']) == FALSE) {
+    header('location:/tcc_v1/view/AutenticacaoUsuario.php');
 }
 $longitude = -54.6478;
-$latitude = "-20.4435";
+$latitude = -20.4435;
 ?>
 <!DOCTYPE html>
 <html>
     <title>Dashboard</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="../css/w3.css">
-    <link rel="stylesheet" href="../css/fonts/Raleway.css">
-    <link rel="stylesheet" href="../css/font-awesome/css/fontawesome-all.min.css">
+    <link rel="stylesheet" href="../estilo/w3.css">
+    <link rel="stylesheet" href="../estilo/fonts/Raleway.css">
+    <link rel="stylesheet" href="../estilo/font-awesome/css/fontawesome-all.min.css">
     <style>
         html,body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
     </style>

@@ -5,14 +5,14 @@ $conexao = new Connection();
 $conexao->connect($host, $user, $password, $database);
 
 if (isset($_SERVER['HTTP_REFERER']) == FALSE) {
-    header('location:/tcc_v1/html/AutenticacaoUsuario.php');
+    header('location:/tcc_v1/view/AutenticacaoUsuario.php');
 } else {
     //REALIZA O CADASTRO
     if (!empty($_POST['data']) && !empty($_POST['latitude']) && !empty($_POST['longitude']) && !empty($_POST['descricao'])){
         $string = "INSERT INTO poste (latitude, longitude, data_instalacao, descricao) VALUES"
         . " ('" . $_POST['latitude']  ."',".$_POST['longitude'].",'" . $_POST['data'] . "','".$_POST['descricao']."')";
         $conexao->query($string);
-        header('location:/tcc_v1/html/CadastroPostes.php');
+        header('location:/tcc_v1/view/CadastroPostes.php');
         $_SESSION['msgCadastroPoste'] = "Poste Cadastrado com Sucesso";
     }
     //EXCLUIR

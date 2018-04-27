@@ -1,6 +1,6 @@
 <?php
 if (isset($_SERVER['HTTP_REFERER']) == FALSE) {
-    header('location:/tcc_v1/html/AutenticacaoUsuario.php');
+    header('location:/tcc_v1/view/AutenticacaoUsuario.php');
 }
 include_once '../processamento/preencherTabelas.php';
 ?>
@@ -10,7 +10,7 @@ include_once '../processamento/preencherTabelas.php';
     <title>Usuarios</title>
     <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
 
-        <nav class="w3-bar navbar navbar-default navbar-fixed-top" style="z-index:4;">
+        <nav class="navbar navbar-default navbar-fixed-top" style="z-index:4;">
             <div class="container">
                 <div class="navbar-header">
                     <button class=" navbar-brand w3-bar-item w3-button w3-hide-large w3-hover-none w3-text-white" onclick="w3_open();"><i class="fa fa-bars"></i>  Menu</button>    
@@ -18,14 +18,14 @@ include_once '../processamento/preencherTabelas.php';
                 </div>
                 <div class="collapse navbar-collapse" id="myNavbar">
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="CadastroUsuario.php#cadastro">Cadastro</a></li>
+                        <li><a href="CadastroUsuario.php">Cadastro</a></li>
                         <li><a href="#">Gerenciar</a></li>
                     </ul>
                 </div>
             </div>
         </nav>
 
-        <?php include '../helpers/MenuNavegacao.php'; ?>
+        <?php include '../helpers/MenuNavegacao.php';?>
 
         <div class="w3-main" style="margin-left:300px;">
             <!-- Container (Cadastro) -->
@@ -38,7 +38,7 @@ include_once '../processamento/preencherTabelas.php';
                     <div class="col-sm-7 slideanim" style="float: left; width: 70%">
                         <div class="row">
                             <form action="/tcc_v1/processamento/processaUsuario.php" method="post">
-                                <div class="col-sm-12 form-group" style="font-size: 16px">
+                                <div class="col-sm-12 form-group" style="font-size: 16px; color: black">
                                     Perfil do Usuário:         
                                     <input type="radio" name="isAdm" value=1 required> Administrador     
                                     <input type="radio" name="isAdm" value=0 required> Restrito
