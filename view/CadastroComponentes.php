@@ -1,5 +1,5 @@
 <?php
-include_once '../processamento/preencherDrops.php';
+include_once '../helpers/preencherDrops.php';
 if (isset($_SERVER['HTTP_REFERER']) == FALSE) {
     header('location:/tcc_v1/html/AutenticacaoUsuario.php');
 }
@@ -20,7 +20,7 @@ if (isset($_SERVER['HTTP_REFERER']) == FALSE) {
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="CadastroComponentes.php#cadastro">Cadastro</a></li>
                         <li><a href="#">Gerenciar</a></li>
-                        <li><a href="#">Tipo dado</a></li>
+                        <li><a href="TipoDado.php">Tipo dado</a></li>
                     </ul>
                 </div>
             </div>

@@ -1,5 +1,9 @@
+.msg{
+    color: black;
+}
 .fonte_erro{
     font-size: larger;
+    color: black;
 }
 
 .login{

@@ -44,7 +44,11 @@ class Connection {
             
             return $row;
     }
-
+    function fetch_assoc(){
+        $row = mysqli_fetch_assoc($this->result);
+        
+        return $row;
+    }
     function free_result() {
         mysqli_free_result($this->result);
     }

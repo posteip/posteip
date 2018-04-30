@@ -34,6 +34,7 @@ if (isset($_SERVER['HTTP_REFERER']) == FALSE) {
             }   
         }else{
             $_SESSION['msgCadastroComponente'] = "ERRO: Nome informado já cadastrado";
+            header('location:/tcc_v1/view/CadastroComponentes.php');
         }
     }
     //VINCULAR TIPO DADO AO COMPONENTE
@@ -61,27 +62,6 @@ if (isset($_SERVER['HTTP_REFERER']) == FALSE) {
             header('location:/tcc_v1/view/CadastroComponentes.php');
         }
     }
-    //CADASTRA UM NOVO TIPO DADO ANTES
-    /*else if (!empty($_POST['novoelemento']) && !empty($_POST['unidade']) && !empty($_POST['margem']) && !empty($_POST['sequencia']) && !empty($_POST['componente'])) {   
-        $string = "INSERT INTO tipodado (elemento) VALUES ('".$_POST['novoelemento']."')";
-        $conexao->query($string);
-        $buscaId = "SELECT id FROM tipodado WHERE elemento = '" . $_POST['novoelemento'] . "'";
-        $conexao->query($buscaId);
-        $dados = $conexao->fetch_row();
-        $idTipoDado = $dados[0];
-        $buscaId = "SELECT id FROM componente WHERE nome = '" . $_POST['componente'] . "'";
-        $conexao->query($buscaId);
-        $dados = $conexao->fetch_row();
-        $idComponente = $dados[0];
-        //REALIZA A INSERÇÃO
-        $string = "INSERT INTO componente_tipodado (idComponente, idTipoDado, sequencia, unidade, margemErro) VALUES (?, ?, ?, ?, ?)";
-        $stmt = mysqli_prepare($conexao->link, $string);
-        if($stmt == TRUE){
-            mysqli_stmt_bind_param($stmt, "iisss", $idComponente, $idTipoDado, $_POST['sequencia'], $_POST['unidade'], $_POST['margem']);
-            mysqli_stmt_execute($stmt);
-        }
-        header('location:/tcc_v1/view/CadastroComponentes.php');
-    }*/
     //EXCLUIR
     else if (!empty($_GET['id']) && is_numeric($_GET['id'])) {
         

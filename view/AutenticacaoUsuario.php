@@ -55,5 +55,6 @@ session_start();
         </div>
 
         <?php include '../helpers/footer.php';?>
+        
     </body>
 </html>

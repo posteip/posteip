@@ -24,30 +24,10 @@ if ($requisicao == "/tcc_v1/view/Home.php" || $requisicao == "/tcc_v1/view/Auten
   <script src="../estilo/jquery.min.js"></script>
   <script src="../estilo/bootstrap/bootstrap.min.js"></script>
   <link href="../estilo/MeuCSS.css" rel="stylesheet" type="text/css">
-  <link rel="stylesheet" href="../estilo/fonts/Raleway.css">';
-    if ($requisicao == "/tcc_v1/view/CadastroUsuario.php") {
-        echo'<style>
-  table {
-    font-family: arial, sans-serif;
-    border-collapse: collapse;
-    width: 100%;
-    color: black;
-}
-
-td, th {
-    border: 0px solid #dddddd;	
-    text-align: left;
-    padding: 8px;
-}
-
-tr:nth-child(even) {
-    background-color: #dddddd;
-    }
-html,body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
-    </style>';}
-    else{
-        echo '<style>html,body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}</style>';
-    }
-    echo '</head>';
+  <link rel="stylesheet" href="../estilo/fonts/Raleway.css">
+  <style>
+        html,body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
+   </style>
+ </head>';
 }
 ?>

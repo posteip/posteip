@@ -53,13 +53,13 @@ if ($tipoUsuario == 1){
   </div>
   <div class="w3-bar-block">';
     //CADASTRO CONTROLADORES
-    if(($_SERVER['REQUEST_URI'] == "/tcc_v1/view/CadastroControladores.php")) {
+    if($_SERVER['REQUEST_URI'] == "/tcc_v1/view/CadastroControladores.php" || $_SERVER['REQUEST_URI'] == "/tcc_v1/view/GerenciarControladores.php") {
         echo '<a href="CadastroControladores.php" class="w3-bar-item w3-button w3-padding w3-blue"><img src="../midia/rasp-icon.png" class="fa-fw">  Controladores Centrais</a>';
     }else{
         echo '<a href="CadastroControladores.php" class="w3-bar-item w3-button w3-padding"><img src="../midia/rasp-icon.png" class="fa-fw">  Controladores Centrais</a>';
     }
     //CADASTRO DE PLATAFORMAS
-    if(($_SERVER['REQUEST_URI'] == "/tcc_v1/view/CadastroPlataformas.php")){
+    if(($_SERVER['REQUEST_URI'] == "/tcc_v1/view/CadastroPlataformas.php") || $_SERVER['REQUEST_URI'] == "/tcc_v1/view/GerenciarPlataformas.php"){
         echo '<a href="CadastroPlataformas.php" class="w3-bar-item w3-button w3-padding w3-blue"><img src="../midia/arduino-icon.png" class="fa-fw">  Plataformas</a>';
     }
     else{

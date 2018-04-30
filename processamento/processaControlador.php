@@ -1,5 +1,5 @@
 <?php
-//session_start();
+session_start();
 include_once "config.php";
 include_once "Connection.php";
 //include_once "preencherDashboard.php";
@@ -18,17 +18,38 @@ if (isset($_SERVER['HTTP_REFERER']) == FALSE) {
         $dados = $conexao->fetch_row();
         if ($dados[0] != null) {
             $_SESSION['msgCadastroControlador'] = "ERRO: O nome digitado já está cadastrado";
-            header('location:/tcc_v1/view/CadastroControladores.php');
         } else {
             $_SESSION['msgCadastroControlador'] = "Controlador Cadastrado com sucesso";
             $conexao->query($string);
-            header('location:/tcc_v1/view/CadastroControladores.php');
         }
+        header('location:/tcc_v1/view/CadastroControladores.php');
     }
     //EXCLUIR
-    else if (!empty($_GET['id']) && is_numeric($_GET['id'])) {
+    else if (!empty($_GET['id']) && is_numeric($_GET['id']) && !empty ($_GET['acao'])) {
+        if ($_GET['acao'] == 'Ativar'){ 
+            $sql = "UPDATE `controlador` SET `status`= 1 WHERE id = ".$_GET['id'];
+            $conexao->query($sql);   
+            if(mysqli_affected_rows($conexao->link) == 1){
+                $_SESSION['msgEditarControlador'] = "Controlador Ativado";
+            }else{
+                $_SESSION['msgEditarControlador'] = "ERRO: A ação não obteve sucesso";
+            }
+        }
+        else if ($_GET['acao'] == 'Desativar'){
+            $id = htmlspecialchars($_GET['id']);
+            $sql = "UPDATE `controlador` SET `status`= 0 WHERE id = ".$id;
+            $conexao->query($sql);
+            if(mysqli_affected_rows($conexao->link) == 1){
+                $_SESSION['msgEditarControlador'] = "Controlador Desativado";
+            }else{
+                $_SESSION['msgEditarControlador'] = "ERRO: A ação não obteve sucesso";
+            }
+            $sql = "UPDATE `plataforma` SET `status`= 0 WHERE id_controlador = ".$id;
+            $conexao->query($sql);
+        }
         
-    }//LOGOUT
+        header('location:/tcc_v1/view/GerenciarControladores.php');
+    }
     else{
         echo "Não entrou em nada, mano";
     }

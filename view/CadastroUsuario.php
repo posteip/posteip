@@ -2,11 +2,13 @@
 if (isset($_SERVER['HTTP_REFERER']) == FALSE) {
     header('location:/tcc_v1/view/AutenticacaoUsuario.php');
 }
-include_once '../processamento/preencherTabelas.php';
+include_once '../helpers/preencherTabelas.php';
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
     <?php include '../helpers/header.php'; ?>
+    <?php include '../estilo/estiloTabela.php'; ?>
+    
     <title>Usuarios</title>
     <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
 
@@ -33,7 +35,7 @@ include_once '../processamento/preencherTabelas.php';
                 <h2 class="text-center">NOVO USUÁRIO</h2>
                 <div class="row">
                     <div class="col-sm-5 text-center" style="float: left; width: 30%">
-                        <i class="fa fa-user-plus logo" style="color: gray"></i>
+                        <i class="fa fa-user-plus logo img-responsive" style="color: gray"></i>
                     </div>
                     <div class="col-sm-7 slideanim" style="float: left; width: 70%">
                         <div class="row">
@@ -44,19 +46,24 @@ include_once '../processamento/preencherTabelas.php';
                                     <input type="radio" name="isAdm" value=0 required> Restrito
                                 </div>
                                 <div class="col-sm-6 form-group">
+                                    <p style="color: black">Nome:</p>
                                     <input class="form-control" id="name" name="nome" placeholder="Nome" type="text" required>
                                 </div>
                                 <div class="col-sm-6 form-group">
+                                    <p style="color: black">Sobrenome:</p>
                                     <input class="form-control" id="sobrenome" name="sobrenome" placeholder="Sobrenome" type="text" required>
                                 </div>
                                 <div class="col-sm-12 form-group">
+                                    <p style="color: black">Email:</p>
                                     <input class="form-control" id="email" name="email" placeholder="Email" type="email" required>
                                 </div>
                                 <div class="col-sm-6 form-group">
+                                    <p style="color: black">Nome de Usuário:</p>
                                     <input class="form-control" id="Username" name="usrname" placeholder="Usuario" type="text" required>
                                 </div>
                                 <div class="col-sm-6 form-group">
-                                    <input class="form-control" id="UsrPass" name="senha" placeholder="Senha" type="password" required>
+                                    <p style="color: black">Senha:</p>
+                                    <input class="form-control" id="UsrPass" name="senha" placeholder="Senha" type="password" pattern=".{8,}" title="Mínimo de 8 caracteres" required>
                                 </div><br>
                                 <div class="row">
                                     <div class="col-sm-12 form-group">
@@ -81,7 +88,7 @@ include_once '../processamento/preencherTabelas.php';
                 <div class="row">
                     <div class="col-sm-8" style="width: 100%">
                         <form action="/tcc_v1/processamento/processaUsuario.php" method="post">
-                            <table>
+                            <table class="table-responsive">
                                 <tr>
                                     <th style="width: 10%">ID</th>
                                     <th>Nome</th>

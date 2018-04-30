@@ -31,7 +31,7 @@ $latitude = -20.4435;
 
             <!-- Header -->
             <header class="w3-container" style="padding-top:22px">
-                <h5><b><i class="fa fa-dashboard"></i> My Dashboard</b></h5>
+                <h5><b><i class="fa fa-tachometer-alt"></i> My Dashboard</b></h5>
             </header>
 
             <div class="w3-row-padding w3-margin-bottom">
@@ -69,7 +69,7 @@ $latitude = -20.4435;
                     <div class="w3-container w3-grey w3-text-white w3-padding-16">
                         <div class="w3-left"><img src="../midia/sensor-icon.png" style="width: 50px; height: 50px"></div>
                         <div class="w3-right">
-                            <h3>50</h3>
+                            <h3><?php echo $qntdItem[3];?></h3>
                         </div>
                         <div class="w3-clear"></div>
                         <h4>Sensores/Atuadores</h4>

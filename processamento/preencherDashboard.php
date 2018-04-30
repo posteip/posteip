@@ -13,8 +13,8 @@ $conexao->query($string);
 $dados = $conexao->fetch_row();
 $userName = $dados[0];
 
-$item = ["controlador", "plataforma", "poste", "sensor"];
-for ($i=0;$i<3;$i++){
+$item = ["controlador", "plataforma", "poste", "componente"];
+for ($i=0;$i<4;$i++){
     $string = "SELECT COUNT(*) FROM ".$item[$i];
     $conexao->query($string);
     $dados = $conexao->fetch_row();

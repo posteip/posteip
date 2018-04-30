@@ -44,12 +44,12 @@ if (isset($_SERVER['HTTP_REFERER']) == FALSE) {
                                 </div>
                                 <div class="col-sm-6 form-group" style="font-size: 16px; color: black">
                                 <?php
-                                    if (isset($_SESSION['cadastrarTipo'])){
+                                    if (isset($_SESSION['cadastrarTipo'])){//CASO TENHA OPTADO POR INSERIR UM NOVO TIPO DE DADO
                                         echo "Novo Elemento:";
                                         echo '<input class="form-control" name="novoelemento" placeholder="Elemento" type="text" required>';
-                                    }else{
+                                    }else{//CASO JA TENHA SELECIONADO UM TIPO JA CADASTRADO
                                         echo "Elemento: <strong>".$_SESSION['nomeTipoDado']."</strong>";
-                                        echo '<input type="hidden" value='.$_SESSION['nomeTipoDado'].'name="elemento">';
+                                        echo '<input type="hidden" value="'.$_SESSION['nomeTipoDado'].'" name="elemento">';
                                     }
                                     unset($_SESSION['cadastrarTipo']);
                                     ?>

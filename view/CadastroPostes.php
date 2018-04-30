@@ -39,14 +39,14 @@ if (isset($_SERVER['HTTP_REFERER']) == FALSE) {
                             <form action="/tcc_v1/processamento/processaPoste.php" method="post">
                                 <div class="col-sm-12 form-group">
                                     <p style="color: black">Descrição:</p>
-                                    <input class="form-control" id="nome" name="descricao" placeholder="Descrição" type="text" value="" required>
+                                    <input class="form-control" id="nome" name="descricao" placeholder="Descrição" type="text" pattern=".{1,100}" title="Máximo de 100 caracteres" required>
                                 </div>
                                 <div class="col-sm-12 form-group">
                                     <p style="color: black">Localização:</p>
-                                    <input class="form-control" id="lat" name="latitude" placeholder="Latitude" type="text" required>
+                                    <input class="form-control" id="lat" name="latitude" placeholder="Latitude" type="text" pattern="[0-9-]+\.[0-9]{4,6}" required>
                                 </div>
                                 <div class="col-sm-12 form-group">
-                                    <input class="form-control" id="long" name="longitude" placeholder="Longitude" type="text" required>
+                                    <input class="form-control" id="long" name="longitude" placeholder="Longitude" type="text" pattern="[0-9-]+\.[0-9]{4,6}" required>
                                 </div>
                                 <div class="col-sm-6 form-group">
                                     <p style="color: black">Data da Instalação:</p>

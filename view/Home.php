@@ -1,3 +1,6 @@
+<?php
+$msg="Minha mensagem";
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
     <head>
@@ -25,10 +28,15 @@
                 </div>
             </div>
         </nav>
+        <?php
+        echo '<script>
+        alert("'.$msg.'");
+        </script>';
+        ?>
 
         <div class="jumbotron text-center">
             <h1>PosteIP</h1> 
-            <p>A inovação em Iluminação Publica</p> 
+            <p>A inovação em Iluminação Pública</p> 
         </div>
 
         <!-- Container (About Section) -->
@@ -36,7 +44,7 @@
             <div class="row">
                 <div class="col-sm-8">
                     <h2>O que é?</h2><br>
-                    <h3>O <b>P</b>rojeto de <b>O</b>timização do <b>S</b>istema e das <b>T</b>ecnologias da <b>I</b>luminação <b>P</b>ública é uma pesquisa acadêmica, incentivada pelo IFMS e pelo CNPq, cujo objetivo é propor um <i>software</i> para gerenciar, de forma inteligente e sustentável, este importante componente de uma cidade</h3>
+                    <h3>O <b>P</b>rojeto de <b>O</b>timização do <b>S</b>istema e das <b>Te</b>cnologias da <b>I</b>luminação <b>P</b>ública é uma pesquisa acadêmica, incentivada pelo IFMS e pelo CNPq, cujo objetivo é propor um <i>software</i> para gerenciar, de forma inteligente e sustentável, este importante componente de uma cidade</h3>
                     <br>
                 </div>
                 <div class="col-sm-4 text-center" >

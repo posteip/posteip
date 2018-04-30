@@ -2,7 +2,7 @@
 if (isset($_SERVER['HTTP_REFERER']) == FALSE) {
     header('location:/tcc_v1/view/AutenticacaoUsuario.php');
 }
-include_once '../processamento/preencherDrops.php';
+include_once '../helpers/preencherDrops.php';
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -18,8 +18,8 @@ include_once '../processamento/preencherDrops.php';
                 </div>
                 <div class="collapse navbar-collapse" id="myNavbar">
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="CadastroPlataforma.php#cadastro">Cadastro</a></li>
-                        <li><a href="#">Gerenciar</a></li>
+                        <li><a href="CadastroPlataformas.php#cadastro">Cadastro</a></li>
+                        <li><a href="GerenciarPlataformas.php">Gerenciar</a></li>   
                     </ul>
                 </div>
             </div>
@@ -40,14 +40,14 @@ include_once '../processamento/preencherDrops.php';
                             <form action="/tcc_v1/processamento/processaPlataforma.php" method="post">
                                 <div class="col-sm-12 form-group">
                                     <p style="color: black">Descrição:</p>
-                                    <input class="form-control" id="nome" name="descricao" placeholder="Descrição" type="text" value="" required>
+                                    <input class="form-control" id="nome" name="descricao" placeholder="Descrição" type="text" pattern=".{1,100}" title="Máximo de 100 caracteres" required>
                                 </div>
                                 <div class="col-sm-12 form-group">
                                     <p style="color: black">Localização:</p>
-                                    <input class="form-control" id="lat" name="latitude" placeholder="Latitude" type="text" required>
+                                    <input class="form-control" id="lat" name="latitude" placeholder="Latitude" type="text" pattern="[0-9-]+\.[0-9]{4,6}" required>
                                 </div>
                                 <div class="col-sm-12 form-group">
-                                    <input class="form-control" id="long" name="longitude" placeholder="Longitude" type="text" required>
+                                    <input class="form-control" id="long" name="longitude" placeholder="Longitude" type="text" pattern="[0-9-]+\.[0-9]{4,6}" required>
                                 </div>
                                 <div class="col-sm-6 form-group">
                                     <p style="color: black">Data da Instalação:</p>
@@ -57,7 +57,7 @@ include_once '../processamento/preencherDrops.php';
                                     <p style="color: black">Controlador Vinculado:</p>
                                     <select name="controlador" class="form-control" required>
                                         <?php
-                                        dropControlador();
+                                        vincularControlador();
                                         ?>
                                     </select>
                                 </div>
