@@ -107,4 +107,43 @@ function tabelaPlataformas($filtro){
     unset($conexaoT);
 }
 
+function tabelaPostes(){
+    global $conexaoT;
+    $query = "SELECT * FROM poste";
+    $conexaoT->query($query);
+    $dados = $conexaoT->fetch_assoc();
+    while ($dados != null){
+        echo "<tr>" .
+        "<td>".$dados['descricao']."</td>" .
+        "<td>".$dados['latitude']."</td>" .
+        "<td>".$dados['longitude']."</td>" .
+        "<td>".$dados['data_instalacao']."</td>" .
+        "<td><a href='/tcc_v1/processamento/processaPlataforma.php?id=".$dados['id']."&up=sim' class='btn btn-default'><i class='fa fa-pencil-alt'></i> Editar</a></td>" .
+        "</tr>";
+        $dados = $conexaoT->fetch_assoc();
+    }
+    $conexaoT->close();
+    unset($conexaoT);
+}
+
+function tabelaComponentes(){
+    global $conexaoT;
+    $query = "SELECT c.id, c.nome, c.tipo, ct.sequencia, td.elemento, ct.unidade, ct.margemErro FROM componente_tipodado ct, componente c, tipodado td WHERE ct.idComponente = c.id and ct.idTipoDado = td.id ORDER BY c.id DESC";
+    $conexaoT->query($query);
+    $dados = $conexaoT->fetch_assoc();
+    while ($dados != null){
+        echo "<tr>" .
+        "<td>".$dados['nome']."</td>" .
+        "<td>".$dados['tipo']."</td>" .
+        "<td>".$dados['sequencia']."</td>" .
+        "<td>".$dados['elemento']."</td>" .
+        "<td>".$dados['unidade']."</td>" .
+        "<td>".$dados['margemErro']."</td>" .
+        "<td><a href='/tcc_v1/processamento/processaPlataforma.php?id=".$dados['id']."&up=sim' class='btn btn-default'><i class='fa fa-pencil-alt'></i> Editar</a></td>" .
+        "</tr>";
+        $dados = $conexaoT->fetch_assoc();
+    }
+    $conexaoT->close();
+    unset($conexaoT);
+}
 ?>

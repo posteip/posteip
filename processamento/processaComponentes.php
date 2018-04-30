@@ -4,7 +4,7 @@ include_once "config.php";
 include_once "Connection.php";
 $conexao = new Connection();
 $conexao->connect($host, $user, $password, $database);
-$cadastrarTipo=""; $tipoDado=""; $nomeComponente="";
+echo "macabro";
 
 if (isset($_SERVER['HTTP_REFERER']) == FALSE) {
     header('location:/tcc_v1/view/AutenticacaoUsuario.php');
@@ -22,12 +22,10 @@ if (isset($_SERVER['HTTP_REFERER']) == FALSE) {
                 mysqli_stmt_execute($stmt);
             }
             if ($_POST['tipodado']>=0){//CASO O USUARIO DESEJE UTILIZAR UM TIPO DE DADO JÁ EXISTENTE
-                global $tipoDado, $nomeComponente, $cadastrarTipo;
                 $_SESSION['nomeTipoDado'] = $_POST['tipodado'];
                 $_SESSION['nomeComponente'] = $_POST['nome'];
                 header('location:/tcc_v1/view/VincularComponente.php');
             }else{
-                global $tipoDado, $nomeComponente, $cadastrarTipo;
                 $_SESSION['cadastrarTipo']="";
                 $_SESSION['nomeComponente'] = $_POST['nome'];
                 header('location:/tcc_v1/view/VincularComponente.php');
@@ -36,6 +34,21 @@ if (isset($_SERVER['HTTP_REFERER']) == FALSE) {
             $_SESSION['msgCadastroComponente'] = "ERRO: Nome informado já cadastrado";
             header('location:/tcc_v1/view/CadastroComponentes.php');
         }
+    }
+    else if(!empty($_POST['vincular'])){//TRATA SOLICITAÇÃO PARA VINCULAR SENSOR E TIPO DADO JÁ EXISTENTES
+        $_SESSION['vincularExistentes'] = "sim";
+        header('location:/tcc_v1/view/VincularComponente.php');
+    }
+    else if (!empty($_POST['unidade']) && !empty($_POST['margem']) && !empty($_POST['sequencia']) && !empty($_POST['tipodado']) && !empty($_POST['componente'])) {   
+        echo "ESTRANHO DMS";
+        $string = "INSERT INTO componente_tipodado (idComponente, idTipoDado, sequencia, unidade, margemErro) VALUES (?, ?, ?, ?, ?)";
+        $stmt = mysqli_prepare($conexao->link, $string);
+        if($stmt == TRUE){
+            mysqli_stmt_bind_param($stmt, "iisss", $_POST['componente'], $_POST['tipodado'], $_POST['sequencia'], $_POST['unidade'], $_POST['margem']);
+            mysqli_stmt_execute($stmt);
+        }
+        unset($_SESSION['vincularExistentes']);    
+        header('location:/tcc_v1/view/GerenciarComponentes.php');
     }
     //VINCULAR TIPO DADO AO COMPONENTE
     else if (!empty($_POST['unidade']) && !empty($_POST['margem']) && !empty($_POST['sequencia']) && !empty($_POST['componente'])) {   
@@ -62,13 +75,12 @@ if (isset($_SERVER['HTTP_REFERER']) == FALSE) {
             header('location:/tcc_v1/view/CadastroComponentes.php');
         }
     }
-    //EXCLUIR
     else if (!empty($_GET['id']) && is_numeric($_GET['id'])) {
-        
-    }//LOGOUT
-    
+    }
+    else{
+        echo 'Deu ruim';
+    }
+//$conexao->close();
+//unset($conexao);
 }
-$conexao->close();
-unset($conexao);
 ?>
-

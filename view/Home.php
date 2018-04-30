@@ -1,6 +1,3 @@
-<?php
-$msg="Minha mensagem";
-?>
 <!DOCTYPE html>
 <html lang="pt-br">
     <head>
@@ -28,12 +25,7 @@ $msg="Minha mensagem";
                 </div>
             </div>
         </nav>
-        <?php
-        echo '<script>
-        alert("'.$msg.'");
-        </script>';
-        ?>
-
+        
         <div class="jumbotron text-center">
             <h1>PosteIP</h1> 
             <p>A inovação em Iluminação Pública</p> 

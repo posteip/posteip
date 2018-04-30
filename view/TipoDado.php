@@ -20,7 +20,7 @@ include_once '../helpers/preencherTabelas.php';
                 <div class="collapse navbar-collapse" id="myNavbar">
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="CadastroComponentes.php#cadastro">Cadastro</a></li>
-                        <li><a href="#">Gerenciar</a></li>
+                        <li><a href="GerenciarComponentes.php">Gerenciar</a></li>
                         <li><a href="TipoDado.php">Tipo Dado</a></li>
                     </ul>
                 </div>
@@ -64,7 +64,7 @@ include_once '../helpers/preencherTabelas.php';
             </div>
             <!-- Listagem de usuários já cadastrados -->
             <div id="listagem" class="container-fluid">
-                <h2 class="text-center">TIPOS CADASTRADOS</h2><br>
+                <h2 class="text-center">TIPOS EM USO</h2><br>
                 <div class="row">
                     <div class="col-sm-8" style="width: 100%">
                         <form action="/tcc_v1/processamento/processaComponentes" method="post">

@@ -32,6 +32,14 @@ include_once '../helpers/preencherTabelas.php';
         <div class="w3-main" style="margin-left:300px;">
             <div id="listagem" class="container-fluid bg-grey">
                 <h2 class="text-center">GERENCIAR CONTROLADORES</h2><br>
+                <p class="fonte_erro" style="color:red">
+                    <?php
+                        if (isset($_SESSION['msgEditarControlador'])){
+                            echo $_SESSION['msgEditarControlador'];
+                            unset($_SESSION['msgEditarControlador']);
+                        }
+                    ?>
+                </p>
                 <div class="row">
                     <div>
                             <table>

@@ -44,5 +44,28 @@ function dropTipoDado(){
     $conexaoD->close();
     unset($conexaoD);
 }
-//$conexao->close();
+
+function dropTipoDadoExistente(){
+    global $conexaoD;
+    $string = "SELECT id, elemento FROM tipodado";
+    $conexaoD->query($string);
+    $dados = $conexaoD->fetch_row();
+    while ($dados != null) {
+        echo "<option value=$dados[0]>$dados[1]";
+        $dados = $conexaoD->fetch_row();
+    }
+    $conexaoD->close();
+    unset($conexaoD);
+}
+
+function dropComponente(){
+    global $conexaoD;
+    $string = "SELECT id, nome FROM componente";
+    $conexaoD->query($string);
+    $dados = $conexaoD->fetch_row();
+    while ($dados != null) {
+        echo "<option value=$dados[0]>$dados[1]";
+        $dados = $conexaoD->fetch_row();
+    }
+}
 ?>

@@ -66,14 +66,14 @@ if ($tipoUsuario == 1){
         echo '<a href="CadastroPlataformas.php" class="w3-bar-item w3-button w3-padding"><img src="../midia/arduino-icon.png" class="fa-fw">  Plataformas</a>';
     }
     //POSTES
-    if(($_SERVER['REQUEST_URI'] == "/tcc_v1/view/CadastroPostes.php")){
+    if(($_SERVER['REQUEST_URI'] == "/tcc_v1/view/CadastroPostes.php") || $_SERVER['REQUEST_URI'] == "/tcc_v1/view/GerenciarPostes.php"){
         echo '<a href="CadastroPostes.php" class="w3-bar-item w3-button w3-padding w3-blue"><img src="../midia/poste-icon2.png" class="fa-fw">  Postes</a>';
     }
      else {
          echo '<a href="CadastroPostes.php" class="w3-bar-item w3-button w3-padding"><img src="../midia/poste-icon2.png" class="fa-fw">  Postes</a>';
     }
-    //SENSORES
-    if ($_SERVER['REQUEST_URI'] == "/tcc_v1/view/CadastroComponentes.php"){
+    //COMPONENTES
+    if ($_SERVER['REQUEST_URI'] == "/tcc_v1/view/CadastroComponentes.php" || $_SERVER['REQUEST_URI'] == "/tcc_v1/view/GerenciarComponentes.php" || $_SERVER['REQUEST_URI'] == "/tcc_v1/view/TipoDado.php"){
         echo '<a href="CadastroComponentes.php" class="w3-bar-item w3-button w3-padding w3-blue"><img src="../midia/sensor-icon.png" class="fa-fw">  Sensores</a>';
     }else{
         echo '<a href="CadastroComponentes.php" class="w3-bar-item w3-button w3-padding"><img src="../midia/sensor-icon.png" class="fa-fw">  Sensores</a>';
@@ -91,7 +91,7 @@ echo '</nav>
     // Get the DIV with overlay effect
     var overlayBg = document.getElementById("myOverlay");
 
-    // Toggle between showing and hiding the sidebar, and add overlay effect
+    //Toggle between showing and hiding the sidebar, and add overlay effect
     function w3_open() {
         if (mySidebar.style.display === "block") {
             mySidebar.style.display = "none";

@@ -51,7 +51,10 @@ include_once '../helpers/preencherDrops.php';
                                 </div>
                                 <div class="col-sm-6 form-group">
                                     <p style="color: black">Data da Instalação:</p>
-                                    <input class="form-control" id="desc" name="data" type="date" required>
+                                    <?php 
+                                        $data = date("Y-m-d");
+                                        echo '<input class="form-control" id="data" name="data" type="date" max="'.$data.'"required>'
+                                    ?>
                                 </div><br>
                                 <div class="col-sm-6 form-group">
                                     <p style="color: black">Controlador Vinculado:</p>

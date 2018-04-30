@@ -19,7 +19,7 @@ if (isset($_SERVER['HTTP_REFERER']) == FALSE) {
                 <div class="collapse navbar-collapse" id="myNavbar">
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="CadastroComponentes.php#cadastro">Cadastro</a></li>
-                        <li><a href="#">Gerenciar</a></li>
+                        <li><a href="GerenciarComponentes.php">Gerenciar</a></li>
                         <li><a href="TipoDado.php">Tipo dado</a></li>
                     </ul>
                 </div>
@@ -34,7 +34,7 @@ if (isset($_SERVER['HTTP_REFERER']) == FALSE) {
                 <h2 class="text-center">CADASTRO DE COMPONENTES</h2>
                 <div class="row">
                     <div class="col-sm-5 text-center" style="float: left; width: 30%">
-                        <img src="../midia/sensor-icon.png"  style="width: 240px; height: 240px" class="img-responsive center-block" title="Poste">
+                        <img src="../midia/sensor-icon.png"  style="width: 240px; height: 240px" class="img-responsive center-block" title="Componente">
                     </div>
                     <div class="col-sm-7 slideanim" style="float: left; width: 70%">
                         <div class="row">

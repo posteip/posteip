@@ -8,7 +8,7 @@ if (isset($_SERVER['HTTP_REFERER']) == FALSE) {
     <?php include '../helpers/header.php'; ?>
     <title>Postes</title>
     <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
-        
+
         <nav class="w3-bar navbar navbar-default navbar-fixed-top" style="z-index:4;">
             <div class="container">
                 <div class="navbar-header">
@@ -18,7 +18,7 @@ if (isset($_SERVER['HTTP_REFERER']) == FALSE) {
                 <div class="collapse navbar-collapse" id="myNavbar">
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="CadastroPostes.php#cadastro">Cadastro</a></li>
-                        <li><a href="#">Gerenciar</a></li>
+                        <li><a href="GerenciarPostes.php">Gerenciar</a></li>
                     </ul>
                 </div>
             </div>
@@ -50,7 +50,11 @@ if (isset($_SERVER['HTTP_REFERER']) == FALSE) {
                                 </div>
                                 <div class="col-sm-6 form-group">
                                     <p style="color: black">Data da Instalação:</p>
-                                    <input class="form-control" id="data" name="data" type="date" required>
+                                    <?php 
+                                        $data = date("Y-m-d");
+                                        echo '<input class="form-control" id="data" name="data" type="date" max="'.$data.'"required>'
+                                    ?>
+                                    
                                 </div><br>
                                 <div class="row">
                                     <div class="col-sm-12 form-group">
@@ -69,7 +73,7 @@ if (isset($_SERVER['HTTP_REFERER']) == FALSE) {
                     </div>
                 </div>
             </div>
-            <?php include '../helpers/footer.php';?>
+            <?php include '../helpers/footer.php'; ?>
         </div>
     </body>
 </html>

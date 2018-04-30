@@ -2,6 +2,7 @@
 if (isset($_SERVER['HTTP_REFERER']) == FALSE) {
     header('location:/tcc_v1/view/AutenticacaoUsuario.php');
 }
+include_once '../helpers/preencherDrops.php';
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -18,8 +19,8 @@ if (isset($_SERVER['HTTP_REFERER']) == FALSE) {
                 <div class="collapse navbar-collapse" id="myNavbar">
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="CadastroComponentes.php#cadastro">Cadastro</a></li>
-                        <li><a href="#">Gerenciar</a></li>
-                        <li><a href="#">Tipo dado</a></li>
+                        <li><a href="GerenciarComponentes.php">Gerenciar</a></li>
+                        <li><a href="TipoDado.php">Tipo dado</a></li>
                     </ul>
                 </div>
             </div>
@@ -38,22 +39,46 @@ if (isset($_SERVER['HTTP_REFERER']) == FALSE) {
                     <div class="col-sm-7 slideanim" style="float: left; width: 70%">
                         <div class="row">
                             <form action="/tcc_v1/processamento/processaComponentes.php" method="post">
-                                <div class="col-sm-6 form-group" style="font-size: 16px; color: black">
-                                    <?php echo "Componente: <strong>".$_SESSION['nomeComponente']."</strong>"; ?>
-                                    <input type="hidden" value='<?php echo $_SESSION['nomeComponente']?>' name="componente">
-                                </div>
-                                <div class="col-sm-6 form-group" style="font-size: 16px; color: black">
+                                
+                                    <?php 
+                                    if (isset($_SESSION['nomeComponente'])){
+                                        echo '<div class="col-sm-6 form-group" style="font-size: 16px; color: black">';
+                                        echo "Componente: <strong>".$_SESSION['nomeComponente']."</strong>"; 
+                                        echo "<input type='hidden' value='".$_SESSION['nomeComponente']."' name='componente'>";
+                                        echo '</div>';
+                                    }else{
+                                        echo '<div class="col-sm-6 form-group">';
+                                        echo '<p style="color: black">Componente:</p>
+                                        <select name="componente" class="form-control" required>';
+                                        dropComponente();
+                                        echo '</select>';
+                                        echo '</div>';
+                                    }
+                                    ?>
                                 <?php
-                                    if (isset($_SESSION['cadastrarTipo'])){//CASO TENHA OPTADO POR INSERIR UM NOVO TIPO DE DADO
+                                    if (isset($_SESSION['vincularExistentes'])){
+                                    echo '<div class="col-sm-6 form-group">';
+                                    echo '<p style="color: black">Tipo de Dado:</p>
+                                    <select name="tipodado" class="form-control" required>';
+                                    dropTipoDadoExistente();
+                                    echo '</select>';
+                                    }
+                                    else if (isset($_SESSION['cadastrarTipo'])){//CASO TENHA OPTADO POR INSERIR UM NOVO TIPO DE DADO
+                                        echo '<div class="col-sm-6 form-group" style="font-size: 16px; color: black">';
                                         echo "Novo Elemento:";
                                         echo '<input class="form-control" name="novoelemento" placeholder="Elemento" type="text" required>';
+                                        echo "to aqui?";
                                     }else{//CASO JA TENHA SELECIONADO UM TIPO JA CADASTRADO
+                                        echo '<div class="col-sm-6 form-group" style="font-size: 16px; color: black">';
                                         echo "Elemento: <strong>".$_SESSION['nomeTipoDado']."</strong>";
                                         echo '<input type="hidden" value="'.$_SESSION['nomeTipoDado'].'" name="elemento">';
                                     }
                                     unset($_SESSION['cadastrarTipo']);
+                                    unset($_SESSION['nomeTipoDado']);
+                                    unset($_SESSION['nomeComponente']);
+                                    echo "</div>";
                                     ?>
-                                </div>
+                                
                                 <div class="col-sm-6 form-group">
                                     <p style="color: black">Sequencia:</p>
                                     <input class="form-control" name="sequencia" placeholder="Sequencia" type="number" required>
