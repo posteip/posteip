@@ -52,7 +52,7 @@ include_once '../helpers/nav.php';
                                 }else{
                                     $filtro = -1;
                                 }
-                                tabelaPlataformas($filtro);
+                                tabelaGerenciarPlataformas($filtro);
                             ?>
                             </table>
                     </div>

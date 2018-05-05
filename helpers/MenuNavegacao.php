@@ -1,6 +1,5 @@
 <?php
-include '../processamento/preencherDashboard.php';
-
+include_once  '../processamento/preencherDashboard.php';
 echo '<!-- Sidebar/menu -->';
 if (($_SERVER['REQUEST_URI'] == "/tcc_v1/view/DashboardRoot.php")) {
     echo '<nav class="w3-sidebar w3-collapse w3-white w3-animate-left" style="z-index:3;width:300px;" id="mySidebar"><br>';
@@ -78,6 +77,13 @@ if ($tipoUsuario == 1){
     }else{
         echo '<a href="CadastroComponentes.php" class="w3-bar-item w3-button w3-padding"><img src="../midia/sensor-icon.png" class="fa-fw">  Sensores</a>';
     }
+    //CONEXOES
+    if(($_SERVER['REQUEST_URI'] == "/tcc_v1/view/CadastroConexoes.php") || $_SERVER['REQUEST_URI'] == "/tcc_v1/view/GerenciarConexoes.php"){
+        echo '<a href="CadastroConexoes.php" class="w3-bar-item w3-button w3-padding w3-blue"><i class="fa fa-code-branch fa-fw"></i>  Conexoes</a>';
+    }
+     else {
+         echo '<a href="CadastroConexoes.php" class="w3-bar-item w3-button w3-padding"><i class="fa fa-code-branch fa-fw"></i>  Conexoes</a>';
+    }
     echo '<br><br>
     </div>';
 }
@@ -108,4 +114,5 @@ echo '</nav>
         overlayBg.style.display = "none";
     }
 </script>';
+
 ?>

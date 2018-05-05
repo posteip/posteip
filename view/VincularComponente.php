@@ -25,12 +25,12 @@ include_once '../helpers/preencherDrops.php';
                             <form action="/tcc_v1/processamento/processaComponentes.php" method="post">
                                 
                                     <?php 
-                                    if (isset($_SESSION['nomeComponente'])){
+                                    if (isset($_SESSION['nomeComponente'])){//CADASTRO DE COMPONENTES
                                         echo '<div class="col-sm-6 form-group" style="font-size: 16px; color: black">';
                                         echo "Componente: <strong>".$_SESSION['nomeComponente']."</strong>"; 
                                         echo "<input type='hidden' value='".$_SESSION['nomeComponente']."' name='componente'>";
                                         echo '</div>';
-                                    }else{
+                                    }else{//VINCULO DE EXISTENTES
                                         echo '<div class="col-sm-6 form-group">';
                                         echo '<p style="color: black">Componente:</p>
                                         <select name="componente" class="form-control" required>';

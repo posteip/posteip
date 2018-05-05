@@ -10,13 +10,17 @@ if (isset($_SERVER['HTTP_REFERER']) == FALSE) {
 } else {
     //REALIZA O CADASTRO
     if (!empty($_POST['data']) && !!empty(trim($_POST['latitude'])) && !empty(trim($_POST['longitude'])) && !empty(trim($_POST['descricao'])) && !empty($_POST['controlador']) ){
-        $string = "INSERT INTO plataforma (id_controlador, latitude, longitude, data_instalacao, descricao) VALUES (?, ?, ?, ?, ?)";
-        $stmt = mysqli_prepare($conexao->link, $string);
-        if($stmt == TRUE){
-            mysqli_stmt_bind_param($stmt, "iddss", $_POST['controlador'], $_POST['latitude'], $_POST['longitude'], $_POST['data'] ,$_POST['descricao']);
-            mysqli_stmt_execute($stmt);
+        if ($_POST['controlador'] < 0){
+            $_SESSION['msgCadastroPlataforma'] = "É necessário cadastrar um Controlador";
+        } else {
+            $string = "INSERT INTO plataforma (id_controlador, latitude, longitude, data_instalacao, descricao) VALUES (?, ?, ?, ?, ?)";
+            $stmt = mysqli_prepare($conexao->link, $string);
+            if($stmt == TRUE){
+                mysqli_stmt_bind_param($stmt, "iddss", $_POST['controlador'], $_POST['latitude'], $_POST['longitude'], $_POST['data'] ,$_POST['descricao']);
+                mysqli_stmt_execute($stmt);
+                $_SESSION['msgCadastroPlataforma'] = "Plataforma cadastrada com sucesso";
+            }
         }
-        $_SESSION['msgCadastroPlataforma'] = "Plataforma cadastrada com sucesso";
         header('location:/tcc_v1/view/CadastroPlataformas.php');
     }
     else if (!empty($_POST['controlador'])){

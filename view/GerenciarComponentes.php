@@ -38,7 +38,7 @@ include_once '../helpers/nav.php'
                                 <th>Margem de Erro</th>
                                 <th>Ações</th>
                                 <?php
-                                tabelaComponentes();
+                                tabelaGerenciarComponentes();
                                 ?>
                         </table>
                     </div>

@@ -37,7 +37,7 @@ include_once '../helpers/nav.php';
                                     <th>Status</th>
                                     <th>Ações</th>
                             <?php
-                                tabelaControladores();
+                                tabelaGerenciarControladores();
                             ?>
                             </table>
                     </div>

@@ -44,7 +44,7 @@ function buscaTipoDado() {
     unset($conexaoT);
 }
 
-function tabelaControladores(){
+function tabelaGerenciarControladores(){
     global $conexaoT;
     $query = "SELECT * FROM controlador";
     $conexaoT->query($query);
@@ -73,7 +73,7 @@ function tabelaControladores(){
     unset($conexaoT);
 }
 
-function tabelaPlataformas($filtro){
+function tabelaGerenciarPlataformas($filtro){
     if ($filtro > 0){
         $query = "SELECT c.nome, p.id, p.id_controlador, p.latitude, p.longitude, DATE_FORMAT(p.data_instalacao,'%d-%m-%Y') as data_instalacao, p.descricao, p.status FROM plataforma p, controlador c WHERE p.id_controlador = ".$filtro." AND p.id_controlador = c.id";
     }else{
@@ -107,7 +107,7 @@ function tabelaPlataformas($filtro){
     unset($conexaoT);
 }
 
-function tabelaPostes(){
+function tabelaGerenciarPostes(){
     global $conexaoT;
     $query = "SELECT * FROM poste";
     $conexaoT->query($query);
@@ -126,7 +126,7 @@ function tabelaPostes(){
     unset($conexaoT);
 }
 
-function tabelaComponentes(){
+function tabelaGerenciarComponentes(){
     global $conexaoT;
     $query = "SELECT c.id, c.nome, c.tipo, ct.sequencia, td.elemento, ct.unidade, ct.margemErro FROM componente_tipodado ct, componente c, tipodado td WHERE ct.idComponente = c.id and ct.idTipoDado = td.id ORDER BY c.id DESC";
     $conexaoT->query($query);
@@ -145,5 +145,9 @@ function tabelaComponentes(){
     }
     $conexaoT->close();
     unset($conexaoT);
+}
+
+function tabelaGerenciarConexoes(){
+    
 }
 ?>

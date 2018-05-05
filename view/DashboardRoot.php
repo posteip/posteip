@@ -22,7 +22,7 @@ $latitude = -20.4435;
             <a href="Home.html"><span class="w3-bar-item w3-right">POSTeIP</span></a>
         </div>
 
-        <?php include '../helpers/MenuNavegacao.php'; ?>
+        <?php include '../helpers/MenuNavegacao.php';?>
 
         <!-- !PAGE CONTENT! -->
         <div class="w3-main" style="margin-left:300px;margin-top:43px;">
