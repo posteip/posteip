@@ -10,8 +10,9 @@ if (isset($_SERVER['HTTP_REFERER']) == FALSE) {
     header('location:/tcc_v1/view/AutenticacaoUsuario.php');
 } else {
     //REALIZA O CADASTRO
-    if ($_POST['isAdm']>=0  && !empty($_POST['nome']) && !empty($_POST['sobrenome']) && !empty($_POST['email']) && !empty($_POST['usrname']) && !empty($_POST['senha'])) {        
-        $verifica = "SELECT id FROM usuario WHERE login = '" . $_POST['usrname'] . "'";
+    if ($_POST['isAdm']>=0  && !empty(trim($_POST['nome'])) && !empty(trim($_POST['sobrenome'])) && !empty(trim($_POST['email'])) && !empty(trim($_POST['usrname'])) && !empty(trim($_POST['senha']))) {        
+        $usrName = htmlspecialchars($_POST['usrname']);
+        $verifica = "SELECT id FROM usuario WHERE login = '" . $usrName . "'";
         $conexao->query($verifica);
         $dados = $conexao->fetch_row();
         if ($dados[0] != null) {
@@ -23,7 +24,7 @@ if (isset($_SERVER['HTTP_REFERER']) == FALSE) {
             $stmt = mysqli_prepare($conexao->link, $string);
 
             if($stmt == TRUE){
-                mysqli_stmt_bind_param($stmt, "ssisss", $_POST['nome'], $_POST['sobrenome'], $_POST['isAdm'], $_POST['email'], $_POST['usrname'], $senha);
+                mysqli_stmt_bind_param($stmt, "ssisss", $_POST['nome'], $_POST['sobrenome'], $_POST['isAdm'], $_POST['email'], $usrName, $senha);
                 mysqli_stmt_execute($stmt);
             }
             header('location:/tcc_v1/view/CadastroUsuario.php');

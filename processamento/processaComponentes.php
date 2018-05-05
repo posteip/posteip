@@ -4,14 +4,14 @@ include_once "config.php";
 include_once "Connection.php";
 $conexao = new Connection();
 $conexao->connect($host, $user, $password, $database);
-echo "macabro";
 
 if (isset($_SERVER['HTTP_REFERER']) == FALSE) {
     header('location:/tcc_v1/view/AutenticacaoUsuario.php');
 } else {
-    //REALIZA O CADASTRO
-    if (!empty($_POST['nome']) && !empty($_POST['diretorio']) && !empty($_POST['tipodado']) && !empty($_POST['tipo'])) {        
-        $verifica = "SELECT id FROM componente WHERE nome = '" . $_POST['nome'] . "'";
+    //REALIZA O CADASTRO DE UM NOVO COMPONENTE E REDIRECIONA PARA VINCULAR OU CADASTRAR UM (NOVO) TIPO DADO A ESSE COMPONENTE
+    if (!empty(trim($_POST['nome'])) && !empty(trim($_POST['diretorio'])) && !empty($_POST['tipodado']) && !empty($_POST['tipo'])) {        
+        $nome = htmlspecialchars($_POST['nome']);
+        $verifica = "SELECT id FROM componente WHERE nome = '" . $nome . "'";
         $conexao->query($verifica);
         $dados = $conexao->fetch_row();
         if ($dados[0] == null) {
@@ -24,12 +24,11 @@ if (isset($_SERVER['HTTP_REFERER']) == FALSE) {
             if ($_POST['tipodado']>=0){//CASO O USUARIO DESEJE UTILIZAR UM TIPO DE DADO JÁ EXISTENTE
                 $_SESSION['nomeTipoDado'] = $_POST['tipodado'];
                 $_SESSION['nomeComponente'] = $_POST['nome'];
-                header('location:/tcc_v1/view/VincularComponente.php');
             }else{
                 $_SESSION['cadastrarTipo']="";
                 $_SESSION['nomeComponente'] = $_POST['nome'];
-                header('location:/tcc_v1/view/VincularComponente.php');
-            }   
+            }
+            header($url.'VincularComponente.php');
         }else{
             $_SESSION['msgCadastroComponente'] = "ERRO: Nome informado já cadastrado";
             header('location:/tcc_v1/view/CadastroComponentes.php');
@@ -39,8 +38,8 @@ if (isset($_SERVER['HTTP_REFERER']) == FALSE) {
         $_SESSION['vincularExistentes'] = "sim";
         header('location:/tcc_v1/view/VincularComponente.php');
     }
+    //VINCULAR UM COMPONENTE EXISTENTE A UM TIPO DADO EXISTENTE
     else if (!empty($_POST['unidade']) && !empty($_POST['margem']) && !empty($_POST['sequencia']) && !empty($_POST['tipodado']) && !empty($_POST['componente'])) {   
-        echo "ESTRANHO DMS";
         $string = "INSERT INTO componente_tipodado (idComponente, idTipoDado, sequencia, unidade, margemErro) VALUES (?, ?, ?, ?, ?)";
         $stmt = mysqli_prepare($conexao->link, $string);
         if($stmt == TRUE){
@@ -50,7 +49,7 @@ if (isset($_SERVER['HTTP_REFERER']) == FALSE) {
         unset($_SESSION['vincularExistentes']);    
         header('location:/tcc_v1/view/GerenciarComponentes.php');
     }
-    //VINCULAR TIPO DADO AO COMPONENTE
+    //VINCULAR TIPO DADO AO NOVO COMPONENTE
     else if (!empty($_POST['unidade']) && !empty($_POST['margem']) && !empty($_POST['sequencia']) && !empty($_POST['componente'])) {   
         if (!empty($_POST['novoelemento'])){
             $string = "INSERT INTO tipodado (elemento) VALUES ('".$_POST['novoelemento']."')";

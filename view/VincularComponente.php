@@ -1,7 +1,5 @@
 <?php
-if (isset($_SERVER['HTTP_REFERER']) == FALSE) {
-    header('location:/tcc_v1/view/AutenticacaoUsuario.php');
-}
+include '../helpers/verificaLogin.php';
 include_once '../helpers/preencherDrops.php';
 ?>
 <!DOCTYPE html>
@@ -10,21 +8,7 @@ include_once '../helpers/preencherDrops.php';
     <title>Componentes</title>
     <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
         
-        <nav class="w3-bar navbar navbar-default navbar-fixed-top" style="z-index:4;">
-            <div class="container">
-                <div class="navbar-header">
-                    <button class=" navbar-brand w3-bar-item w3-button w3-hide-large w3-hover-none w3-text-white" onclick="w3_open();"><i class="fa fa-bars"></i>  Menu</button>    
-                    <a class="navbar-brand">Componentes</a> 
-                </div>
-                <div class="collapse navbar-collapse" id="myNavbar">
-                    <ul class="nav navbar-nav navbar-right">
-                        <li><a href="CadastroComponentes.php#cadastro">Cadastro</a></li>
-                        <li><a href="GerenciarComponentes.php">Gerenciar</a></li>
-                        <li><a href="TipoDado.php">Tipo dado</a></li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
+        <?php exibirNav("Componentes")?>
 
         <?php include '../helpers/MenuNavegacao.php'; ?>
 

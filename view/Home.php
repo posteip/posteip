@@ -27,7 +27,7 @@
         </nav>
         
         <div class="jumbotron text-center">
-            <h1>PosteIP</h1> 
+            <h1>POSTeIP</h1> 
             <p>A inovação em Iluminação Pública</p> 
         </div>
 

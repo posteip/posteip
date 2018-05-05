@@ -31,7 +31,7 @@ class Connection {
             if($result == TRUE){
                 echo "Dados inseridos com sucesso";
             }else{
-                echo "Erro durante a inserção";
+                echo "Erro durante a execução sql";
                 echo mysqli_error($this->link);
             }
         }   
@@ -40,21 +40,33 @@ class Connection {
         }
     }
     function fetch_row() {
-            $row = mysqli_fetch_row($this->result);
-            
-            return $row;
-    }
-    function fetch_assoc(){
-        $row = mysqli_fetch_assoc($this->result);
-        
+        $row = mysqli_fetch_row($this->result);
+
         return $row;
     }
+
+    function fetch_assoc() {
+        $row = mysqli_fetch_assoc($this->result);
+
+        return $row;
+    }
+
+    function fetch_array() {
+        $row = mysqli_fetch_array($this->result, MYSQLI_BOTH);
+
+        return $row;
+    }
+
     function free_result() {
         mysqli_free_result($this->result);
     }
 
     function close() {
         mysqli_close($this->link);
+    }
+
+    function num_rows() {
+        return mysqli_num_rows($this->result);
     }
 
 }

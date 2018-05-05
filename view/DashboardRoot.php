@@ -1,8 +1,6 @@
 <?php
 include_once '../processamento/preencherDashboard.php';
-if (isset($_SERVER['HTTP_REFERER']) == FALSE || isset($_SESSION['userId']) == FALSE) {
-    header('location:/tcc_v1/view/AutenticacaoUsuario.php');
-}
+include_once '../helpers/verificaLogin.php';
 $longitude = -54.6478;
 $latitude = -20.4435;
 ?>
@@ -85,7 +83,7 @@ $latitude = -20.4435;
                         var latitude = "<?php echo $latitude;?>";
                         var myCenter = new google.maps.LatLng(latitude,-54.6478);
                         var mapCanvas = document.getElementById("map");
-                        var mapOptions = {center: myCenter, zoom: 5};
+                        var mapOptions = {center: myCenter, zoom: 8};
                         var map = new google.maps.Map(mapCanvas, mapOptions);
                         var marker = new google.maps.Marker({position:myCenter});
                         marker.setMap(map);

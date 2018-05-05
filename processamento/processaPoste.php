@@ -9,7 +9,7 @@ if (isset($_SERVER['HTTP_REFERER']) == FALSE) {
     header('location:/tcc_v1/view/AutenticacaoUsuario.php');
 } else {
     //REALIZA O CADASTRO
-    if (!empty($_POST['data']) && !empty($_POST['latitude']) && !empty($_POST['longitude']) && !empty($_POST['descricao'])){
+    if (!empty($_POST['data']) && !empty(trim($_POST['latitude'])) && !empty(trim($_POST['longitude'])) && !empty(trim($_POST['descricao']))){
         $string = "INSERT INTO poste (latitude, longitude, data_instalacao, descricao) VALUES (?, ?, ?, ?)";
         $stmt = mysqli_prepare($conexao->link, $string);
         $data=$_POST['data'];

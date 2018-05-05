@@ -10,8 +10,9 @@ if (isset($_SERVER['HTTP_REFERER']) == FALSE) {
     header('location:/tcc_v1/view/AutenticacaoUsuario.php');
 } else {
     //REALIZA O CADASTRO
-    if (!empty($_POST['nome']) && !empty($_POST['latitude']) && !empty($_POST['longitude']) && !empty($_POST['descricao']) ){
-        $verifica = "SELECT id FROM controlador WHERE nome = '" . $_POST['nome'] . "'";
+    if (!empty(trim($_POST['nome'])) && !empty(trim($_POST['latitude'])) && !empty(trim($_POST['longitude'])) && !empty(trim($_POST['descricao'])) ){
+        $nome = htmlspecialchars($_POST['nome']);
+        $verifica = "SELECT id FROM controlador WHERE nome = '" . $nome . "'";
         $conexao->query($verifica);
         $dados = $conexao->fetch_row();
         if ($dados[0] != null) {
@@ -20,12 +21,12 @@ if (isset($_SERVER['HTTP_REFERER']) == FALSE) {
             $string = "INSERT INTO controlador (nome, latitude, longitude, descricao) VALUES (?, ?, ?, ?)";
             $stmt = mysqli_prepare($conexao->link, $string);
             if($stmt == TRUE){
-                mysqli_stmt_bind_param($stmt, "sdds", $_POST['nome'], $_POST['latitude'], $_POST['longitude'], $_POST['descricao']);
+                mysqli_stmt_bind_param($stmt, "sdds", $nome, $_POST['latitude'], $_POST['longitude'], $_POST['descricao']);
                 mysqli_stmt_execute($stmt);
             }
             $_SESSION['msgCadastroControlador'] = "Controlador Cadastrado com sucesso";
         }
-        header('location:/tcc_v1/view/CadastroControladores.php');
+        header($url.'CadastroControladores.php');
     }
     //EXCLUIR
     else if (!empty($_GET['id']) && is_numeric($_GET['id']) && !empty ($_GET['acao'])) {
@@ -53,7 +54,7 @@ if (isset($_SERVER['HTTP_REFERER']) == FALSE) {
             $conexao->query($sql);
         }
         
-        header('location:/tcc_v1/view/GerenciarControladores.php');
+        header($url.'GerenciarControladores.php');
     }
     else{
         echo "Não entrou em nada, mano";

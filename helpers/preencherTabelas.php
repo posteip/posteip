@@ -75,9 +75,9 @@ function tabelaControladores(){
 
 function tabelaPlataformas($filtro){
     if ($filtro > 0){
-        $query = "SELECT controlador.nome, plataforma.id, plataforma.id_controlador, plataforma.latitude, plataforma.longitude, plataforma.data_instalacao, plataforma.descricao, plataforma.status FROM plataforma, controlador WHERE plataforma.id_controlador = ".$filtro." AND plataforma.id_controlador = controlador.id";
+        $query = "SELECT c.nome, p.id, p.id_controlador, p.latitude, p.longitude, DATE_FORMAT(p.data_instalacao,'%d-%m-%Y') as data_instalacao, p.descricao, p.status FROM plataforma p, controlador c WHERE p.id_controlador = ".$filtro." AND p.id_controlador = c.id";
     }else{
-        $query = "SELECT controlador.nome, plataforma.id, plataforma.id_controlador, plataforma.latitude, plataforma.longitude, plataforma.data_instalacao, plataforma.descricao, plataforma.status FROM plataforma, controlador WHERE plataforma.id_controlador = controlador.id";
+        $query = "SELECT c.nome, p.id, p.id_controlador, p.latitude, p.longitude, DATE_FORMAT(p.data_instalacao,'%d/%m/%Y') as data_instalacao, p.descricao, p.status FROM plataforma p, controlador c WHERE p.id_controlador = c.id";
     }
     global $conexaoT;
     $conexaoT->query($query);

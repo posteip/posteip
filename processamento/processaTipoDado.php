@@ -10,11 +10,12 @@ if (isset($_SERVER['HTTP_REFERER']) == FALSE) {
 } else {
     //REALIZA O CADASTRO
     if (!empty($_POST['elemento'])){
-        $verifica = "SELECT id FROM tipodado WHERE elemento = '" . $_POST['elemento'] . "'";
+        $elemento = htmlspecialchars($_POST['elemento']);
+        $verifica = "SELECT id FROM tipodado WHERE elemento = '" . $elemento . "'";
         $conexao->query($verifica);
         $dados = $conexao->fetch_row();
         if ($dados[0] == null) {
-            $string = "INSERT INTO tipodado (elemento) VALUES ('".$_POST['elemento']."')";
+            $string = "INSERT INTO tipodado (elemento) VALUES ('".$elemento."')";
             $conexao->query($string);   
             $_SESSION['msgCadastroTipoDado'] = "Tipo Dado cadastrado com sucesso";
             header('location:/tcc_v1/view/TipoDado.php');
