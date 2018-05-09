@@ -15,7 +15,7 @@ if (($_SERVER['REQUEST_URI'] == "/tcc_v1/view/DashboardRoot.php")) {
       <a href="/tcc_v1/processamento/processaUsuario.php?sair=sim" class="w3-bar-item w3-button"><i class="fa fa-sign-out-alt" title="SAIR"></i></a>
       <a href="#" class="w3-bar-item w3-button"><i class="fa fa-user"></i></a>';
 if ($tipoUsuario == 1){
-    if (($_SERVER['REQUEST_URI'] == "/tcc_v1/view/CadastroUsuario.php")) {
+    if ($idTela == 1) {
         echo'<a href="CadastroUsuario.php" class="w3-bar-item w3-button w3-blue"><i class="fa fa-user-plus" title="Usuários"></i></a>';
     } else {
         echo '<a href="CadastroUsuario.php" class="w3-bar-item w3-button"><i class="fa fa-user-plus" title="Usuários"></i></a>';
@@ -40,7 +40,11 @@ if (($_SERVER['REQUEST_URI'] == "/tcc_v1/view/DashboardRoot.php")) {
 } else {
     echo '<a href="DashboardRoot.php" class="w3-bar-item w3-button w3-padding"><i class="fa fa-map fa-fw"></i>  Visão Geral</a>';
 }
-echo'<a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-bolt fa-fw"></i>  Consumo Energético</a>
+if (($_SERVER['REQUEST_URI'] == "/tcc_v1/view/ConsumoEnergetico.php")) {
+    echo'<a href="ConsumoEnergetico.php" class="w3-bar-item w3-button w3-padding w3-blue"><i class="fa fa-bolt fa-fw"></i>  Consumo Energético</a>';
+}else{
+    echo'<a href="ConsumoEnergetico.php" class="w3-bar-item w3-button w3-padding"><i class="fa fa-bolt fa-fw"></i>  Consumo Energético</a>';
+}echo'
     <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-lightbulb fa-fw"></i>  Lâmpadas Acessas/Apagadas</a>
     <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-chart-bar fa-fw"></i>  Variação de Intensidade</a>
   </div>';
@@ -52,33 +56,33 @@ if ($tipoUsuario == 1){
   </div>
   <div class="w3-bar-block">';
     //CADASTRO CONTROLADORES
-    if($_SERVER['REQUEST_URI'] == "/tcc_v1/view/CadastroControladores.php" || $_SERVER['REQUEST_URI'] == "/tcc_v1/view/GerenciarControladores.php") {
+    if($idTela == 2) {
         echo '<a href="CadastroControladores.php" class="w3-bar-item w3-button w3-padding w3-blue"><img src="../midia/rasp-icon.png" class="fa-fw">  Controladores Centrais</a>';
     }else{
         echo '<a href="CadastroControladores.php" class="w3-bar-item w3-button w3-padding"><img src="../midia/rasp-icon.png" class="fa-fw">  Controladores Centrais</a>';
     }
     //CADASTRO DE PLATAFORMAS
-    if(($_SERVER['REQUEST_URI'] == "/tcc_v1/view/CadastroPlataformas.php") || $_SERVER['REQUEST_URI'] == "/tcc_v1/view/GerenciarPlataformas.php"){
+    if($idTela == 3){
         echo '<a href="CadastroPlataformas.php" class="w3-bar-item w3-button w3-padding w3-blue"><img src="../midia/arduino-icon.png" class="fa-fw">  Plataformas</a>';
     }
     else{
         echo '<a href="CadastroPlataformas.php" class="w3-bar-item w3-button w3-padding"><img src="../midia/arduino-icon.png" class="fa-fw">  Plataformas</a>';
     }
     //POSTES
-    if(($_SERVER['REQUEST_URI'] == "/tcc_v1/view/CadastroPostes.php") || $_SERVER['REQUEST_URI'] == "/tcc_v1/view/GerenciarPostes.php"){
+    if($idTela == 4){
         echo '<a href="CadastroPostes.php" class="w3-bar-item w3-button w3-padding w3-blue"><img src="../midia/poste-icon2.png" class="fa-fw">  Postes</a>';
     }
      else {
          echo '<a href="CadastroPostes.php" class="w3-bar-item w3-button w3-padding"><img src="../midia/poste-icon2.png" class="fa-fw">  Postes</a>';
     }
     //COMPONENTES
-    if ($_SERVER['REQUEST_URI'] == "/tcc_v1/view/CadastroComponentes.php" || $_SERVER['REQUEST_URI'] == "/tcc_v1/view/GerenciarComponentes.php" || $_SERVER['REQUEST_URI'] == "/tcc_v1/view/TipoDado.php"){
+    if ($idTela == 5){
         echo '<a href="CadastroComponentes.php" class="w3-bar-item w3-button w3-padding w3-blue"><img src="../midia/sensor-icon.png" class="fa-fw">  Sensores</a>';
     }else{
         echo '<a href="CadastroComponentes.php" class="w3-bar-item w3-button w3-padding"><img src="../midia/sensor-icon.png" class="fa-fw">  Sensores</a>';
     }
     //CONEXOES
-    if(($_SERVER['REQUEST_URI'] == "/tcc_v1/view/CadastroConexoes.php") || $_SERVER['REQUEST_URI'] == "/tcc_v1/view/GerenciarConexoes.php"){
+    if($idTela == 6){
         echo '<a href="CadastroConexoes.php" class="w3-bar-item w3-button w3-padding w3-blue"><i class="fa fa-code-branch fa-fw"></i>  Conexoes</a>';
     }
      else {

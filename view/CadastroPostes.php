@@ -1,6 +1,7 @@
 <?php
 include '../helpers/verificaLogin.php';
 include_once '../helpers/nav.php';
+$idTela = 4;
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">

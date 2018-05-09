@@ -2,7 +2,8 @@
 include '../helpers/verificaLogin.php';
 include_once '../helpers/preencherTabelas.php';
 include_once '../helpers/preencherDrops.php';
-include_once '../helpers/nav.php'
+include_once '../helpers/nav.php';
+$idTela = 5;
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">

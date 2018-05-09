@@ -17,8 +17,8 @@ function vincularControlador() {
     }else{
         echo "<option value=-1>Não há Controladores cadastrados";
     }
-    $conexaoD->close();
-    unset($conexaoD);
+    //$conexaoD->close();
+    //unset($conexaoD);
 }
 
 function filtrarControlador() {

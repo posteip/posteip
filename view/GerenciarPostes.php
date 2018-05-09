@@ -3,6 +3,7 @@ include '../helpers/verificaLogin.php';
 include_once '../helpers/preencherTabelas.php';
 include_once '../helpers/preencherDrops.php';
 include '../helpers/nav.php';
+$idTela = 4;
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">

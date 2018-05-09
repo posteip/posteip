@@ -3,6 +3,7 @@ include_once '../processamento/preencherDashboard.php';
 include_once '../helpers/verificaLogin.php';
 $longitude = -54.6478;
 $latitude = -20.4435;
+$idTela = null;
 ?>
 <!DOCTYPE html>
 <html>

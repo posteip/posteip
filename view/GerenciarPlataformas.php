@@ -3,6 +3,7 @@ include '../helpers/verificaLogin.php';
 include_once '../helpers/preencherTabelas.php';
 include_once '../helpers/preencherDrops.php';
 include_once '../helpers/nav.php';
+$idTela = 3;
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -23,7 +24,7 @@ include_once '../helpers/nav.php';
                 <form action="/tcc_v1/processamento/processaPlataforma.php" method="post">
                 <div class="form-group col-sm-6" style="text-align: center">
                     <p style="color: black">Plataformas vinculadas em:</p>
-                    <select name="controlador" class="form-control" required>
+                    <select name="filtroControlador" class="form-control" required>
                         <?php
                         filtrarControlador();
                         ?>

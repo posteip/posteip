@@ -9,7 +9,7 @@ if (isset($_SERVER['HTTP_REFERER']) == FALSE) {
     header('location:/tcc_v1/view/AutenticacaoUsuario.php');
 } else {
     //REALIZA O CADASTRO
-    if (!empty($_POST['data']) && !!empty(trim($_POST['latitude'])) && !empty(trim($_POST['longitude'])) && !empty(trim($_POST['descricao'])) && !empty($_POST['controlador']) ){
+    if (!empty($_POST['data']) && !empty(trim($_POST['latitude'])) && !empty(trim($_POST['longitude'])) && !empty(trim($_POST['descricao'])) && !empty($_POST['controlador']) ){
         if ($_POST['controlador'] < 0){
             $_SESSION['msgCadastroPlataforma'] = "É necessário cadastrar um Controlador";
         } else {
@@ -23,7 +23,7 @@ if (isset($_SERVER['HTTP_REFERER']) == FALSE) {
         }
         header('location:/tcc_v1/view/CadastroPlataformas.php');
     }
-    else if (!empty($_POST['controlador'])){
+    else if (!empty($_POST['filtroControlador'])){
         $_SESSION['filtro'] = $_POST['controlador'];
         header('location:/tcc_v1/view/GerenciarPlataformas.php');
     }

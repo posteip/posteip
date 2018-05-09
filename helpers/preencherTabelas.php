@@ -77,7 +77,7 @@ function tabelaGerenciarPlataformas($filtro){
     if ($filtro > 0){
         $query = "SELECT c.nome, p.id, p.id_controlador, p.latitude, p.longitude, DATE_FORMAT(p.data_instalacao,'%d-%m-%Y') as data_instalacao, p.descricao, p.status FROM plataforma p, controlador c WHERE p.id_controlador = ".$filtro." AND p.id_controlador = c.id";
     }else{
-        $query = "SELECT c.nome, p.id, p.id_controlador, p.latitude, p.longitude, DATE_FORMAT(p.data_instalacao,'%d/%m/%Y') as data_instalacao, p.descricao, p.status FROM plataforma p, controlador c WHERE p.id_controlador = c.id";
+        $query = "SELECT c.nome, p.id, p.id_controlador, p.latitude, p.longitude, DATE_FORMAT(p.data_instalacao,'%d-%m-%Y') as data_instalacao, p.descricao, p.status FROM plataforma p, controlador c WHERE p.id_controlador = c.id";
     }
     global $conexaoT;
     $conexaoT->query($query);
@@ -148,6 +148,30 @@ function tabelaGerenciarComponentes(){
 }
 
 function tabelaGerenciarConexoes(){
-    
+    global $conexaoT;
+    $query = "SELECT * from pinoConexao";
+    $conexaoT->query($query);
+    $dados = $conexaoT->fetch_assoc();
+    while ($dados != null){
+        if ($dados['status']==1){
+            $status='Ativado';
+            $acao='Desativar';
+        }else{
+            $status='Desativado';
+            $acao='Ativar';
+        }
+        echo "<tr>" .
+        "<td>".$dados['id_plataforma']."</td>" .
+        "<td>".$dados['id_poste']."</td>" .
+        "<td>".$dados['id_componente']."</td>" .
+        "<td>".$dados['pino']."</td>" .
+        "<td>".$status."</td>" .
+        "<td><a href='/tcc_v1/processamento/processaPlataforma.php?id=".$dados['id']."&acao=$acao' class='btn btn-default'><i class='fa fa-power-off'></i> $acao</a>" .
+        "<a href='/tcc_v1/processamento/processaPlataforma.php?id=".$dados['id']."&up=sim' class='btn btn-default'><i class='fa fa-pencil-alt'></i> Editar</a></td>" .
+        "</tr>";
+        $dados = $conexaoT->fetch_assoc();
+    }
+    $conexaoT->close();
+    unset($conexaoT);
 }
 ?>

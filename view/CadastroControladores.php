@@ -1,12 +1,13 @@
 <?php
 include '../helpers/verificaLogin.php';
 include_once '../helpers/nav.php';
+$idTela = 2;    
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
     <?php include '../helpers/header.php'; ?>
     <title>Controladores</title>
-    <body id="myPage"  data-spy="scroll" data-target=".navbar" data-offset="60">
+    <body id="myPage" class="bg-grey"  data-spy="scroll" data-target=".navbar" data-offset="60">
         
         <?php exibirNav("Controladores")?>
 

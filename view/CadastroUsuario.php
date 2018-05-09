@@ -2,6 +2,7 @@
 include_once '../helpers/verificaLogin.php';
 include_once '../helpers/preencherTabelas.php';
 include_once '../helpers/nav.php';
+$idTela = 1;
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -9,7 +10,7 @@ include_once '../helpers/nav.php';
     <?php include '../estilo/estiloTabela.php'; ?>
     
     <title>Usuarios</title>
-    <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
+    <body id="myPage" class="bg-grey" data-spy="scroll" data-target=".navbar" data-offset="60">
 
         <?php exibirNav("Usuario")?>
 
@@ -28,8 +29,8 @@ include_once '../helpers/nav.php';
                             <form action="/tcc_v1/processamento/processaUsuario.php" method="post">
                                 <div class="col-sm-12 form-group" style="font-size: 16px; color: black">
                                     Perfil do Usuário:         
-                                    <input type="radio" name="isAdm" value=1 required> Administrador     
-                                    <input type="radio" name="isAdm" value=0 required> Restrito
+                                    <input type="radio" name="isAdm" value=1 title="Administrador" required> Administrador    
+                                    <input type="radio" name="isAdm" value=0 title="Restrito" required> Restrito
                                 </div>
                                 <div class="col-sm-6 form-group">
                                     <p style="color: black">Nome:</p>
