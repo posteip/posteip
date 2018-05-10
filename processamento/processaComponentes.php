@@ -71,7 +71,7 @@ if (isset($_SERVER['HTTP_REFERER']) == FALSE) {
                 mysqli_stmt_bind_param($stmt, "iisss", $idComponente, $idTipoDado, $_POST['sequencia'], $_POST['unidade'], $_POST['margem']);
                 mysqli_stmt_execute($stmt);
             }
-            header('location:/tcc_v1/view/CadastroComponentes.php');
+            header('location:/tcc_v1/view/GerenciarComponentes.php');
         }
     }
     else if (!empty($_GET['id']) && is_numeric($_GET['id'])) {

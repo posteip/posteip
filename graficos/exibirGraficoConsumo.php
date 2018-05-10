@@ -6,7 +6,6 @@ include_once '../processamento/config.php';
 $conexao = new Connection();
 $conexao->connect($host, $user, $password, $database);
 
-
 $titulo = "Consumo Energetico";
 if (true) { 
     switch ($_GET['exibir']){
@@ -53,12 +52,11 @@ while ($dados != null){
     $i++;
     $dados = $conexao->fetch_row();
 }
-
  
-$plot = new PHPlot(1000 , 500);     
+$plot = new PHPlot(1280 , 720);     
   // Organiza Gráfico -----------------------------
 $plot->SetTitle($titulo);
-$plot->SetTitleFontSize(4);
+$plot->SetTitleFontSize(5);
 # Precisão de uma casa decimal
 $plot->SetPrecisionY(1);
 # tipo de Gráfico em barras (poderia ser linepoints por exemplo)
@@ -67,11 +65,7 @@ $plot->SetPlotType("bars");
 $plot->SetDataType("text-data");
 # Adiciona ao gráfico os valores do array
 $plot->SetDataValues($data);
-// -----------------------------------------------
-//MUDANDO AS CORES
-//$plot->SetDataColors("cyan");//muda a cor das barras
-//$plot->SetBackgroundColor("grey");//muda a cor do fundo
-//----------------------------------------------
+
 // Organiza eixo X ------------------------------
 # Seta os traços (grid) do eixo X para invisível
 $plot->SetXTickPos('none');
@@ -79,7 +73,7 @@ $plot->SetXTickPos('none');
 $plot->SetXLabel("");
 # Tamanho da fonte que varia de 1-5
 $plot->SetXLabelFontSize(3);
-$plot->SetAxisFontSize(2);
+$plot->SetAxisFontSize(4);
 // -----------------------------------------------
   
 // Organiza eixo Y -------------------------------

@@ -77,12 +77,13 @@ $idTela = null;
                     </fieldset>
                 </div>
             </div>
+            
             <div id="divGrafico" class="container-fluid bg-grey">
                 <?php
                 if (isset($_SESSION['exibir'])) {
                     echo '<h2 class="text-center">Gráfico</h2>';
                     echo '<div class="row">';
-                        echo '<img src="../graficos/exibirGrafico.php?exibir='.$_SESSION['exibir'].'&item='.$_SESSION['item'].'&periodo='.$_SESSION['periodo'].'" class="img-responsive center-block">';
+                        echo '<img src="../graficos/exibirGraficoConsumo.php?exibir='.$_SESSION['exibir'].'&item='.$_SESSION['item'].'&periodo='.$_SESSION['periodo'].'" class="img-responsive center-block">';
                     unset($_SESSION['exibir']);
                     echo '</div>';
                 }
