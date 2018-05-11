@@ -177,7 +177,7 @@ function tabelaGerenciarConexoes(){
 
 function tabelaLampadasAcessas($idP, $data, $hora){
     global $conexaoT;
-    $query = "SELECT po.descricao, po.latitude, po.longitude, ld.dado_lido, ctd.unidade FROM leituraDados ld INNER JOIN pinoConexao pc ON ld.id_pinoConexao = pc.id INNER JOIN componente c on c.id = pc.id_componente INNER JOIN plataforma p on p.id = pc.id_plataforma INNER JOIN poste po on po.id = pc.id_poste INNER JOIN componente_tipodado ctd on ctd.idComponente = c.id INNER JOIN tipodado td on td.id = ctd.idTipoDado WHERE p.id = $idP AND ld.data LIKE '$data' AND ld.hora LIKE '$hora' AND c.nome LIKE 'Lum Artificial'";
+    $query = "SELECT po.descricao, po.latitude, po.longitude, ld.dado_lido, ctd.unidade, po.id FROM leituraDados ld INNER JOIN pinoConexao pc ON ld.id_pinoConexao = pc.id INNER JOIN componente c on c.id = pc.id_componente INNER JOIN plataforma p on p.id = pc.id_plataforma INNER JOIN poste po on po.id = pc.id_poste INNER JOIN componente_tipodado ctd on ctd.idComponente = c.id INNER JOIN tipodado td on td.id = ctd.idTipoDado WHERE p.id = $idP AND ld.data LIKE '$data' AND ld.hora LIKE '$hora' AND c.nome LIKE 'Lum Artificial'";
     $conexaoT->query($query);
     $dados = $conexaoT->fetch_assoc();
     while ($dados != null){
@@ -189,7 +189,7 @@ function tabelaLampadasAcessas($idP, $data, $hora){
         "<td>Lat: ".$dados['latitude']." | Long: ".$dados['longitude']."</td>" .
         "<td>".$status."</td>" .
         "<td>".$dados['dado_lido']." ".$dados['unidade']."</td>" .
-        "<td>Implementando...</td>" .
+        "<td><a href='VariacaoIntensidade.php?id=".$dados['id']."&desc=".$dados['descricao']."&data=$data&exibir' class='btn btn-default'><i class='fa fa-chart-bar'></i> Variação</a></td>" .
         "<tr>";
         $dados = $conexaoT->fetch_assoc();
     }

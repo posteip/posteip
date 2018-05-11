@@ -45,13 +45,12 @@ if (($_SERVER['REQUEST_URI'] == "/tcc_v1/view/ConsumoEnergetico.php")) {
 }else{
     echo'<a href="ConsumoEnergetico.php" class="w3-bar-item w3-button w3-padding"><i class="fa fa-bolt fa-fw"></i>  Consumo Energético</a>';
 }
-if (($_SERVER['REQUEST_URI'] == "/tcc_v1/view/Lampadas.php")) {
-    echo '<a href="Lampadas.php" class="w3-bar-item w3-button w3-padding w3-blue"><i class="fa fa-lightbulb fa-fw"></i>  Lâmpadas Acessas/Apagadas</a>';    
+if ($_SERVER['REQUEST_URI'] == "/tcc_v1/view/Lampadas.php" || $_SERVER['REQUEST_URI'] == "/tcc_v1/view/VariacaoIntensidade.php?" ) {
+    echo '<a href="Lampadas.php" class="w3-bar-item w3-button w3-padding w3-blue"><i class="fa fa-lightbulb fa-fw"></i>  Lâmpadas</a>';    
 }else{
-    echo '<a href="Lampadas.php" class="w3-bar-item w3-button w3-padding"><i class="fa fa-lightbulb fa-fw"></i>  Lâmpadas Acessas/Apagadas</a>';
+    echo '<a href="Lampadas.php" class="w3-bar-item w3-button w3-padding"><i class="fa fa-lightbulb fa-fw"></i>  Lâmpadas </a>';
 }
-echo'<a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-chart-bar fa-fw"></i>  Variação de Intensidade</a>
-  </div>';
+echo'</div>';
    //MOSTRA AS FERRAMENTAS EXCLUSIVAS DO ADMINISTRADOR 
 if ($tipoUsuario == 1){
    echo'

@@ -19,8 +19,9 @@ $idTela = null;
 
         <div class="w3-main" style="margin-left:300px;">
             <div id="listagem" class="container-fluid bg-grey">
-                <h2 class="text-center">Lâmpadas</h2><br>
+                <h2 class="text-center">Consulta Lâmpadas</h2><br>
                 <form action="../processamento/processaLampadas.php" method="post">
+                    <fieldset>
                     <div class="form-group col-sm-6">
                         <p> Selecione uma plataforma</p>
                         <select name="plataforma" class="form-control" required>
@@ -49,24 +50,27 @@ $idTela = null;
                         }
                         ?>
                     </div>
+                    </fieldset>
                 </form>
                 <div class="row">
                     <div>
-                        <table>
+                        
+                                <?php
+                                if (isset($_SESSION['exibir'])){
+                                    echo '<table>
                             <tr>
                                 <th>Poste</th>
                                 <th>Localização</th>
                                 <th>Status</th>
                                 <th>Intensidade</th>
                                 <th>Ações</th>
-                            </tr>
-                                <?php
-                                if (isset($_SESSION['exibir'])){
+                            </tr>';
                                     tabelaLampadasAcessas($_SESSION['plataforma'],$_SESSION['data'],$_SESSION['hora']);
                                     unset($_SESSION['exibir']);
+                                    echo '</table>';
                                 }
                                 ?>
-                        </table>
+                        
                     </div>
                 </div>
             </div>

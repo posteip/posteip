@@ -21,6 +21,11 @@ if (isset($_SERVER['HTTP_REFERER']) == FALSE) {
         }
         header('location:/tcc_v1/view/Lampadas.php');
     }
+    if (!empty($_POST['data']) && !empty(($_POST['idPoste'])) && !empty($_POST['desc'])){
+        header($url. "VariacaoIntensidade.php?id=".$_POST['idPoste']."&desc=".$_POST['desc']."&data=".$_POST['data']."&exibir");
+        
+    }
+    
 }
 $conexao->close();
 unset($conexao);

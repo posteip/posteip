@@ -1,3 +1,3 @@
 <div class = "rodapé">
-    <p>POSTe IP - Projeto Incentivado pelo IFMS</p>
+    <p style="color: white">POSTe IP - Projeto Incentivado pelo IFMS</p>
 </div>
