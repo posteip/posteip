@@ -44,9 +44,13 @@ if (($_SERVER['REQUEST_URI'] == "/tcc_v1/view/ConsumoEnergetico.php")) {
     echo'<a href="ConsumoEnergetico.php" class="w3-bar-item w3-button w3-padding w3-blue"><i class="fa fa-bolt fa-fw"></i>  Consumo Energético</a>';
 }else{
     echo'<a href="ConsumoEnergetico.php" class="w3-bar-item w3-button w3-padding"><i class="fa fa-bolt fa-fw"></i>  Consumo Energético</a>';
-}echo'
-    <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-lightbulb fa-fw"></i>  Lâmpadas Acessas/Apagadas</a>
-    <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-chart-bar fa-fw"></i>  Variação de Intensidade</a>
+}
+if (($_SERVER['REQUEST_URI'] == "/tcc_v1/view/Lampadas.php")) {
+    echo '<a href="Lampadas.php" class="w3-bar-item w3-button w3-padding w3-blue"><i class="fa fa-lightbulb fa-fw"></i>  Lâmpadas Acessas/Apagadas</a>';    
+}else{
+    echo '<a href="Lampadas.php" class="w3-bar-item w3-button w3-padding"><i class="fa fa-lightbulb fa-fw"></i>  Lâmpadas Acessas/Apagadas</a>';
+}
+echo'<a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-chart-bar fa-fw"></i>  Variação de Intensidade</a>
   </div>';
    //MOSTRA AS FERRAMENTAS EXCLUSIVAS DO ADMINISTRADOR 
 if ($tipoUsuario == 1){

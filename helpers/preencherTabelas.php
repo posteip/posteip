@@ -174,4 +174,26 @@ function tabelaGerenciarConexoes(){
     $conexaoT->close();
     unset($conexaoT);
 }
+
+function tabelaLampadasAcessas($idP, $data, $hora){
+    global $conexaoT;
+    $query = "SELECT po.descricao, po.latitude, po.longitude, ld.dado_lido, ctd.unidade FROM leituraDados ld INNER JOIN pinoConexao pc ON ld.id_pinoConexao = pc.id INNER JOIN componente c on c.id = pc.id_componente INNER JOIN plataforma p on p.id = pc.id_plataforma INNER JOIN poste po on po.id = pc.id_poste INNER JOIN componente_tipodado ctd on ctd.idComponente = c.id INNER JOIN tipodado td on td.id = ctd.idTipoDado WHERE p.id = $idP AND ld.data LIKE '$data' AND ld.hora LIKE '$hora' AND c.nome LIKE 'Lum Artificial'";
+    $conexaoT->query($query);
+    $dados = $conexaoT->fetch_assoc();
+    while ($dados != null){
+        if ($dados['dado_lido']==0){
+            $status='Apagado';
+        }else{$status='Acesso';}
+        echo "<tr>" .
+        "<td>".$dados['descricao']."</td>" .
+        "<td>Lat: ".$dados['latitude']." | Long: ".$dados['longitude']."</td>" .
+        "<td>".$status."</td>" .
+        "<td>".$dados['dado_lido']." ".$dados['unidade']."</td>" .
+        "<td>Implementando...</td>" .
+        "<tr>";
+        $dados = $conexaoT->fetch_assoc();
+    }
+    $conexaoT->close();
+    unset($conexaoT);
+}
 ?>
