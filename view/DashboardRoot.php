@@ -4,9 +4,9 @@ include_once '../helpers/verificaLogin.php';
 include_once '../processamento/Connection.php';
 include_once '../processamento/config.php';
 $idTela = null;
-$i = 0;
-$conexao = new Connection();
-$conexao->connect($host, $user, $password, $database);
+
+
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -84,41 +84,51 @@ $conexao->connect($host, $user, $password, $database);
                 <div class="w3-row-padding" style="margin:0 -16px"><br><br>
                     <div id="map" style="width:100%;height:500px;"></div>
                     <script>
-                        function myMap() {
+                            function myMap() {
                             var myCenter = new google.maps.LatLng(-20.441962, -54.875053);
                             var mapCanvas = document.getElementById("map");
                             var mapOptions = {center: myCenter, zoom: 12};
                             var map = new google.maps.Map(mapCanvas, mapOptions);
-                            cont = 0;
+                            <?php
+                            $item = ["controlador", "plataforma", "poste"];
+                            for ($j=0;$j<3;$j++){
+                            $query = "SELECT * from ".$item[$j];
+                            $conexao = new Connection();
+                            $conexao->connect($host, $user, $password, $database);
+                            $conexao->query($query);
+                            $dados = $conexao->fetch_assoc();
+                            if ($dados != null) {
+                                $n = $conexao->num_rows();
+                            }
+                            $i = 0;
                             
-                                <?php
-                                $query = "SELECT * from controlador";
-                                $i++;
-                                $conexao->query($query);
-                                $dados = $conexao->fetch_assoc();
-                                if ($dados != null) {
-                                    $n = $conexao->num_rows();
-                                }
-                                ?>
-                                limite = <?php echo $n; ?>;
-                                i = 0;
-                                while (i < limite) {
-                                    <?php $dados = $conexao->fetch_assoc(); $latitude = $dados['latitude']; $longitude = $dados['longitude'] ?>
-                                    var latitude = <?php echo $latitude ?>;
-                                    var longitude = <?php echo $longitude ?>;
-                                    var posi = new google.maps.LatLng(latitude, longitude);
+                            while ($i<$n){?>
+                                tipoMarker = <?php echo $j?>    
+                                var latitude = <?php echo $dados['latitude'] ?>;
+                                var longitude = <?php echo $dados['longitude'] ?>;
+                                var posi = new google.maps.LatLng(latitude, longitude);
+                                if (tipoMarker == 0){//Controlador
                                     var marker = new google.maps.Marker({
-                                        position: posi,
-                                        label: "C", });
-                                    marker.setMap(map);
-                                    var infowindow = new google.maps.InfoWindow({
-                                        content: "L"+limite+" I:"+i+" C:"+cont
-                                    });
-                                    infowindow.open(map, marker);
-                                    i++;
+                                    position: posi,
+                                    label: "C", });
+                                }else if (tipoMarker == 1){//Plataforma
+                                    var marker = new google.maps.Marker({
+                                    position: posi,
+                                    icon: 'green2.png'});
                                 }
-                                cont++; 
+                                else {//POSTE
+                                    var marker = new google.maps.Marker({
+                                    position: posi,
+                                    icon: 'lamp.png'});
+                                }
+                                marker.setMap(map);
+                                var infowindow = new google.maps.InfoWindow({
+                                    content: "<?php echo $dados['descricao']?>"
+                                });
+                                infowindow.open(map, marker);
+                            <?php $i++;$dados = $conexao->fetch_assoc();}}?>
                         }
+
                     </script>
                     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB-5FWIitattjt2KqfZcBIJ6tyhmKd3euQ&callback=myMap"></script>
                 </div>
