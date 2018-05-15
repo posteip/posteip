@@ -119,7 +119,7 @@ $idTela = null;
                                 else {//POSTE
                                     var marker = new google.maps.Marker({
                                     position: posi,
-                                    icon: 'lamp.png'});
+                                    icon: 'streetLamp1.png'});
                                 }
                                 marker.setMap(map);
                                 var infowindow = new google.maps.InfoWindow({
