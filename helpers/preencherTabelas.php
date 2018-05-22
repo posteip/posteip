@@ -1,6 +1,6 @@
 <?php
-include_once "../processamento/Connection.php";
-include_once "../processamento/config.php";
+include_once "./processamento/Connection.php";
+include_once "./processamento/config.php";
 $conexaoT = new Connection();
 $conexaoT->connect($host, $user, $password, $database);
 
@@ -18,7 +18,7 @@ function buscaUsuarios() {
         "<td>$isAdm</td>" .
         "<td>$dados[4]</td>" .
         "<td>$dados[5]</td>" .
-        "<td><a href='/tcc_v1/processamento/processaUsuario.php?id=$dados[0]' class='w3-red btn btn-default'><i class='fa fa-trash'></i> Excluir</a></td>" .
+        "<td><a href='/posteip/processamento/processaUsuario.php?id=$dados[0]' class='w3-red btn btn-default'><i class='fa fa-trash'></i> Excluir</a></td>" .
         "</tr>";
         $dados = $conexaoT->fetch_row();
     }
@@ -36,7 +36,7 @@ function buscaTipoDado() {
         "<td>$dados[0]</td>" .
         "<td>$dados[1]</td>" .
         "<td>$dados[2]</td>" .
-        "<td><a href='/tcc_v1/processamento/processaTipoDado.php?up=$dados[0]&elemento=$dados[1]' class='btn btn-default'><i class='fa fa-edit'></i> Editar</a></td>" .
+        "<td><a href='/posteip/processamento/processaTipoDado.php?up=$dados[0]&elemento=$dados[1]' class='btn btn-default'><i class='fa fa-edit'></i> Editar</a></td>" .
         "</tr>";
         $dados = $conexaoT->fetch_row();
     }
@@ -63,8 +63,8 @@ function tabelaGerenciarControladores(){
         "<td>$dados[3]</td>" .
         "<td>$dados[4]</td>" .
         "<td>$status</td>" .
-        "<td><a href='/tcc_v1/processamento/processaControlador.php?id=$dados[0]&acao=$acao' class='btn btn-default'><i class='fa fa-power-off'></i> $acao</a>" .
-        "<a href='/tcc_v1/processamento/processaControlador.php?id=$dados[0]&up=sim' class='btn btn-default'><i class='fa fa-pencil-alt'></i> Editar</a></td>" .
+        "<td><a href='/posteip/processamento/processaControlador.php?id=$dados[0]&acao=$acao' class='btn btn-default'><i class='fa fa-power-off'></i> $acao</a>" .
+        "<a href='/posteip/processamento/processaControlador.php?id=$dados[0]&up=sim' class='btn btn-default'><i class='fa fa-pencil-alt'></i> Editar</a></td>" .
         "</tr>";
         $dados = $conexaoT->fetch_row();
     }
@@ -97,8 +97,8 @@ function tabelaGerenciarPlataformas($filtro){
         "<td>".$dados['data_instalacao']."</td>" .
         "<td>$status</td>" .
         "<td>".$dados['nome']."</td>" .
-        "<td><a href='/tcc_v1/processamento/processaPlataforma.php?id=".$dados['id']."&acao=$acao' class='btn btn-default'><i class='fa fa-power-off'></i> $acao</a>" .
-        "<a href='/tcc_v1/processamento/processaPlataforma.php?id=".$dados['id']."&up=sim' class='btn btn-default'><i class='fa fa-pencil-alt'></i> Editar</a></td>" .
+        "<td><a href='/posteip/processamento/processaPlataforma.php?id=".$dados['id']."&acao=$acao' class='btn btn-default'><i class='fa fa-power-off'></i> $acao</a>" .
+        "<a href='/posteip/processamento/processaPlataforma.php?id=".$dados['id']."&up=sim' class='btn btn-default'><i class='fa fa-pencil-alt'></i> Editar</a></td>" .
         "</tr>";
         $dados = $conexaoT->fetch_assoc();
     }
@@ -118,7 +118,7 @@ function tabelaGerenciarPostes(){
         "<td>".$dados['latitude']."</td>" .
         "<td>".$dados['longitude']."</td>" .
         "<td>".$dados['data_instalacao']."</td>" .
-        "<td><a href='/tcc_v1/processamento/processaPlataforma.php?id=".$dados['id']."&up=sim' class='btn btn-default'><i class='fa fa-pencil-alt'></i> Editar</a></td>" .
+        "<td><a href='/posteip/processamento/processaPlataforma.php?id=".$dados['id']."&up=sim' class='btn btn-default'><i class='fa fa-pencil-alt'></i> Editar</a></td>" .
         "</tr>";
         $dados = $conexaoT->fetch_assoc();
     }
@@ -139,7 +139,7 @@ function tabelaGerenciarComponentes(){
         "<td>".$dados['elemento']."</td>" .
         "<td>".$dados['unidade']."</td>" .
         "<td>".$dados['margemErro']."</td>" .
-        "<td><a href='/tcc_v1/processamento/processaPlataforma.php?id=".$dados['id']."&up=sim' class='btn btn-default'><i class='fa fa-pencil-alt'></i> Editar</a></td>" .
+        "<td><a href='/posteip/processamento/processaPlataforma.php?id=".$dados['id']."&up=sim' class='btn btn-default'><i class='fa fa-pencil-alt'></i> Editar</a></td>" .
         "</tr>";
         $dados = $conexaoT->fetch_assoc();
     }
@@ -166,8 +166,8 @@ function tabelaGerenciarConexoes(){
         "<td>".$dados['id_componente']."</td>" .
         "<td>".$dados['pino']."</td>" .
         "<td>".$status."</td>" .
-        "<td><a href='/tcc_v1/processamento/processaPlataforma.php?id=".$dados['id']."&acao=$acao' class='btn btn-default'><i class='fa fa-power-off'></i> $acao</a>" .
-        "<a href='/tcc_v1/processamento/processaPlataforma.php?id=".$dados['id']."&up=sim' class='btn btn-default'><i class='fa fa-pencil-alt'></i> Editar</a></td>" .
+        "<td><a href='/posteip/processamento/processaPlataforma.php?id=".$dados['id']."&acao=$acao' class='btn btn-default'><i class='fa fa-power-off'></i> $acao</a>" .
+        "<a href='/posteip/processamento/processaPlataforma.php?id=".$dados['id']."&up=sim' class='btn btn-default'><i class='fa fa-pencil-alt'></i> Editar</a></td>" .
         "</tr>";
         $dados = $conexaoT->fetch_assoc();
     }

@@ -6,7 +6,7 @@ $conexao->connect($host, $user, $password, $database);
 session_start();
 
 if (isset($_SERVER['HTTP_REFERER']) == FALSE) {
-    header('location:/tcc_v1/view/AutenticacaoUsuario.php');
+    header($url.'AutenticacaoUsuario.php');
 } else {
     //TRATA OS DADOS RECEBIDOS DO FORMULÁRIO
     if (!empty($_POST['data']) && !empty(($_POST['plataforma'])) && !empty($_POST['hora'])){
@@ -19,7 +19,7 @@ if (isset($_SERVER['HTTP_REFERER']) == FALSE) {
             $_SESSION['exibir'] = true;
             echo $_SESSION['hora'];
         }
-        header('location:/tcc_v1/view/Lampadas.php');
+        header($url.'Lampadas.php');
     }
     if (!empty($_POST['data']) && !empty(($_POST['idPoste'])) && !empty($_POST['desc'])){
         header($url. "VariacaoIntensidade.php?id=".$_POST['idPoste']."&desc=".$_POST['desc']."&data=".$_POST['data']."&exibir");

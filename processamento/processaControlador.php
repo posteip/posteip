@@ -7,7 +7,7 @@ $conexao = new Connection();
 $conexao->connect($host, $user, $password, $database);
 
 if (isset($_SERVER['HTTP_REFERER']) == FALSE) {
-    header('location:/tcc_v1/view/AutenticacaoUsuario.php');
+    header($url.'AutenticacaoUsuario.php');
 } else {
     //REALIZA O CADASTRO
     if (!empty(trim($_POST['nome'])) && !empty(trim($_POST['latitude'])) && !empty(trim($_POST['longitude'])) && !empty(trim($_POST['descricao'])) ){

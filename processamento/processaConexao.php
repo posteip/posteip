@@ -6,7 +6,7 @@ $conexao->connect($host, $user, $password, $database);
 session_start();
 
 if (isset($_SERVER['HTTP_REFERER']) == FALSE) {
-    header('location:/tcc_v1/view/AutenticacaoUsuario.php');
+    header($url.'AutenticacaoUsuario.php');
 } else {
     //REALIZA O CADASTRO
     if (!empty($_POST['plataforma']) && !empty(trim($_POST['pino'])) && !empty($_POST['poste']) && !empty($_POST['componente']) ){

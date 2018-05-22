@@ -1,18 +1,18 @@
 <?php
-include_once  '../processamento/preencherDashboard.php';
+include_once  './processamento/preencherDashboard.php';
 echo '<!-- Sidebar/menu -->';
-if (($_SERVER['REQUEST_URI'] == "/tcc_v1/view/DashboardRoot.php")) {
+if (($_SERVER['REQUEST_URI'] == "/posteip/DashboardRoot.php")) {
     echo '<nav class="w3-sidebar w3-collapse w3-white w3-animate-left" style="z-index:3;width:300px;" id="mySidebar"><br>';
 }else{
     echo '<nav class="w3-sidebar w3-collapse w3-white w3-animate-left" style="z-index:3;width:300px;padding-top:30px" id="mySidebar"><br>';
 }
   echo '<div class="w3-container w3-row">
     <div class="w3-col s4">
-      <img src="../midia/Usuario.png" class="w3-circle w3-margin-right" style="width:46px">
+      <img src="./midia/Usuario.png" class="w3-circle w3-margin-right" style="width:46px">
     </div>
     <div class="w3-col s8 w3-bar">
       <span>Bem vindo, <strong>' . $userName . '</strong></span><br>
-      <a href="/tcc_v1/processamento/processaUsuario.php?sair=sim" class="w3-bar-item w3-button"><i class="fa fa-sign-out-alt" title="SAIR"></i></a>
+      <a href="/posteip/processamento/processaUsuario.php?sair=sim" class="w3-bar-item w3-button"><i class="fa fa-sign-out-alt" title="SAIR"></i></a>
       <a href="#" class="w3-bar-item w3-button"><i class="fa fa-user"></i></a>';
 if ($tipoUsuario == 1){
     if ($idTela == 1) {
@@ -35,17 +35,17 @@ echo'</div>
   </div>
   <div class="w3-bar-block">';
 //DASHBOARD
-if (($_SERVER['REQUEST_URI'] == "/tcc_v1/view/DashboardRoot.php")) {
+if (($_SERVER['REQUEST_URI'] == "/posteip/DashboardRoot.php")) {
     echo '<a href="DashboardRoot.php" class="w3-bar-item w3-button w3-padding w3-blue"><i class="fa fa-map fa-fw"></i>  Visão Geral</a>';
 } else {
     echo '<a href="DashboardRoot.php" class="w3-bar-item w3-button w3-padding"><i class="fa fa-map fa-fw"></i>  Visão Geral</a>';
 }
-if (($_SERVER['REQUEST_URI'] == "/tcc_v1/view/ConsumoEnergetico.php")) {
+if (($_SERVER['REQUEST_URI'] == "/posteip/ConsumoEnergetico.php")) {
     echo'<a href="ConsumoEnergetico.php" class="w3-bar-item w3-button w3-padding w3-blue"><i class="fa fa-bolt fa-fw"></i>  Consumo Energético</a>';
 }else{
     echo'<a href="ConsumoEnergetico.php" class="w3-bar-item w3-button w3-padding"><i class="fa fa-bolt fa-fw"></i>  Consumo Energético</a>';
 }
-if ($_SERVER['REQUEST_URI'] == "/tcc_v1/view/Lampadas.php" || $_SERVER['REQUEST_URI'] == "/tcc_v1/view/VariacaoIntensidade.php?" ) {
+if ($_SERVER['REQUEST_URI'] == "/posteip/Lampadas.php" || $_SERVER['REQUEST_URI'] == "/posteip/VariacaoIntensidade.php?" ) {
     echo '<a href="Lampadas.php" class="w3-bar-item w3-button w3-padding w3-blue"><i class="fa fa-lightbulb fa-fw"></i>  Lâmpadas</a>';    
 }else{
     echo '<a href="Lampadas.php" class="w3-bar-item w3-button w3-padding"><i class="fa fa-lightbulb fa-fw"></i>  Lâmpadas </a>';
@@ -60,29 +60,29 @@ if ($tipoUsuario == 1){
   <div class="w3-bar-block">';
     //CADASTRO CONTROLADORES
     if($idTela == 2) {
-        echo '<a href="CadastroControladores.php" class="w3-bar-item w3-button w3-padding w3-blue"><img src="../midia/rasp-icon.png" class="fa-fw">  Controladores Centrais</a>';
+        echo '<a href="CadastroControladores.php" class="w3-bar-item w3-button w3-padding w3-blue"><img src="./midia/rasp-icon.png" class="fa-fw">  Controladores Centrais</a>';
     }else{
-        echo '<a href="CadastroControladores.php" class="w3-bar-item w3-button w3-padding"><img src="../midia/rasp-icon.png" class="fa-fw">  Controladores Centrais</a>';
+        echo '<a href="CadastroControladores.php" class="w3-bar-item w3-button w3-padding"><img src="./midia/rasp-icon.png" class="fa-fw">  Controladores Centrais</a>';
     }
     //CADASTRO DE PLATAFORMAS
     if($idTela == 3){
-        echo '<a href="CadastroPlataformas.php" class="w3-bar-item w3-button w3-padding w3-blue"><img src="../midia/arduino-icon.png" class="fa-fw">  Plataformas</a>';
+        echo '<a href="CadastroPlataformas.php" class="w3-bar-item w3-button w3-padding w3-blue"><img src="./midia/arduino-icon.png" class="fa-fw">  Plataformas</a>';
     }
     else{
-        echo '<a href="CadastroPlataformas.php" class="w3-bar-item w3-button w3-padding"><img src="../midia/arduino-icon.png" class="fa-fw">  Plataformas</a>';
+        echo '<a href="CadastroPlataformas.php" class="w3-bar-item w3-button w3-padding"><img src="./midia/arduino-icon.png" class="fa-fw">  Plataformas</a>';
     }
     //POSTES
     if($idTela == 4){
-        echo '<a href="CadastroPostes.php" class="w3-bar-item w3-button w3-padding w3-blue"><img src="../midia/poste-icon2.png" class="fa-fw">  Postes</a>';
+        echo '<a href="CadastroPostes.php" class="w3-bar-item w3-button w3-padding w3-blue"><img src="./midia/poste-icon2.png" class="fa-fw">  Postes</a>';
     }
      else {
-         echo '<a href="CadastroPostes.php" class="w3-bar-item w3-button w3-padding"><img src="../midia/poste-icon2.png" class="fa-fw">  Postes</a>';
+         echo '<a href="CadastroPostes.php" class="w3-bar-item w3-button w3-padding"><img src="./midia/poste-icon2.png" class="fa-fw">  Postes</a>';
     }
     //COMPONENTES
     if ($idTela == 5){
-        echo '<a href="CadastroComponentes.php" class="w3-bar-item w3-button w3-padding w3-blue"><img src="../midia/sensor-icon.png" class="fa-fw">  Sensores</a>';
+        echo '<a href="CadastroComponentes.php" class="w3-bar-item w3-button w3-padding w3-blue"><img src="./midia/sensor-icon.png" class="fa-fw">  Sensores</a>';
     }else{
-        echo '<a href="CadastroComponentes.php" class="w3-bar-item w3-button w3-padding"><img src="../midia/sensor-icon.png" class="fa-fw">  Sensores</a>';
+        echo '<a href="CadastroComponentes.php" class="w3-bar-item w3-button w3-padding"><img src="./midia/sensor-icon.png" class="fa-fw">  Sensores</a>';
     }
     //CONEXOES
     if($idTela == 6){

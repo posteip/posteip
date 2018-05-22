@@ -1,6 +1,6 @@
 <?php
-include_once "../processamento/Connection.php";
-include_once "../processamento/config.php";
+include_once "./processamento/Connection.php";
+include_once "./processamento/config.php";
 $conexaoD = new Connection();
 $conexaoD->connect($host, $user, $password, $database);
 

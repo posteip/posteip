@@ -6,7 +6,7 @@ $conexao->connect($host, $user, $password, $database);
 session_start();
 
 if (isset($_SERVER['HTTP_REFERER']) == FALSE) {
-    header('location:/tcc_v1/view/AutenticacaoUsuario.php');
+    header($url.'AutenticacaoUsuario.php');
 } else {
     //REALIZA O CADASTRO
     if (!empty($_POST['data']) && !empty(trim($_POST['latitude'])) && !empty(trim($_POST['longitude'])) && !empty(trim($_POST['descricao'])) && !empty($_POST['controlador']) ){
@@ -21,11 +21,11 @@ if (isset($_SERVER['HTTP_REFERER']) == FALSE) {
                 $_SESSION['msgCadastroPlataforma'] = "Plataforma cadastrada com sucesso";
             }
         }
-        header('location:/tcc_v1/view/CadastroPlataformas.php');
+        header($url.'CadastroPlataformas.php');
     }
     else if (!empty($_POST['filtroControlador'])){
         $_SESSION['filtro'] = $_POST['controlador'];
-        header('location:/tcc_v1/view/GerenciarPlataformas.php');
+        header($url.'GerenciarPlataformas.php');
     }
     else if (!empty($_GET['id']) && is_numeric($_GET['id']) && !empty ($_GET['acao'])) {
         $id = htmlspecialchars($_GET['id']);
@@ -47,7 +47,7 @@ if (isset($_SERVER['HTTP_REFERER']) == FALSE) {
             $conexao->query($sql);
             $_SESSION['msgEditarPlataforma'] = "Plataforma Desativada";
         }
-        header('location:/tcc_v1/view/GerenciarPlataformas.php');
+        header($url.'GerenciarPlataformas.php');
     }
 }
 $conexao->close();

@@ -31,12 +31,12 @@ if (isset($_SERVER['HTTP_REFERER']) == FALSE) {
             header($url.'VincularComponente.php');
         }else{
             $_SESSION['msgCadastroComponente'] = "ERRO: Nome informado já cadastrado";
-            header('location:/tcc_v1/view/CadastroComponentes.php');
+            header($url.'CadastroComponentes.php');
         }
     }
     else if(!empty($_POST['vincular'])){//TRATA SOLICITAÇÃO PARA VINCULAR SENSOR E TIPO DADO JÁ EXISTENTES
         $_SESSION['vincularExistentes'] = "sim";
-        header('location:/tcc_v1/view/VincularComponente.php');
+        header($url.'VincularComponente.php');
     }
     //VINCULAR UM COMPONENTE EXISTENTE A UM TIPO DADO EXISTENTE
     else if (!empty($_POST['unidade']) && !empty($_POST['margem']) && !empty($_POST['sequencia']) && !empty($_POST['tipodado']) && !empty($_POST['componente'])) {   
@@ -47,7 +47,7 @@ if (isset($_SERVER['HTTP_REFERER']) == FALSE) {
             mysqli_stmt_execute($stmt);
         }
         unset($_SESSION['vincularExistentes']);    
-        header('location:/tcc_v1/view/GerenciarComponentes.php');
+        header($url.'GerenciarComponentes.php');
     }
     //VINCULAR TIPO DADO AO NOVO COMPONENTE
     else if (!empty($_POST['unidade']) && !empty($_POST['margem']) && !empty($_POST['sequencia']) && !empty($_POST['componente'])) {   
@@ -71,7 +71,7 @@ if (isset($_SERVER['HTTP_REFERER']) == FALSE) {
                 mysqli_stmt_bind_param($stmt, "iisss", $idComponente, $idTipoDado, $_POST['sequencia'], $_POST['unidade'], $_POST['margem']);
                 mysqli_stmt_execute($stmt);
             }
-            header('location:/tcc_v1/view/GerenciarComponentes.php');
+            header($url.'GerenciarComponentes.php');
         }
     }
     else if (!empty($_GET['id']) && is_numeric($_GET['id'])) {
