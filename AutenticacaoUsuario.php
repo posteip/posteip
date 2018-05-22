@@ -36,13 +36,14 @@ if (isset($_GET['force']) and $_GET['force'] == "sim"){
             <div class="col-sm-3"></div>
             <div class="col-sm-6">
                 <form action="/posteip/processamento/processaUsuario.php" method="post">        
+                    <input type="hidden" name="realizaLogin" value="sim">
                     <div class="form-group col-sm-12">
                         <input class="form-control" id="name" name="login" placeholder="Usuario" type="text" required>
                     </div>
                     <div class="form-group col-sm-12">
                         <input class="form-control" id="password" name="senha" placeholder="Senha" type="password" required>
+                        Esqueceu a senha?<a href="RecuperarSenha.php"> Clique aqui</a>
                     </div>
-
                     <div class="col-sm-12 form-group">
                         <button class="btn btn-default" type="submit">Entrar</button>
                     </div>
@@ -50,7 +51,7 @@ if (isset($_GET['force']) and $_GET['force'] == "sim"){
                 <p class="fonte_erro">
                     <?php
                     if (isset($_SESSION['erroLogin'])) {
-                        print "ATENÇÃO: " . $_SESSION['erroLogin'];
+                        print $_SESSION['erroLogin'];
                         unset($_SESSION['erroLogin']);
                     }
                     ?>

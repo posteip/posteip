@@ -15,7 +15,22 @@ if (isset($_GET['usrname']) && isset($_GET['adress']) && isset($_GET['senha'])){
     $adress = $_GET['adress'];
     $login = $_GET['usrname'];
     $senha = $_GET['senha'];
-
+    $texto = utf8_decode('Olá <strong>'.$login.'</strong> você foi convidado para utilizar o sistema POSTe-IP <br><br>'
+    . 'Acesse o link: https://luizlomba.com.br/posteip/Home.php e insira suas informações de cadastro:<br>'
+    . 'Login: <strong>'.$login.'</strong><br>' 
+    . 'Senha: <strong>'.$senha.'</strong><br><br>'
+    .' Favor não responder esse e-mail');
+    $urlHeader = $url.'CadastroUsuario.php';
+} else{
+    $adress = $_GET['adress'];
+    $login = $_GET['usrname'];
+    $texto = utf8_decode('Olá <strong>'.$login.'</strong> você solicitou a recuperação de sua senha no Sistema POSTe-IP <br><br>'
+    . 'Clique <a href="https://luizlomba.com.br/posteip/RecuperarSenha.php?login='.$login.'&novaSenha=sim">aqui</a> e atualize suas informações<br>'
+    . '<br><br>'
+    .' Favor não responder esse e-mail');
+    $urlHeader = $url.'RecuperarSenha.php';
+}
+$urlHeader="";
 try{
     $mail->Host = 'smtp-mail.outlook.com';//'smtp.gmail.com';
     $mail->SMTPAuth = true;
@@ -34,11 +49,7 @@ try{
     ////$mail->addBCC() //Copia Oculta
     
     //CORPO DO E-MAIL
-    $texto = utf8_decode('Olá <strong>'.$login.'</strong> você foi convidado para utilizar o sistema POSTe-IP <br><br>'
-    . 'Acesse o link: https://luizlomba.com.br/posteip/Home.php e insira suas informações de cadastro:<br>'
-    . 'Login: <strong>'.$login.'</strong><br>' 
-    . 'Senha: <strong>'.$senha.'</strong><br><br>'
-    .' Favor não responder esse e-mail');
+    
     $mail->MsgHTML($texto);
     //ANEXO
     //  $mail->addAttachment('caminhoarquivo');//
@@ -50,5 +61,5 @@ try{
 } catch (Exception $ex) {
     echo $ex->errorMessage();
 }
-}
-header($url.'CadastroUsuario.php');
+
+header($urlHeader);
