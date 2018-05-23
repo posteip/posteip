@@ -1,12 +1,14 @@
 <?php
-include "./helpers/verificaLogin.php"
+//include "./helpers/verificaLogin.php";
+session_start();
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
     <head>
         <title>Recuperar Senha</title>
-        <?php include './helpers/header.php';?>
+        <?php include './helpers/header.php'; ?>
     </head>
+
     <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
 
         <nav class="navbar navbar-default navbar-fixed-top">
@@ -26,8 +28,8 @@ include "./helpers/verificaLogin.php"
         </nav>
 
         <div id="recuperar" class="container-fluid bg-grey text-center">
-            <?php 
-            if (!isset($_GET['login']) && !isset($_GET['novaSenha'])){
+            <?php
+            if (!isset($_GET['login']) && !isset($_GET['novaSenha'])) {
                 echo '<h3 class="margin"><b>Confirme suas informações</b></h3>
             <br><br>
             <div class="col-sm-3"></div>
@@ -46,35 +48,50 @@ include "./helpers/verificaLogin.php"
                         <button class="btn btn-default" type="submit">Recuperar Senha</button>
                     </div>
                 </form>';
-            }else{
+            } else {
+                $login = base64_decode($_GET['login']);
                 echo '<h3 class="margin"><b>Insira sua nova senha</b></h3>
             <br><br>
             <div class="col-sm-3"></div>
             <div class="col-sm-6">
-                <form action="/posteip/processamento/processaUsuario.php" method="post">
+                <form action="/posteip/processamento/processaUsuario.php" method="post" id="confirmaSenha" onSubmit="return validarSenha()">
                     <input type="hidden" name="novaSenha" value="sim">
-                    <input type="hidden" name="login" value='.$_GET['login'].'>
+                    <input type="hidden" name="login" value=' . $login . '>
                     <div class="form-group col-sm-12">
                         <p>Nova Senha</p>
-                        <input class="form-control" name="senha" placeholder="Senha" type="password" pattern=".{8,}" title="Mínimo de 8 caracteres" required>
+                        <input class="form-control" id="senha" name="senha" placeholder="Senha" type="password" pattern=".{8,}" title="Mínimo de 8 caracteres" required>
+                    </div>
+                    <div class="form-group col-sm-12">
+                        <p>Confirme sua Senha</p>
+                        <input class="form-control" id="senha2" name="senha2" placeholder="Senha" type="password" pattern=".{8,}" title="Mínimo de 8 caracteres" required>
                     </div>
                     <div class="col-sm-12 form-group">
-                        <button class="btn btn-default" type="submit">Alterar Senha</button>
+                        <input type="submit" value="Alterar" class="btn btn-default">
                     </div>
                 </form>';
             }
-            echo 
-                '<p class="fonte_erro">';
-                    if (isset($_SESSION['msgRecuperar'])) {
-                        print $_SESSION['msgRecuperar'];
-                        unset($_SESSION['msgRecuperar']);
-                    }
-                    
-                echo '</p></div>';
-              ?>
-            </div>
+            echo
+            '<p class="fonte_erro">';
+            if (isset($_SESSION['msgRecuperar'])) {
+                print $_SESSION['msgRecuperar'];
+                unset($_SESSION['msgRecuperar']);
+            }
 
-        <?php include './helpers/footer.php';?>
-        
+            echo '</p></div>';
+            ?>
+        </div>
+
+        <?php include './helpers/footer.php'; ?>
+        <script>
+            function validarSenha(){
+            NovaSenha = document.getElementById('senha').value;
+            CNovaSenha = document.getElementById('senha2').value;
+            if (NovaSenha != CNovaSenha){
+                alert("SENHAS DIFERENTES! FAVOR DIGITAR SENHAS IGUAIS");
+                return false;
+            }
+            return true;
+        }
+        </script>    
     </body>
 </html>

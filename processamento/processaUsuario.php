@@ -1,4 +1,5 @@
 <?php
+
 session_start();
 include_once "config.php";
 include_once "Connection.php";
@@ -66,32 +67,33 @@ if (isset($_SERVER['HTTP_REFERER']) == FALSE) {
         session_destroy();
         header($url . 'Home.php');
         exit();
-    //TRATA A SOLICITAÇÃO DE PEDIDO DE UMA NOVA SENHA E ENVIA O E-MAIL AO USUARIO    
-    }else if (!empty ($_POST['login']) && !empty ($_POST['email']) && !empty ($_POST['recuperar'])){
-        echo "gesteettetetetetete";
+        //TRATA A SOLICITAÇÃO DE PEDIDO DE UMA NOVA SENHA E ENVIA O E-MAIL AO USUARIO    
+    } else if (!empty($_POST['login']) && !empty($_POST['email']) && !empty($_POST['recuperar'])) {
         $usrName = htmlspecialchars($_POST['login']);
         $email = htmlspecialchars($_POST['email']);
-        $verifica = "SELECT id FROM usuario WHERE login = '" . $usrName . "' and email = '".$email."'";
+        $verifica = "SELECT id FROM usuario WHERE login = '" . $usrName . "' and email = '" . $email . "'";
         $conexao->query($verifica);
         $dados = $conexao->fetch_row();
-        if ($dados[0] != NULL){
-            //header($url . 'processamento/enviar_email.php?adress=' . $email . '&usrname=' . $usrName.'&recuperar=sim');
+        if ($dados[0] != NULL) {
+            header($url . 'processamento/enviar_email.php?adress=' . $email . '&usrname=' . $usrName.'&recuperar=sim');
             $_SESSION['msgRecuperar'] = "Enviamos um e-mail para você recuperar sua conta";
-        }else{
+        } else {
             $_SESSION['msgRecuperar'] = "Os dados informadaos não correspondem a um usuário cadastrado";
         }
-        
     }//REALIZA O UPDATE DA SENHA DO USUARIO
-    else if (!empty($_POST['senha']) && !empty($_POST['novaSenha']) && !empty($_POST['login'])){
-        $senha = md5($_POST['senha']);
-        $login = $_POST['login'];
-        echo $senha.'  '.$login;
-        $query = "UPDATE usuario SET senha = '$senha' WHERE login = '$login' ";
-        $conexao->query($query);
-        $_SESSION['erroLogin'] = "Dados alterados com sucesso";
-        header($url.'AutenticacaoUsuario.php');
-    }
-    else {
+    else if (!empty($_POST['senha']) && !empty($_POST['senha2']) && !empty($_POST['novaSenha']) && !empty($_POST['login'])) {
+        $senha = htmlspecialchars($_POST['senha']);
+        $senha2 = htmlspecialchars($_POST['senha2']);
+        if ($senha === $senha2) {
+            $senha = md5($_POST['senha']);
+            $login = $_POST['login'];
+            echo $senha . '  ' . $login;
+            $query = "UPDATE usuario SET senha = '$senha' WHERE login = '$login' ";
+            $conexao->query($query);
+            $_SESSION['erroLogin'] = "Dados alterados com sucesso";
+            header($url . 'AutenticacaoUsuario.php');
+        }
+    } else {
         echo "Não entrou em nada, mano";
     }
 }

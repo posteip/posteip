@@ -10,13 +10,13 @@ require 'PHPMailer/src/SMTP.php';
 $mail = new PHPMailer;
 $mail->IsSMTP();
 $mail->SMTPSecure = 'starttls';
-
+$urlHeader="";
 if (isset($_GET['usrname']) && isset($_GET['adress']) && isset($_GET['senha'])){
     $adress = $_GET['adress'];
     $login = $_GET['usrname'];
     $senha = $_GET['senha'];
     $texto = utf8_decode('Olá <strong>'.$login.'</strong> você foi convidado para utilizar o sistema POSTe-IP <br><br>'
-    . 'Acesse o link: https://luizlomba.com.br/posteip/Home.php e insira suas informações de cadastro:<br>'
+    . '<a href="https://luizlomba.com.br/posteip/Home.php">Acesse o sistema</a> e insira suas informações de cadastro:<br>'
     . 'Login: <strong>'.$login.'</strong><br>' 
     . 'Senha: <strong>'.$senha.'</strong><br><br>'
     .' Favor não responder esse e-mail');
@@ -24,13 +24,14 @@ if (isset($_GET['usrname']) && isset($_GET['adress']) && isset($_GET['senha'])){
 } else{
     $adress = $_GET['adress'];
     $login = $_GET['usrname'];
+    $login2 = base64_encode($login);
     $texto = utf8_decode('Olá <strong>'.$login.'</strong> você solicitou a recuperação de sua senha no Sistema POSTe-IP <br><br>'
-    . 'Clique <a href="https://luizlomba.com.br/posteip/RecuperarSenha.php?login='.$login.'&novaSenha=sim">aqui</a> e atualize suas informações<br>'
+    . 'Clique <a href="https://luizlomba.com.br/posteip/RecuperarSenha.php?login='.$login2 .'&novaSenha=">aqui</a> e atualize suas informações<br>'
     . '<br><br>'
     .' Favor não responder esse e-mail');
     $urlHeader = $url.'RecuperarSenha.php';
 }
-$urlHeader="";
+
 try{
     $mail->Host = 'smtp-mail.outlook.com';//'smtp.gmail.com';
     $mail->SMTPAuth = true;
