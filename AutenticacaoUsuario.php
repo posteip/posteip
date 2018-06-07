@@ -1,10 +1,5 @@
 <?php
 session_start();
-if (isset($_GET['force']) and $_GET['force'] == "sim"){
-    echo '<script>
-            alert("Voce precisa estar logado");
-        </script>';
-}
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">

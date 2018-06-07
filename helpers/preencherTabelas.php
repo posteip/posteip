@@ -149,7 +149,7 @@ function tabelaGerenciarComponentes(){
 
 function tabelaGerenciarConexoes(){
     global $conexaoT;
-    $query = "SELECT * from pinoConexao";
+    $query = "SELECT pc.id, p.descricao AS plataforma, po.descricao AS poste, c.nome AS componente, pc.pino, pc.status FROM pinoConexao pc, plataforma p, poste po, componente c WHERE pc.id_componente = c.id AND po.id = pc.id_poste AND p.id = pc.id_plataforma";
     $conexaoT->query($query);
     $dados = $conexaoT->fetch_assoc();
     while ($dados != null){
@@ -161,9 +161,9 @@ function tabelaGerenciarConexoes(){
             $acao='Ativar';
         }
         echo "<tr>" .
-        "<td>".$dados['id_plataforma']."</td>" .
-        "<td>".$dados['id_poste']."</td>" .
-        "<td>".$dados['id_componente']."</td>" .
+        "<td>".$dados['plataforma']."</td>" .
+        "<td>".$dados['poste']."</td>" .
+        "<td>".$dados['componente']."</td>" .
         "<td>".$dados['pino']."</td>" .
         "<td>".$status."</td>" .
         "<td><a href='/posteip/processamento/processaPlataforma.php?id=".$dados['id']."&acao=$acao' class='btn btn-default'><i class='fa fa-power-off'></i> $acao</a>" .

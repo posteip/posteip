@@ -19,10 +19,10 @@ if (true) {
         BREAK;
         case 2: //DIA E PLATAFORMA
             $titulo = "Consumo Energetico ".$_GET['periodo'];
-            $query = 'SELECT dado_lido, po.descricao from leituraDados ld INNER JOIN pinoConexao pc on pc.id = ld.id_pinoConexao'
+            $query = 'SELECT SUM(dado_lido), po.descricao from leituraDados ld INNER JOIN pinoConexao pc on pc.id = ld.id_pinoConexao'
             . ' INNER JOIN componente c on c.id = pc.id_componente INNER JOIN plataforma p on p.id = pc.id_plataforma '
             . 'INNER JOIN poste po on po.id = pc.id_poste INNER JOIN componente_tipodado ctd on ctd.idComponente = c.id '
-            . 'INNER JOIN tipodado td on td.id = ctd.idTipoDado WHERE p.id = '.$_GET['item'].' AND ld.data LIKE "'.$_GET['periodo'].'" AND c.nome = "Medidor"';
+            . 'INNER JOIN tipodado td on td.id = ctd.idTipoDado WHERE p.id = '.$_GET['item'].' AND ld.data LIKE "'.$_GET['periodo'].'" AND c.nome = "Medidor" GROUP BY po.descricao';
         BREAK;
         case 3: //MES E CONTROLADOR
             $titulo = "Consumo Energetico ".$_GET['periodo']."/2018";

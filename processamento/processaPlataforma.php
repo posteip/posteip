@@ -24,7 +24,7 @@ if (isset($_SERVER['HTTP_REFERER']) == FALSE) {
         header($url.'CadastroPlataformas.php');
     }
     else if (!empty($_POST['filtroControlador'])){
-        $_SESSION['filtro'] = $_POST['controlador'];
+        $_SESSION['filtro'] = $_POST['filtroControlador'];
         header($url.'GerenciarPlataformas.php');
     }
     else if (!empty($_GET['id']) && is_numeric($_GET['id']) && !empty ($_GET['acao'])) {

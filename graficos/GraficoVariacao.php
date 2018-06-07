@@ -9,7 +9,7 @@ $conexao->connect($host, $user, $password, $database);
 
 $titulo = "Luminosidade Artificial";
 
-$query = 'SELECT dado_lido, ld.hora from leituraDados ld INNER JOIN pinoConexao pc on pc.id = ld.id_pinoConexao INNER JOIN componente c on c.id = pc.id_componente INNER JOIN plataforma p on p.id = pc.id_plataforma INNER JOIN poste po on po.id = pc.id_poste INNER JOIN componente_tipodado ctd on ctd.idComponente = c.id INNER JOIN tipodado td on td.id = ctd.idTipoDado WHERE po.id = ' . $_GET['idPoste'] . ' AND ld.data LIKE "' . $_GET['data'] . '" AND c.nome = "Lum Artificial"';
+    $query = 'SELECT dado_lido, DATE_FORMAT(ld.hora, "%H:%i") from leituraDados ld INNER JOIN pinoConexao pc on pc.id = ld.id_pinoConexao INNER JOIN componente c on c.id = pc.id_componente INNER JOIN plataforma p on p.id = pc.id_plataforma INNER JOIN poste po on po.id = pc.id_poste INNER JOIN componente_tipodado ctd on ctd.idComponente = c.id INNER JOIN tipodado td on td.id = ctd.idTipoDado WHERE po.id = ' . $_GET['idPoste'] . ' AND ld.data LIKE "' . $_GET['data'] . '" AND c.nome = "Lum Artificial" ORDER BY ld.hora ASC';
 //BUSCA OS VALORES
 $conexao->query($query);
 $dados = $conexao->fetch_row();
@@ -38,6 +38,7 @@ $plot->SetDataType("text-data");
 # Adiciona ao gráfico os valores do array
 $plot->SetDataValues($data);
 
+
 // Organiza eixo X ------------------------------
 # Seta os traços (grid) do eixo X para invisível
 $plot->SetXTickPos('none');
@@ -46,6 +47,8 @@ $plot->SetXLabel("");
 # Tamanho da fonte que varia de 1-5
 $plot->SetXLabelFontSize(3);
 $plot->SetAxisFontSize(4);
+$plot->SetLineStyles('solid');
+$plot->SetLineWidths('6px');
 // -----------------------------------------------
 // Organiza eixo Y -------------------------------
 # Coloca nos pontos os valores de Y

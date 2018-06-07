@@ -21,15 +21,17 @@ if (isset($_SERVER['HTTP_REFERER']) == FALSE) {
             header($url . 'CadastroUsuario.php');
         } else {
             $senha = md5($_POST['senha']);
-            $string = "INSERT INTO usuario (nome, sobrenome, isadm, email, login, senha) VALUES (?, ?, ?, ?, ?, ?)";
+            $query = "INSERT INTO usuario (nome, sobrenome, isadm, email, login, senha) VALUES ('".$_POST['nome']."','".$_POST['sobrenome']."',".$_POST['isAdm'].",'".$_POST['email']."','$usrName', '$senha')";
+            $conexao->query($query);
+            /*$string = "INSERT INTO usuario (nome, sobrenome, isadm, email, login, senha) VALUES (?, ?, ?, ?, ?, ?)";
             $stmt = mysqli_prepare($conexao->link, $string);
 
             if ($stmt == TRUE) {
                 mysqli_stmt_bind_param($stmt, "ssisss", $_POST['nome'], $_POST['sobrenome'], $_POST['isAdm'], $_POST['email'], $usrName, $senha);
                 mysqli_stmt_execute($stmt);
-                $_SESSION['erroNomeLogin'] = "Usuário Cadastrado com Sucesso";
+                $_SESSION['erroNomeLogin'] = "Usuário Cadastrado com Sucesso";*/
                 header($url . 'processamento/enviar_email.php?adress=' . $_POST['email'] . '&usrname=' . $_POST['usrname'] . '&senha=' . $_POST['senha']);
-            }
+            
         }
     }
     //TRATA O LOGIN DO USUARIO

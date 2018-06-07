@@ -8,6 +8,7 @@ $idTela = 2;
 <html lang="pt-br">
     <?php include './helpers/header.php'; ?>
     <?php include './estilo/estiloTabela.php';?>
+    <link rel="shortcut icon" type="imagem/png" href="./midia/rasp-icon.png"/>
     <title>Controladores</title>
     
     <body id="myPage"  data-spy="scroll" data-target=".navbar" data-offset="60">

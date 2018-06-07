@@ -34,22 +34,12 @@ if (isset($_SERVER['HTTP_REFERER']) == FALSE) {
             $sql = "UPDATE `controlador` SET `status`= 1 WHERE id = ".$_GET['id'];
             $conexao->query($sql);   
             $_SESSION['msgEditarControlador'] = "Controlador Ativado";
-            /*if(mysqli_affected_rows($conexao->link) == 1){
-                $_SESSION['msgEditarControlador'] = "Controlador Ativado";
-            }else{
-                $_SESSION['msgEditarControlador'] = "ERRO: A ação não obteve sucesso";
-            }*/
         }
         else if ($_GET['acao'] == 'Desativar'){
             $id = htmlspecialchars($_GET['id']);
             $sql = "UPDATE `controlador` SET `status`= 0 WHERE id = ".$id;
             $conexao->query($sql);
             $_SESSION['msgEditarControlador'] = "Controlador Desativado";
-            /*if(mysqli_affected_rows($conexao->link) == 1){
-                $_SESSION['msgEditarControlador'] = "Controlador Desativado";
-            }else{
-                $_SESSION['msgEditarControlador'] = "ERRO: A ação não obteve sucesso";
-            }*/
             $sql = "UPDATE `plataforma` SET `status`= 0 WHERE id_controlador = ".$id;
             $conexao->query($sql);
         }

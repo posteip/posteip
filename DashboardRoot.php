@@ -4,22 +4,20 @@ include_once './helpers/verificaLogin.php';
 include_once './processamento/Connection.php';
 include_once './processamento/config.php';
 $idTela = null;
-
-
-
 ?>
 <!DOCTYPE html>
 <html>
+    
     <title>Dashboard</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
     <link rel="stylesheet" href="./estilo/w3.css">
     <link rel="stylesheet" href="./estilo/fonts/Raleway.css">
     <link rel="stylesheet" href="./estilo/font-awesome/css/fontawesome-all.min.css">
     <style>
         html,body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
     </style>
+    
     <body class="w3-light-grey">
         <!-- Top container -->
         <div class="w3-bar w3-top w3-black w3-large" style="z-index:4;">
