@@ -166,8 +166,8 @@ function tabelaGerenciarConexoes(){
         "<td>".$dados['componente']."</td>" .
         "<td>".$dados['pino']."</td>" .
         "<td>".$status."</td>" .
-        "<td><a href='/posteip/processamento/processaPlataforma.php?id=".$dados['id']."&acao=$acao' class='btn btn-default'><i class='fa fa-power-off'></i> $acao</a>" .
-        "<a href='/posteip/processamento/processaPlataforma.php?id=".$dados['id']."&up=sim' class='btn btn-default'><i class='fa fa-pencil-alt'></i> Editar</a></td>" .
+        "<td><a href='/posteip/processamento/processaConexao.php?id=".$dados['id']."&acao=$acao' class='btn btn-default'><i class='fa fa-power-off'></i> $acao</a>" .
+        "<a href='/posteip/processamento/processaConexao.php?id=".$dados['id']."&up=sim' class='btn btn-default'><i class='fa fa-pencil-alt'></i> Editar</a></td>" .
         "</tr>";
         $dados = $conexaoT->fetch_assoc();
     }

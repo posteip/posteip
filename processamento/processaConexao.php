@@ -13,14 +13,8 @@ if (isset($_SERVER['HTTP_REFERER']) == FALSE) {
         $pino = htmlspecialchars($_POST['pino']);
         echo "".$_POST['poste'];
         //VERIFICA SE TODOS OS COMPONENTES ESTÃO CADASTRADOS
-        if ($_POST['plataforma'] < 0){
-            $_SESSION['msgCadastroConexao'] = "É necessário cadastrar uma Plataforma";
-        }
-        else if ($_POST['poste'] < 0){
-            $_SESSION['msgCadastroConexao'] = "É necessário cadastrar um Poste";
-        }
-        else if ($_POST['componente'] < 0){
-            $_SESSION['msgCadastroConexao'] = "É necessário cadastrar um Componente";
+        if ($_POST['plataforma'] < 0 || $_POST['poste'] < 0 || $_POST['componente'] < 0){
+            $_SESSION['msgCadastroConexao'] = "Cadastre os componentes necessários";
         }
         else{
             //VERIFICA SE EXISTE UMA CONEXÃO ATIVA COM TODOS OS DADOS DA QUE SE DESEJA CADASTRAR
@@ -45,6 +39,28 @@ if (isset($_SERVER['HTTP_REFERER']) == FALSE) {
             }    
         }
         header($url.'CadastroConexoes.php');
+    }
+    else if (!empty($_GET['id']) && is_numeric($_GET['id']) && !empty ($_GET['acao'])) {
+        $id = htmlspecialchars($_GET['id']);
+        if ($_GET['acao'] == 'Ativar'){ 
+            $sql = "SELECT plataforma.status FROM plataforma, pinoConexao pc WHERE pc.id_plataforma = plataforma.id AND pc.id = ".$id;
+            $conexao->query($sql);   
+            $dados = $conexao->fetch_row();
+            if ($dados[0] == 1){
+                $sql = "UPDATE `pinoConexao` SET `status`= 1 WHERE id = ".$id;
+                $conexao->query($sql);   
+                $_SESSION['msgEditarConexao'] = "Conexao Ativada";
+            }
+            else{
+                $_SESSION['msgEditarConexao'] = "ERRO ao ativar conexao: Plataforma Desativada";
+            }
+        }
+        else if ($_GET['acao'] == 'Desativar'){
+            $sql = "UPDATE `pinoConexao` SET `status`= 0 WHERE id = ".$id;
+            $conexao->query($sql);
+            $_SESSION['msgEditarConexao'] = "Conexão Desativada";
+        }
+        header($url.'GerenciarConexoes.php');
     }
 }
 $conexao->close();

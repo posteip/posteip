@@ -13,15 +13,23 @@ $idTela = 6;
 
     <body id="myPage"  data-spy="scroll" data-target=".navbar" data-offset="60">
 
-        <?php exibirNav("Conexoes")?>
+        <?php exibirNav("Conexoes") ?>
 
         <?php include './helpers/MenuNavegacao.php'; ?>
 
         <div class="w3-main" style="margin-left:300px;">
             <div id="listagem" class="container-fluid bg-grey">
-                <h2 class="text-center">GERENCIAR CONEXOES</h2><br>
+                <h2 class="text-center">GERENCIAR CONEXÕES</h2><br>
                 <div class="row">
                     <div>
+                        <p class="fonte_erro" style="color:red">
+                            <?php
+                            if (isset($_SESSION['msgEditarConexao'])) {
+                                echo $_SESSION['msgEditarConexao'];
+                                unset($_SESSION['msgEditarConexao']);
+                            }
+                            ?>
+                        </p>
                         <table>
                             <tr>
                                 <th>Plataforma</th>

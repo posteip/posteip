@@ -17,7 +17,7 @@ $idTela = 6;
         <div class="w3-main" style="margin-left:300px;">
             <!-- Container (Cadastro) -->
             <div id="cadastro" class="container-fluid bg-grey">
-                <h2 class="text-center">CADASTRAR CONEXOES</h2>
+                <h2 class="text-center">CADASTRAR CONEXÕES</h2>
                 <div class="row">
                     <div class="col-sm-5 text-center" style="float: left; width: 30%">
                         <i class="fa fa-code-branch fa-10x img-responsive" style="color: black"></i>  

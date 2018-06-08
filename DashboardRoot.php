@@ -85,7 +85,7 @@ $idTela = null;
                             function myMap() {
                             var myCenter = new google.maps.LatLng(-20.441962, -54.875053);
                             var mapCanvas = document.getElementById("map");
-                            var mapOptions = {center: myCenter, zoom: 12};
+                            var mapOptions = {center: myCenter, zoom: 10};
                             var map = new google.maps.Map(mapCanvas, mapOptions);
                             <?php
                             $item = ["controlador", "plataforma", "poste"];
