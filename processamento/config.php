@@ -1,7 +1,7 @@
 <?php
 $host = "localhost";
 $user = "user_tcc";
-$password = "senha123";
-$database = "tcc";
+$password = "mxPTl9KXMeLbCNdl";
+$database = "poste";
 $url = 'location:/posteip/';
 ?>  

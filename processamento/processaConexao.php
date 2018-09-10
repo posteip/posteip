@@ -11,7 +11,6 @@ if (isset($_SERVER['HTTP_REFERER']) == FALSE) {
     //REALIZA O CADASTRO
     if (!empty($_POST['plataforma']) && !empty(trim($_POST['pino'])) && !empty($_POST['poste']) && !empty($_POST['componente']) ){
         $pino = htmlspecialchars($_POST['pino']);
-        echo "".$_POST['poste'];
         //VERIFICA SE TODOS OS COMPONENTES ESTÃO CADASTRADOS
         if ($_POST['plataforma'] < 0 || $_POST['poste'] < 0 || $_POST['componente'] < 0){
             $_SESSION['msgCadastroConexao'] = "Cadastre os componentes necessários";

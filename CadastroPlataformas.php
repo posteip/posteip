@@ -31,10 +31,10 @@ $idTela = 3;
                                 </div>
                                 <div class="col-sm-12 form-group">
                                     <p style="color: black">Localização:</p>
-                                    <input class="form-control" id="lat" name="latitude" placeholder="Latitude" type="text" pattern="[0-9-]+\.[0-9]{4,6}" required>
+                                    <input class="form-control" id="lat" name="latitude" placeholder="Latitude" type="text" pattern="[0-9-]+\.[0-9]{4,8}" required>
                                 </div>
                                 <div class="col-sm-12 form-group">
-                                    <input class="form-control" id="long" name="longitude" placeholder="Longitude" type="text" pattern="[0-9-]+\.[0-9]{4,6}" required>
+                                    <input class="form-control" id="long" name="longitude" placeholder="Longitude" type="text" pattern="[0-9-]+\.[0-9]{4,8}" required>
                                 </div>
                                 <div class="col-sm-6 form-group">
                                     <p style="color: black">Data da Instalação:</p>
