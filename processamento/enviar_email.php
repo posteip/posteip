@@ -37,7 +37,7 @@ try{
     $mail->SMTPAuth = true;
     $mail->Port = 587;
     $mail->Username = 'sistemaposteip@outlook.com';
-    $mail->Password = 'naoseiasenha2018';
+    $mail->Password = '';
     
     //Define o REMETENTE
     $mail->SetFrom('sistemaposteip@outlook.com','Mudo');
